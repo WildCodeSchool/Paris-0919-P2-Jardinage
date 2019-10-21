@@ -1,0 +1,192 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Ubuntu&display=swap");
+/* Reset CSS */
+
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  color: #FFFFFF;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  min-width: 300px;
+}
+
+.app {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Ubuntu', sans-serif;
+}
+
+#connect {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  background-color: #2C3E50;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  align-items: center;
+}
+
+#connect a:hover{
+  text-decoration: underline;
+}
+
+.sign {
+  width: 160px;
+  display: flex;
+}
+
+.sign li {
+  padding: 6px;
+}
+
+#weather {
+  width: 100%;
+  height: 350px;
+  background-image: url("./ciel-soleil.jpg");
+  background-size: cover;
+}
+
+#plantList {
+  padding: 2% 0px 3% 0px;
+  background-color: #FFFFFF;
+}
+
+#suggestTitle {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#suggestTitle h2 {
+  color: #000000;
+}
+
+#plantList section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+article {
+  margin: 10px;
+}
+
+article img {
+  height: 300px;
+  width: 300px;
+  object-fit: cover;
+}
+
+/* #navBar {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  background-color: #2C3E50;
+}
+
+#navBar ul {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  align-items: center;
+} */
+
+#navBar {
+  display: none;
+}
+
+#footer {
+  width: 100%;
+  font-size: 1.1em;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #336E7B;
+}
+
+#footer #infos {
+  width: 100%;
+}
+
+#footer #infos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+#footer #infos ul {
+  width: 220px;
+  padding: 60px 30px 60px 30px;
+}
+
+#footer #infos li {
+  padding: 2px;
+}
+
+#footer #infos a:hover{
+ text-decoration: underline;
+}
+
+#footer #social {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #2C3E50;
+  width: 100%;
+}
+
+#footer #social ul {
+  display: flex;
+  padding: 20px 30px 20px 30px;
+}
+
+#footer #social ul li {
+  padding: 10px;
+}
+
+.listTitle {
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+#copyrights {
+  font-size: 0.9em;
+}
+
+#copyrights a:hover{
+  text-decoration: underline;
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+
+@media only screen and (max-width: 575.98px) {
+  #footer #social {
+    min-height: 100px;
+  }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+
+@media only screen and (min-width: 576px) and (max-width: 767.98px) {}
+
+/* Medium devices (tablets, 768px and up) */
+
+@media only screen and (min-width: 768px) and (max-width: 991.98px) {}
+
+/* Large devices (desktops, 992px and up) */
+
+@media only screen and (min-width: 992px) {}
+
+/* Extra large devices (large desktops, 1200px and up) */
+
+/* @media only screen and (min-width: 1200px) {} */

@@ -1,12 +1,26 @@
 import React from 'react';
-import './App.css';
+import Connect from './components/Connect';
+import Weather from './components/Weather';
+import SearchBar from './components/SearchBar';
+import PlantList from './components/PlantList';
+import Footer from './components/Footer.js';
+import NavBar from './components/NavBar.js';
+import './App.scss';
 
-function App() {
-  return (
-    <div className="App">
-      <h1>PlantMe</h1>
-    </div>
-  );
+class App extends React.Component {
+  render() {
+    return (
+      <div className="app">
+        <Connect />
+        <Weather />
+        <SearchBar />
+        <PlantList />
+        <Footer />
+        <NavBar />
+      </div>
+    );
+  }
 }
+
 
 export default App;
