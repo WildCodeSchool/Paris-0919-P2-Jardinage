@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './style/SignIn.css'
+import './style/SignIn.scss'
 
 class SignIn extends React.Component{
   state = {
