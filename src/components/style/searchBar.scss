@@ -103,6 +103,40 @@ input:focus {
   }
 }
 
+.Connect-signin{
+  font-size: 1rem;
+  color: white;
+}
+
+.Connect-signin:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.modali-header{
+  border-bottom: solid 1px #00a06033;
+}
+
+.modali-content{
+  padding: 15px 15px 0 15px;
+  text-align: center;
+}
+
+.modali-close-button{
+  border: none;
+  font-size: 2.5rem;
+  padding: 5px;
+  opacity: 1;
+}
+
+.modali-close-button span{
+  color: #00a060;
+}
+
+.modali-title{
+  color: #00a060;
+}
+
 /* Extra small devices (portrait phones, less than 649.98px) */
 
 @media only screen and (max-width: 700px) {

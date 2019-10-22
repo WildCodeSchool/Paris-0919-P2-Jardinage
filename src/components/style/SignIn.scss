@@ -2,16 +2,11 @@
 .SignIn-container{
   background: white;
   color: black;
-  padding: 15px;
-  width: 30vw; /* Just to look the design */
-  margin: auto; /* Just to look the design */
-  border: 1px solid #00a060; /* Just to look the design */
-  border-radius: 5px;
+  border-radius: 30px;
 }
 
 .SignIn-header{
   font-size: 2.5rem;
-  text-transform: uppercase;
   font-weight: bold;
   padding: 15px;
   color: #00a060;
@@ -63,6 +58,7 @@
 
 .SignIn-body  input::placeholder{
   color: #00a060b1;
+  text-align: left;
 }
 
 
