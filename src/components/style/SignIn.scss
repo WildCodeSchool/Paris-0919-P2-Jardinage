@@ -1,6 +1,6 @@
 
 .SignIn-container{
-  background: #2c3e50;
+  background: whitesmoke;
   color: black;
 }
 
@@ -12,7 +12,6 @@
   font-weight: bold;
   padding: 15px;
   color: #00a060;
-  border-bottom: .5px solid #a0b3b033;
 }
 
 .SignIn-title{
@@ -21,12 +20,12 @@
   text-decoration:none;
   width: 50%;
   padding:15px;
-  background: #a0b3b055;
-  color: #a0b3b0;
+  background: #a0b3b044;
+  color: #666;
   font-size:20px;
   text-align:center;
   cursor:pointer;
-  transition: border-radius .7s, color .7s, background-color .7s;
+  transition: color 1s, background-color 1s;
   &.signin{
     border-radius: 15px 0 0 15px;
   }
@@ -34,7 +33,7 @@
     border-radius: 0 15px 15px 0;
   }
   &.active{
-    color: white;
+    color: whitesmoke;
     background: #00a060;
   }
 }
@@ -45,7 +44,7 @@
   background: #00a060;
   padding: 15px 35px;
   font-weight: bold;
-  color: white;
+  color: whitesmoke;
   margin: 15px;
 }
 
@@ -64,7 +63,7 @@
 
 .SignIn-body  input{
   border: none;
-  border: 1px solid #a0b3b0;
+  border: 1.5px solid #a0b3b0;
   padding: 15px;
   margin: 15px;
   min-width: 80%;
@@ -73,11 +72,11 @@
 
 .SignIn-body  input:hover{
   opacity: .8;
-  border: 1px solid #00a060;
+  border: 1.5px solid #00a060;
 }
 
 .SignIn-body  input:focus{
-  border: 1px solid #00a060;
+  border: 1.5px solid #00a060;
 }
 
 .SignIn-body  input::placeholder{
