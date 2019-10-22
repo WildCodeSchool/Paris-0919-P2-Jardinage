@@ -113,28 +113,20 @@ input:focus {
   cursor: pointer;
 }
 
-.modali-header{
-  border-bottom: solid 1px #00a06033;
+.modali-close-button{
+  opacity: 1;
+  background: transparent;
+  font-size: 1.8rem;
+  padding: 0;
+  span{
+    color: #00a060;
+  }
 }
 
 .modali-content{
+  background: whitesmoke;
   padding: 15px 15px 0 15px;
   text-align: center;
-}
-
-.modali-close-button{
-  border: none;
-  font-size: 2.5rem;
-  padding: 5px;
-  opacity: 1;
-}
-
-.modali-close-button span{
-  color: #00a060;
-}
-
-.modali-title{
-  color: #00a060;
 }
 
 /* Extra small devices (portrait phones, less than 649.98px) */

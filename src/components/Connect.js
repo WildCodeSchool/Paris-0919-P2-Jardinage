@@ -8,9 +8,8 @@ import '../App.scss';
 function Connect() {
     const [signInModal, toggleSignInModal] = useModali({
         centered: true,
-        title: "Sign in",
-        overlayClose: false,
-        closeButton: true
+        closeButton: true,
+        animated: true,
     });
 
     return (
