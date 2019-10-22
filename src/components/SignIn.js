@@ -20,9 +20,6 @@ class SignIn extends React.Component{
     return(
       <div className="SignIn-wrap">
         <div className="SignIn-container">
-          <div className="SignIn-header">
-            SIGN IN
-          </div>
           <div className="SignIn-body">
             <form>
               <input 
