@@ -2,11 +2,12 @@ import React from 'react';
 
 // import des différents composants
 import Connect from './components/Connect';
-import Weather from './components/Weather';
-import SearchBar from './components/SearchBar';
-import PlantList from './components/PlantList';
 import Footer from './components/Footer.js';
 import NavBar from './components/NavBar.js';
+import PlantList from './components/PlantList';
+import SearchBar from './components/SearchBar';
+import Weather from './components/Weather';
+
 import './App.scss';
 
 class App extends React.Component {

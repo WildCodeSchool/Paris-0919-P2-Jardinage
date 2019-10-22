@@ -69,39 +69,6 @@ h4 {
   background-size: cover;
 }
 
-//////////////////* grille suggestion plantes *//////////////
-#plantList {
-  padding: 2% 0px 3% 0px;
-  background-color: #ffffff;
-}
-
-#plantList section {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-#suggestTitle {
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#suggestTitle h2 {
-  color: #000000;
-}
-
-article {
-  margin: 10px;
-}
-
-article img {
-  height: 300px;
-  width: 300px;
-  object-fit: cover;
-}
-
 /////////////////////////* footer infos/réseaux sociaux *////////////////////
 #footer {
   width: 100%;
