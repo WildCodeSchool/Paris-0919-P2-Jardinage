@@ -1,0 +1,35 @@
+// Style du composant plantCard
+.plantCard img {
+  height: 100%;
+  width: 90%;
+  object-fit: cover;
+}
+.plantList-popular img {
+  border-radius: 0 10px 10px 0;
+  float: left;
+}
+.plantList-seasonal img {
+  border-radius: 10px 0 0 10px;
+  float: right;
+}
+
+.plantList-seasonal, .plantList-popular {
+  display: flex;
+}
+.plantCard {
+  position: relative;
+}
+
+.plantCard p {
+  position: absolute;
+  bottom: 0;
+  width: 90%;
+  background-color: rgba(79, 79, 255, 0.8);
+}
+.plantList-popular p {
+  border-radius: 0 0 10px 0;
+}
+.plantList-seasonal p {
+  border-radius: 0 0 0 10px;
+  right: 0;
+}

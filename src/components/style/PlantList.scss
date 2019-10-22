@@ -1,32 +1,18 @@
 //////////////////* grille suggestion plantes *//////////////
+
+// Style des deux 
 #plantList {
-  padding: 2% 0px 3% 0px;
-  background-color: #ffffff;
-}
-
-#plantList section {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  width: 100vw;
+  justify-content: space-between;
 }
-
-#suggestTitle {
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.plantList--section {
+  width: 50vw;
+  text-align: center; 
 }
-
-#suggestTitle h2 {
-  color: #000000;
+.plantList--section h2 {
+  color: black;
 }
-
-article {
-  margin: 10px;
-}
-
-article img {
-  height: 300px;
-  width: 300px;
-  object-fit: cover;
-}
+.plantList--section h2 {
+  margin: 20px 0;
+} 
