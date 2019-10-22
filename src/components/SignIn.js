@@ -35,7 +35,7 @@ class SignIn extends React.Component{
             <div onClick={this.toggleConnexionType} className={this.state.signup ? `SignIn-title signup active` : `SignIn-title signup `}>Sign up</div>
           </div>
           <div className="SignIn-body">
-            <form>
+            <form id="SignInForm">
               <input 
                 name="email"
                 type="email"
@@ -50,11 +50,9 @@ class SignIn extends React.Component{
                 placeholder="Password"
                 onChange={this.handleChanges}
               />
-              <button onClick={this.props.toggleSignInModal} className="SignIn-btn">
+              <button className="SignIn-btn">
                 Sign In
               </button>
-              <br/>
-              <a onClick={this.props.toggleSignInModal} className="SignIn-link">I don't have an account</a>
             </form>
           </div>
         </div>

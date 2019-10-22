@@ -26,6 +26,7 @@
   font-size:20px;
   text-align:center;
   cursor:pointer;
+  transition: border-radius .7s, color .7s, background-color .7s;
   &.signin{
     border-radius: 15px 0 0 15px;
   }
