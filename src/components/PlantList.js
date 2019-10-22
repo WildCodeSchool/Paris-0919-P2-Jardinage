@@ -8,19 +8,26 @@ import PlantCard from './PlantCard';
 
 import '../App.scss';
 import './style/PlantList.scss'
+import './style/PlantCard.scss'
 
 function PlantList() {
   return (
     <div id="plantList">
       <section className="plantList--section">
         <h2>Popular plants</h2>
-        <div className="plantList-popular">
-          <PlantCard className="plantList-popular"/>
+        <div>
+          <PlantCard />
+          <PlantCard />
+          <PlantCard />
+          <PlantCard />
         </div>
       </section>
       <section className="plantList--section seasonal">
         <h2>Seasonal plants</h2>
         <div className="plantList-seasonal">
+          <PlantCard />
+          <PlantCard />
+          <PlantCard />
           <PlantCard />
         </div>
       </section>
