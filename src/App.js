@@ -1,16 +1,39 @@
 import React from 'react';
 
-import SignIn from './components/SignIn'
+// import des différents composants
+import Connect from './components/Connect';
+import Weather from './components/Weather';
+import SearchBar from './components/SearchBar';
+import PlantList from './components/PlantList';
+import Footer from './components/Footer.js';
+import NavBar from './components/NavBar.js';
+import './App.scss';
 
-import './App.css';
+class App extends React.Component {
+  render() {
+    return (
+      <div className="app">
 
-function App() {
-  return (
-    <div className="App">
-      <h1>PlantMe</h1>
-      <SignIn />
-    </div>
-  );
+        {/* module de connexion sign in/up */}
+        <Connect />
+
+        {/* affichage météo relié à une API */}
+        <Weather />
+
+        {/* bare de recherche lié à une API plante */}
+        <SearchBar />
+
+        {/* grille suggestion plantes */}
+        <PlantList />
+
+        {/* infos / réseaux sociaux */}
+        <Footer />
+
+        {/* menu de l'appli une fois connecté garden/board/alerts */}
+        <NavBar />
+      </div>
+    );
+  }
 }
 
 export default App;
