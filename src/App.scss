@@ -1,16 +1,25 @@
-@import url("https://fonts.googleapis.com/css?family=Open+Sans|Ubuntu&display=swap");
-/* Reset CSS */
+/////////////////////////////////////////////////////////////////////////////////
+//////////////////////////* Style de la home page *//////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////
 
+
+///////////////////////////////////* imports *//////////////////////////////////
+
+// import des fonts via google font, OpenSans pour le texte + Ubuntu pour les titres
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Ubuntu&display=swap");
+
+//////////////////////////////////* Reset CSS *//////////////////////////////
 * {
   margin: 0;
   padding: 0;
   text-decoration: none;
   list-style: none;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
+////////////////////////* Style global conteneurs *////////////////////////
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   min-width: 300px;
 }
 
@@ -19,22 +28,27 @@ body {
   flex-wrap: wrap;
 }
 
-h1, h2, h3, h4 {
-  font-family: 'Ubuntu', sans-serif;
+//////////////////////* Style global des éléments *///////////////////////
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Ubuntu", sans-serif;
 }
 
+////////////////////*  module de connexion sign in/up *///////////////////
 #connect {
   width: 100%;
   height: 60px;
   display: flex;
-  background-color: #2C3E50;
+  background-color: #2c3e50;
   display: flex;
   justify-content: space-between;
   text-align: center;
   align-items: center;
 }
 
-#connect a:hover{
+#connect a:hover {
   text-decoration: underline;
 }
 
@@ -47,6 +61,7 @@ h1, h2, h3, h4 {
   padding: 6px;
 }
 
+///////////////////* Composant météo *////////////////////
 #weather {
   width: 100%;
   height: 350px;
@@ -54,9 +69,16 @@ h1, h2, h3, h4 {
   background-size: cover;
 }
 
+//////////////////* grille suggestion plantes *//////////////
 #plantList {
   padding: 2% 0px 3% 0px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
+}
+
+#plantList section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 #suggestTitle {
@@ -70,12 +92,6 @@ h1, h2, h3, h4 {
   color: #000000;
 }
 
-#plantList section {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
 article {
   margin: 10px;
 }
@@ -86,33 +102,16 @@ article img {
   object-fit: cover;
 }
 
-/* #navBar {
-  width: 100%;
-  height: 60px;
-  display: flex;
-  background-color: #2C3E50;
-}
-
-#navBar ul {
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  text-align: center;
-  align-items: center;
-} */
-
-#navBar {
-  display: none;
-}
-
+/////////////////////////* footer infos/réseaux sociaux *////////////////////
 #footer {
   width: 100%;
   font-size: 1.1em;
   display: flex;
   flex-wrap: wrap;
-  background-color: #336E7B;
+  background-color: #336e7b;
 }
 
+///////////////////////* footer infos
 #footer #infos {
   width: 100%;
 }
@@ -132,16 +131,18 @@ article img {
   padding: 2px;
 }
 
-#footer #infos a:hover{
- text-decoration: underline;
+#footer #infos a:hover {
+  text-decoration: underline;
 }
 
+
+//////////////////////* footer social
 #footer #social {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  background-color: #2C3E50;
+  background-color: #2c3e50;
   width: 100%;
 }
 
@@ -163,12 +164,37 @@ article img {
   font-size: 0.9em;
 }
 
-#copyrights a:hover{
+#copyrights a:hover {
   text-decoration: underline;
 }
 
-/* Extra small devices (portrait phones, less than 576px) */
+//////////////////////* menu de l'appli une fois connecté garden/board/alerts *///////////////////////////
 
+#navBar {
+  display: none;
+}
+
+/* #navBar {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  background-color: #2C3E50;
+}
+
+#navBar ul {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  align-items: center;
+} */
+
+
+/////////////////////////////////////////////////////////////////////////////
+////////////////////////////* Media Queries *////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////
+
+/* Extra small devices (portrait phones, less than 576px) */
 @media only screen and (max-width: 575.98px) {
   #footer #social {
     min-height: 100px;
@@ -176,17 +202,16 @@ article img {
 }
 
 /* Small devices (landscape phones, 576px and up) */
-
-@media only screen and (min-width: 576px) and (max-width: 767.98px) {}
+@media only screen and (min-width: 576px) and (max-width: 767.98px) {
+}
 
 /* Medium devices (tablets, 768px and up) */
-
-@media only screen and (min-width: 768px) and (max-width: 991.98px) {}
+@media only screen and (min-width: 768px) and (max-width: 991.98px) {
+}
 
 /* Large devices (desktops, 992px and up) */
-
-@media only screen and (min-width: 992px) {}
+@media only screen and (min-width: 992px) {
+}
 
 /* Extra large devices (large desktops, 1200px and up) */
-
 /* @media only screen and (min-width: 1200px) {} */
