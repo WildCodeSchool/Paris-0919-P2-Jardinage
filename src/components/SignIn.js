@@ -5,10 +5,12 @@ import './style/SignIn.scss'
 class SignIn extends React.Component{
   state = {
     name: "",
-    password: ""
+    password: "",
+    signin: true,
+    signup: false
   }
 
-  handleChanges = (event) => {
+  handleChanges = (event) => { // [name] is the property "name" of each input, permits to use a unique function to handle changes
     const input = event.target
     const name = input.name
     this.setState({ 
@@ -16,10 +18,22 @@ class SignIn extends React.Component{
     })
   }
 
+  toggleConnexionType = (event) => {
+    event.preventDefault()
+    this.setState({
+      signin: !this.state.signin,
+      signup: !this.state.signup
+    })
+  }
+
   render() {
     return(
       <div className="SignIn-wrap">
         <div className="SignIn-container">
+          <div className="SignIn-header">
+            <div onClick={this.toggleConnexionType} className={this.state.signin ? `SignIn-title signin active` : `SignIn-title signin `}>Sign in</div>
+            <div onClick={this.toggleConnexionType} className={this.state.signup ? `SignIn-title signup active` : `SignIn-title signup `}>Sign up</div>
+          </div>
           <div className="SignIn-body">
             <form>
               <input 
@@ -36,11 +50,12 @@ class SignIn extends React.Component{
                 placeholder="Password"
                 onChange={this.handleChanges}
               />
+              <button onClick={this.props.toggleSignInModal} className="SignIn-btn">
+                Sign In
+              </button>
+              <br/>
+              <a onClick={this.props.toggleSignInModal} className="SignIn-link">I don't have an account</a>
             </form>
-          </div>
-          <div className="SignIn-footer">
-            <button className="SignIn-btn">Sign In</button>
-            <a href="javascript:void(0)" className="SignIn-link">I don't have an account</a>
           </div>
         </div>
       </div>
