@@ -15,7 +15,7 @@ function PlantList() {
     <div id="plantList">
       <section className="plantList--section">
         <h2>Popular plants</h2>
-        <div className="plantCard--container popular">
+        <div className="plantCard--container">
           <PlantCard />
           <PlantCard />
           <PlantCard />
@@ -24,7 +24,7 @@ function PlantList() {
       </section>
       <section className="plantList--section">
         <h2>Seasonal plants</h2>
-        <div className="plantCard--container seasonal">
+        <div className="plantCard--container">
           <PlantCard />
           <PlantCard />
           <PlantCard />

@@ -8,7 +8,7 @@
 
 .plantCard {
   position: relative;
-  margin: 0 10px 10px 0;
+  margin: 0 10px 10px 10px;
   max-width: 300px;
   border-radius: 10px;
 }
@@ -38,10 +38,6 @@
   .plantCard--container {
     flex-flow: row wrap;
   }
-  @keyframes slidein {
-    from { transform: scaleY(0); }
-    to   { transform: scaleY(1); }
-  }
   .plantCard {
     transition: .3s;
   }
@@ -54,8 +50,19 @@
   .plantCard figcaption {
     display: none;
   }
+
+  @keyframes slidein {
+    from { transform: scaleY(0); }
+    to   { transform: scaleY(1); }
+  }
   .plantCard:hover figcaption {
     display: block;
     animation: .8s slidein;
+  }
+}
+/* Extra large devices (large desktops, 1200px and up) */
+@media only screen and (min-width: 1272px) {
+  .plantCard--container :nth-child(2n) {
+    margin-left: 0;
   }
 }
