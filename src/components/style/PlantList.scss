@@ -4,15 +4,15 @@
 #plantList {
   display: flex;
   width: 100vw;
-  justify-content: space-between;
+  justify-content: center;
   background: #f2fffe;
 }
 .plantList--section {
-  width: 95%;
+  width: 100%;
   text-align: center; 
 }
 .plantList--section h2 {
   color: #00a060;
   margin: 20px 0;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
 }
