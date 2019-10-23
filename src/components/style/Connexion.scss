@@ -2,6 +2,7 @@
 .SignIn-container{
   background: whitesmoke;
   color: black;
+  padding-bottom: 30px;
 }
 
 .SignIn-header{
@@ -58,7 +59,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 50px 30px;
+  padding: 50px 30px 0 30px;
 }
 
 .SignIn-body  input{
@@ -75,7 +76,7 @@
   border: 1.5px solid #00a060;
 }
 
-.SignIn-body  input:focus{
+.SignIn-body  input:focus, .SignIn-body input:not(:placeholder-shown){
   border: 1.5px solid #00a060;
 }
 
@@ -98,11 +99,36 @@
 .SignIn-link{
   text-decoration: underline;
   color: #00a060;
+  font-size: .8rem;
   padding: 15px;
 }
 
 .SignIn-link:hover{
   text-decoration: none;
   opacity: .9;
+  cursor: pointer;
+}
+
+// SIGN UP FORM
+
+.Connexion-section-title{
+  color: #00a060;
+  font-weight: bold;
+  size: 1rem;
+  text-align: left;
+}
+
+.SignUp-second-form{
+  transition: display 1s;
+}
+
+.SignIn-btn--transparent{
+  border: solid 1px #00a060;
+  border-radius: 30px;
+  background: whitesmoke;
+  padding: 15px 35px;
+  font-weight: bold;
+  color: #00a060;
+  margin: 15px;
   cursor: pointer;
 }
