@@ -2,7 +2,7 @@ import React from 'react';
 
 import Modali, { useModali } from 'modali';
 
-import SignIn from './SignIn'
+import Connexion from './Connexion'
 import '../App.scss';
 
 function Connect() {
@@ -22,7 +22,7 @@ function Connect() {
                 <li><a href="">Sign up</a></li>
             </ul>
             <Modali.Modal {...signInModal}>
-                <SignIn />
+                <Connexion />
             </Modali.Modal>
         </div>
     );
