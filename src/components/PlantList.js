@@ -15,16 +15,16 @@ function PlantList() {
     <div id="plantList">
       <section className="plantList--section">
         <h2>Popular plants</h2>
-        <div>
+        <div className="plantCard--container popular">
           <PlantCard />
           <PlantCard />
           <PlantCard />
           <PlantCard />
         </div>
       </section>
-      <section className="plantList--section seasonal">
+      <section className="plantList--section">
         <h2>Seasonal plants</h2>
-        <div className="plantList-seasonal">
+        <div className="plantCard--container seasonal">
           <PlantCard />
           <PlantCard />
           <PlantCard />

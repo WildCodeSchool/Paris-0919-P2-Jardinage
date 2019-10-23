@@ -1,35 +1,60 @@
 // Style du composant plantCard
+
+.plantCard--container {
+  display: flex;
+  flex-flow: column nowrap;
+}
+.seasonal {
+  justify-content: flex-end;
+}
+.plantCard {
+  position: relative;
+  margin-bottom: 10px;
+}
+
 .plantCard img {
   height: 100%;
-  width: 90%;
+  width: 95%;
+  // max-width: 300px;
   object-fit: cover;
 }
-.plantList-popular img {
+.popular img {
   border-radius: 0 10px 10px 0;
   float: left;
 }
-.plantList-seasonal img {
+.seasonal img {
   border-radius: 10px 0 0 10px;
   float: right;
 }
 
-.plantList-seasonal, .plantList-popular {
-  display: flex;
-}
-.plantCard {
-  position: relative;
-}
-
-.plantCard p {
+.plantCard figcaption {
+  font-size: .8rem;
+  font-weight: 400;
   position: absolute;
   bottom: 0;
-  width: 90%;
-  background-color: rgba(79, 79, 255, 0.8);
+  width: 95%;
+  background-color: rgba(0, 160, 96, 0.6);
+  padding: 10px 0;
 }
-.plantList-popular p {
+.popular figcaption {
   border-radius: 0 0 10px 0;
 }
-.plantList-seasonal p {
+.seasonal figcaption {
   border-radius: 0 0 0 10px;
   right: 0;
 }
+
+/* Small devices (landscape phones, 576px and up) */
+@media only screen and (min-width: 992px) {
+  .plantCard--container {
+    flex-flow: row wrap;
+  }
+  .plantCard img {
+    max-width: 220px;
+  }
+}
+// @media only screen and (min-width: 1200px) {
+//   .plantCard img {
+//     max-width: 300px;
+//   }
+// }

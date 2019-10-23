@@ -5,14 +5,14 @@
   display: flex;
   width: 100vw;
   justify-content: space-between;
+  background: #f2fffe;
 }
 .plantList--section {
-  width: 50vw;
+  width: 95%;
   text-align: center; 
 }
 .plantList--section h2 {
-  color: black;
-}
-.plantList--section h2 {
+  color: #00a060;
   margin: 20px 0;
-} 
+  font-size: 1.2rem;
+}

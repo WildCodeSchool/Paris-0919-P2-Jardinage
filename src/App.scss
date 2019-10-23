@@ -6,15 +6,19 @@
 ///////////////////////////////////* imports *//////////////////////////////////
 
 // import des fonts via google font, OpenSans pour le texte + Ubuntu pour les titres
-@import url("https://fonts.googleapis.com/css?family=Open+Sans|Ubuntu&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700|Source+Sans+Pro:300,300i,400,400i,700,900&display=swap');
 
 //////////////////////////////////* Reset CSS *//////////////////////////////
-* {
+*, *::before, *::after {
   margin: 0;
   padding: 0;
   text-decoration: none;
   list-style: none;
-  color: #ffffff;
+  color: #f2fffe;
+  box-sizing: border-box;
+}
+:root {
+  font-size: calc(1vw + 0.7em);
 }
 
 // Modal overlay 
@@ -25,8 +29,10 @@
 
 ////////////////////////* Style global conteneurs *////////////////////////
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Source Sans Pro", sans-serif;
   min-width: 300px;
+  overflow-x: hidden;
+  line-height: 1.5rem;
 }
 
 .app {
@@ -39,7 +45,7 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: "Ubuntu", sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
 }
 
 ////////////////////*  module de connexion sign in/up *///////////////////
