@@ -10,6 +10,10 @@ import NavBar from './components/NavBar.js';
 import './App.scss';
 
 class App extends React.Component {
+  // componentDidMount() {
+  //   fetch('http://localhost:/3000/')
+  //     .then(response => console.log(response))
+  // }
   render() {
     return (
       <div className="app">
