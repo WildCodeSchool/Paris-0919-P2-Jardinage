@@ -1,9 +1,31 @@
+.SignIn-wrap{
+  display: flex;
+  flex-direction: row;
+}
+
+.green-block{
+  background-image: linear-gradient(0.50turn, #40c477, #00a060);
+  width: 300px;
+  border-radius: 15px 0 0 15px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 50px;
+  h2{
+    text-transform: uppercase;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 2.5rem;
+    line-height: 45px;
+  }
+}
+
 .SignIn-container{
   background: #ffffff;
   color: black;
   text-align: center;
   padding: 30px 30px 50px 30px;
-  border-radius: 15px;
+  border-radius: 0 15px 15px 0;
   max-width: 750px;
   max-height: 100vh;
 }
@@ -48,7 +70,7 @@
   background: #00a060;
   padding: 15px 35px;
   font-weight: bold;
-  color: whitesmoke;
+  color: white;
   margin: 15px;
 }
 
@@ -141,4 +163,14 @@
   justify-content: flex-end;
   color: #00a060;
   cursor: pointer;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 768px){
+  .green-block{
+    display: none;
+  }
+  .SignIn-container{
+    border-radius: 15px;
+  }
 }
