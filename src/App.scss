@@ -21,9 +21,9 @@
 //   font-size: calc(1vw + 0.7em);
 //}
 
-// Modal 
-.modali-overlay{
-  opacity: .8;
+
+.ReactModalPortal > .ReactModal__Overlay.ReactModal__Overlay--after-open{
+  background-color: #000000a9 !important;
 }
 
 
@@ -179,26 +179,14 @@ h4 {
   #footer #social {
     min-height: 100px;
   }
-  .modali-wrapper-centered.modali-wrapper{  // Modal behaviour on small devices
-    top: 0 !important;
-    padding: 0;
-  }  
 }
 
 /* Small devices (landscape phones, 576px and up) */
 @media only screen and (min-width: 576px) and (max-width: 767.98px) {
-  .modali-wrapper-centered.modali-wrapper{ // Modal behaviour on small devices
-    top: 0 !important;
-    padding: 0;
-  }  
 }
 
 /* Medium devices (tablets, 768px and up) */
 @media only screen and (min-width: 768px) and (max-width: 997.99px) {
-  .modali-wrapper-centered.modali-wrapper{ // Modal behaviour on small devices
-    top: 0 !important;
-    padding: 0;
-  }  
 }
 
 /* Large devices (desktops, 992px and up) */
