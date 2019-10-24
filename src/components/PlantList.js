@@ -8,30 +8,14 @@ import './style/PlantCard.scss'
 
 const API_KEY = "YjlIUlp5QktVcXRIZTEzVGNMSmlOZz09"
 const plants = [
-  {
-    id: 131368
-  },
-  {
-    id: 141569
-  },
-  {
-    id: 166663
-  },
-  {
-    id: 192303
-  },
-  {
-    id: 125336
-  },
-  {
-    id: 175878
-  },
-  {
-    id: 158107
-  },
-  {
-    id: 139838
-  }
+  { id: 131368 },
+  { id: 141569 },
+  { id: 166663 },
+  { id: 192303 },
+  { id: 125336 },
+  { id: 175878 },
+  { id: 139838 },
+  { id: 158107 }
 ]
 
 const seasonalPlants = []
@@ -45,38 +29,60 @@ class PlantList extends React.Component {
     image: undefined
   }
 
-  getPlant = () => {
+  getPlant = async () => {
     for (let i=0; i < plants.length; i++) {
-      fetch(`https://trefle.io/api/plants/${plants[i].id}?token=${API_KEY}`)
-      .then(dataRes => {
-        return dataRes.json()
-      })
-      .then(data =>{         
-        const imgLen = data.images ? data.images.length - 1 : 'none'
-        const species = data.main_species ?data.main_species.common_name:'undefined' 
-        // if(imgLen) {...}  <= si imgLen = 0  alors imgLen = false donc on rentre pas dans les instructions
-        if (imgLen != 'none'){          
-          this.setState({
-            id: data.id,
-            common_name: species,
-            scientific_name: data.scientific_name,
-            image: data.images[imgLen].url
-          }, _=> {
-            if (i <= 3) {
-              popPlants.push(this.state)
-            } else {
-              seasonalPlants.push(this.state)
-            }
-          })
-        }
-      })
+      const api_call = await fetch(`https://trefle.io/api/plants/${plants[i].id}?token=${API_KEY}`)
+      const data = await api_call.json()      
+      const imgLen = data.images ? data.images.length - 1 : 'none'
+      const species = data.main_species ?data.main_species.common_name:'undefined' 
+      // if(imgLen) {...}  <= si imgLen = 0  alors imgLen = false donc on rentre pas dans les instructions
+      if (imgLen !== 'none'){          
+        this.setState({
+          id: data.id,
+          common_name: species,
+          scientific_name: data.scientific_name,
+          image: data.images[imgLen].url
+        }, _=> {
+          if (i <= 3) {
+            popPlants.push(this.state)
+          } else {
+            seasonalPlants.push(this.state)
+          }
+        })
+      }
     }
   }
 
+  // getPlant = async () => {
+  //   for (let i=0; i < plants.length; i++) {
+  //     fetch(`https://trefle.io/api/plants/${plants[i].id}?token=${API_KEY}`)
+  //     .then(dataRes => {
+  //       return dataRes.json()
+  //     })
+  //     .then(data =>{         
+  //       const imgLen = data.images ? data.images.length - 1 : 'none'
+  //       const species = data.main_species ?data.main_species.common_name:'undefined' 
+  //       // if(imgLen) {...}  <= si imgLen = 0  alors imgLen = false donc on rentre pas dans les instructions
+  //       if (imgLen != 'none'){          
+  //         this.setState({
+  //           id: data.id,
+  //           common_name: species,
+  //           scientific_name: data.scientific_name,
+  //           image: data.images[imgLen].url
+  //         }, _=> {
+  //           if (i <= 3) {
+  //             popPlants.push(this.state)
+  //           } else {
+  //             seasonalPlants.push(this.state)
+  //           }
+  //         })
+  //       }
+  //     })
+  //   }
+  // }
+
   componentDidMount() {
     this.getPlant()
-    console.log();
-    
   }
   
   render() { 
