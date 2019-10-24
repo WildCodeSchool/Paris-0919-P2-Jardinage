@@ -5,7 +5,10 @@ import './style/PlantCard.scss'
 const PlantCard = props => (
   <figure className="plantCard">
     <img src={props.image} alt={props.common_name} />
-    <figcaption className="subtitle">{props.common_name}{props.scientific_name}</figcaption>
+    <figcaption className="subtitle">
+      <strong>{props.common_name}</strong>
+      <em>{props.scientific_name}</em>
+    </figcaption>
   </figure>
 )
     

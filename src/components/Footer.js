@@ -6,7 +6,7 @@ function Footer() {
     return (
         <div id="footer">
             <div id="infos">
-                {/* <ul>
+                <ul>
                     <li className="listTitle">CONTACT US</li>
                     <li><a href="#">Help</a></li>
                     <li><a href="#">Press</a></li>
@@ -42,7 +42,7 @@ function Footer() {
                     <li><a href="#">Cookies</a></li>
                     <li>-</li>
                     <li><a href="#">PlantMe © 2019</a></li>
-                </ul> */}
+                </ul>
             </div>
         </div>
     );

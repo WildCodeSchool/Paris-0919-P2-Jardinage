@@ -19,7 +19,7 @@ function Connect() {
             </ul>
             <ul className="sign">
                 <li><button className="Connect-signin" href="" onClick={toggleSignInModal}>Sign in</button></li>
-                {/* <li><a href="">Sign up</a></li> */}
+                <li><a href="">Sign up</a></li>
             </ul>
             <Modali.Modal {...signInModal}>
                 <Connexion />

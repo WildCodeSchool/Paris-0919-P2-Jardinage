@@ -30,11 +30,11 @@ class Connexion extends React.Component{
           <div className="SignIn-body">
             {this.state.signin ? <SignIn /> : <SignUp />}
           </div>
-          {/* {this.state.signin ? 
+          {this.state.signin ? 
           <a className="SignIn-link" onClick={this.toggleConnexionType}>I don't have an account</a>
           :
           <a className="SignIn-link" onClick={this.toggleConnexionType}>I already have an account</a>
-          } */}
+          }
         </div>
       </div>
     )
