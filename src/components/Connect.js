@@ -9,7 +9,7 @@ import '../App.scss';
 
 class Connect extends React.Component {
   state = {
-    modalIsOpen: true,
+    modalIsOpen: false,
   }
 
   openModal = () => {
@@ -45,7 +45,6 @@ class Connect extends React.Component {
         </ul>
         <ul className="sign">
           <li><button className="Connect-signin" href="" onClick={this.openModal}>Sign in</button></li>
-          <li><a href="">Sign up</a></li>
         </ul>
         <Modal
           isOpen={this.state.modalIsOpen}

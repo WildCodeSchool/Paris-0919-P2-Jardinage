@@ -50,6 +50,17 @@ h4 {
 }
 
 ////////////////////*  module de connexion sign in/up *///////////////////
+.Connect-signin{
+	font-size: 1rem;
+	color: white;
+	border: 1px solid white;
+	padding: 10px;
+	border-radius: 15px 0 15px 0;
+	transition: border-radius 1s;
+	&:hover{
+		border-radius: 0 15px 0 15px;
+	}
+}
 #connect {
   width: 100%;
   height: 60px;
@@ -64,10 +75,12 @@ h4 {
 #connect a:hover {
   text-decoration: underline;
 }
+#connect h1 {
+  padding-left: 20px;
+}
 
 .sign {
-  width: 160px;
-  display: flex;
+  padding-right: 20px;
 }
 
 .sign li {
@@ -103,7 +116,7 @@ h4 {
 
 #footer #infos ul {
   width: 220px;
-  padding: 60px 30px 60px 30px;
+  padding: 10px 10px 10px 10px;
 }
 
 #footer #infos li {
@@ -127,7 +140,7 @@ h4 {
 
 #footer #social ul {
   display: flex;
-  padding: 20px 30px 20px 30px;
+  padding: 10px 10px 10px 10px;
 }
 
 #footer #social ul li {
