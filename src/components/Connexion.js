@@ -3,6 +3,8 @@ import React from 'react'
 import SignIn from "./SignIn"
 import SignUp from './Signup'
 
+import { FaWindowClose } from 'react-icons/fa'
+
 import './style/Connexion.scss'
 
 class Connexion extends React.Component{
@@ -19,10 +21,13 @@ class Connexion extends React.Component{
     })
   }
 
+  onRequestClose = () => {this.props.passedMethod()}
+
   render() {
     return(
       <div className="SignIn-wrap">
         <div className="SignIn-container">
+          <div className="SignIn-close-btn" onClick={this.onRequestClose}>CLOSE</div>
           <div className="SignIn-header">
             <div onClick={this.toggleConnexionType} className={this.state.signin ? `SignIn-title signin active` : `SignIn-title signin `}>Sign in</div>
             <div onClick={this.toggleConnexionType} className={this.state.signup ? `SignIn-title signup active` : `SignIn-title signup `}>Sign up</div>
