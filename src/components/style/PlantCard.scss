@@ -76,3 +76,14 @@
     margin-left: 0;
   }
 }
+@media only screen and (min-width: 1910px) {
+  .plantCard--container :nth-child(3n) {
+    margin-left: 0;
+  }
+  .plantCard--container :nth-child(4) {
+    margin-left: 10px;
+  }
+  .plantCard--container :nth-child(5) {
+    margin-left: 0;
+  }
+}
