@@ -3,8 +3,6 @@ import React from 'react'
 import SignIn from "./SignIn"
 import SignUp from './Signup'
 
-import { FaWindowClose } from 'react-icons/fa'
-
 import './style/Connexion.scss'
 
 class Connexion extends React.Component{
@@ -26,6 +24,7 @@ class Connexion extends React.Component{
   render() {
     return(
       <div className="SignIn-wrap">
+        <div className="green-block"><h2>Welcome home !</h2></div>
         <div className="SignIn-container">
           <div className="SignIn-close-btn" onClick={this.onRequestClose}>CLOSE</div>
           <div className="SignIn-header">
