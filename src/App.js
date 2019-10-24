@@ -67,7 +67,7 @@ class App extends React.Component {
           error={this.state.error}
         />
 
-        {/* bare de recherche lié à une API plante */}
+        {/* barre de recherche lié à une API plante */}
         <SearchBar />
 
         {/* grille suggestion plantes */}
