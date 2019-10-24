@@ -3,8 +3,6 @@ import React from 'react'
 import SignIn from "./SignIn"
 import SignUp from './Signup'
 
-import { FaWindowClose } from 'react-icons/fa'
-
 import './style/Connexion.scss'
 
 class Connexion extends React.Component{
