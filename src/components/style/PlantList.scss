@@ -14,5 +14,10 @@
 .plantList--section h2 {
   color: #00a060;
   margin: 20px 0;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+}
+@media only screen and (min-width: 576px) {
+  .plantList--section h2 {
+    font-size: 1.5rem;
+  }
 }

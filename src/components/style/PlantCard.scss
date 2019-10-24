@@ -16,7 +16,10 @@
 .plantCard img {
   display: block;
   height: 100%;
+  min-height: 200px;
+  max-height: 200px;
   width: 100%;
+  min-width: 150px;
   object-fit: cover;
   border-radius: 10px;
 }
@@ -32,6 +35,10 @@
   padding: 10px 0;
   border-radius: 0 0 10px 10px;
 }
+.plantCard figcaption strong, .plantCard figcaption em {
+  display: block;
+  text-transform: capitalize;
+}
 
 /*  Medium devices (tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
@@ -41,6 +48,9 @@
   .plantCard {
     transition: .3s;
   }
+  .plantCard img {
+    min-width: 300px;
+  }  
   .plantCard:hover {
     cursor: pointer;
     -webkit-box-shadow: 5px 5px 6px 0px #7d7d7d;
