@@ -46,9 +46,10 @@ class App extends React.Component {
         error: "Please enter the value."
       });
     }
-  }
+  } 
 
   render() {
+    console.log(this.state.description)
     return (
       <div className="app">
 

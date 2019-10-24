@@ -1,16 +1,34 @@
-import React from 'react'
+import React from 'react';
+class Weather extends React.Component {
+  state = {
+    weatherImage: '',
+  };
 
-const Weather = props => (
-  <div id="weather">
-    {props.city && props.country && <p>Location: {props.city}, {props.country}</p>}
-    {props.temperature && <p>Temperature: {props.temperature}</p>}
-    {props.humidity && <p>Humidity: {props.humidity}</p>}
-    {props.description && <p>Conditions: {props.description}</p>}
-    {props.error  && <p>{props.error}</p>}
-  </div>
-)
+  setWeatherImage() {
+    if (this.props.description === 'overcast clouds') {
+      this.setState({
+        weatherImage:
+          'assets/img/weather/overcast-clouds.jpeg',
+      });
+    } else {
+      this.setState({
+        weatherImage:
+          'assets/img/weather/thunderstorm.jpeg',
+      });
+    }
+  }
 
-
-
-
+  render() {
+    return (
+      <section class="weather">
+        <p>
+          Location: {this.props.city}, {this.props.country}
+        </p>
+        <p>Temperature: {this.props.temperature}</p>
+        <p>Humidity: {this.props.humidity}</p>
+        <img src={this.state.weatherImage} alt={this.props.description}></img>
+      </section>
+    );
+  }
+}
 export default Weather;
