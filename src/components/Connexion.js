@@ -24,7 +24,7 @@ class Connexion extends React.Component{
   render() {
     return(
       <div className="SignIn-wrap">
-        <div className="green-block"><h2>Welcome home !</h2></div>
+        <div className="green-block"><h2>{this.state.signin ? "Welcome home !" : "Sign up !"}</h2></div>
         <div className="SignIn-container">
           <div className="SignIn-close-btn" onClick={this.onRequestClose}>CLOSE</div>
           <div className="SignIn-header">
