@@ -47,7 +47,7 @@ class PlantList extends React.Component {
           common_name: species,
           scientific_name: data.scientific_name,
           image: data.images[imgLen].url
-        }, _=> {
+        }, ()=> {
           if (i < plants.length / 2-1) {
             popPlants.push(this.state)
           } else {

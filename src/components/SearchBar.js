@@ -66,15 +66,20 @@ class SearchBar extends React.Component {
 
   render() {
     return (
-      <div id="searchBar">
-        <form onSubmit={this.getPlant}>
-          <label><h2>What do you want to plant today ?</h2></label>
-          <input 
-            type="text" 
-            // value={this.state.value} 
-            // onChange={this.handleChange} 
-            placeholder="Search" 
-          />
+      <div>
+        <div id="searchBar">
+          <form onSubmit={this.getPlant}>
+            <label><h2>What do you want to plant today ?</h2></label>
+            <input 
+              type="text" 
+              // value={this.state.value} 
+              // onChange={this.handleChange} 
+              placeholder="Search" 
+            />
+            <img className="search--icon" src={iconSearch} alt="icon add" />
+          </form>
+        </div>
+        <div className="search--result">
           <PlantCard
             id={this.state.id}
             common_name={this.state.common_name}
@@ -82,8 +87,7 @@ class SearchBar extends React.Component {
             image={this.state.image}
             error={this.state.error}
           />
-          <img className="search--icon" src={iconSearch} alt="icon add" />
-        </form>
+        </div>
       </div>
     );
   }
