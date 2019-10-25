@@ -2,15 +2,16 @@
 //////////////////////////* Style de la home page *//////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////
 
-
 ///////////////////////////////////* imports *//////////////////////////////////
 
 // import des fonts via google font, OpenSans pour le texte + Ubuntu pour les titres
-@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700|Source+Sans+Pro:300,300i,400,400i,700,900&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700|Source+Sans+Pro:300,300i,400,400i,700,900&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Pacifico&display=swap");
 
 //////////////////////////////////* Reset CSS *//////////////////////////////
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   text-decoration: none;
@@ -22,12 +23,9 @@
 //   font-size: calc(1vw + 0.7em);
 //}
 
-
-.ReactModalPortal > .ReactModal__Overlay.ReactModal__Overlay--after-open{
+.ReactModalPortal > .ReactModal__Overlay.ReactModal__Overlay--after-open {
   background-color: #000000a9 !important;
 }
-
-
 
 ////////////////////////* Style global conteneurs *////////////////////////
 body {
@@ -47,26 +45,26 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: "Josefin Sans", sans-serif;
 }
 
 ////////////////////*  module de connexion sign in/up *///////////////////
-.Connect-signin{
-	font-size: 1rem;
-	color: white;
-	border: 1px solid white;
-	padding: 10px;
-	border-radius: 15px 0 15px 0;
-	transition: border-radius 1s;
-	&:hover{
-		border-radius: 0 15px 0 15px;
-	}
+.Connect-signin {
+  font-size: 1rem;
+  color: white;
+  border: 1px solid white;
+  padding: 10px;
+  border-radius: 15px 0 15px 0;
+  transition: border-radius 1s;
+  &:hover {
+    border-radius: 0 15px 0 15px;
+  }
 }
 #connect {
   width: 100%;
   height: 60px;
   display: flex;
-  background-color: #2c3e50;
+  background-color: #1d1a26;
   display: flex;
   justify-content: space-between;
   text-align: center;
@@ -78,7 +76,7 @@ h4 {
 }
 #connect h1 {
   padding-left: 20px;
-  font-family: 'Pacifico', cursive;
+  font-family: "Pacifico", cursive;
 }
 
 .sign {
@@ -102,9 +100,9 @@ h4 {
   font-size: 1.1em;
   display: flex;
   flex-wrap: wrap;
-  background-color: #336e7b;
+  background-color: #19aa53;
 }
-
+////#1D1A26 / #19AA53
 ///////////////////////* footer infos
 #footer #infos {
   width: 100%;
@@ -129,14 +127,13 @@ h4 {
   text-decoration: underline;
 }
 
-
 //////////////////////* footer social
 #footer #social {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  background-color: #2c3e50;
+  background-color: #1d1a26;
   width: 100%;
 }
 
@@ -182,7 +179,6 @@ h4 {
   text-align: center;
   align-items: center;
 } */
-
 
 /////////////////////////////////////////////////////////////////////////////
 ////////////////////////////* Media Queries *////////////////////////////////

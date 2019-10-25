@@ -63,10 +63,7 @@ input:focus {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: -webkit-linear-gradient(top left, #50a3a2 0%, #53e3a6 100%);
-  background: -moz-linear-gradient(top left, #50a3a2 0%, #53e3a6 100%);
-  background: -o-linear-gradient(top left, #50a3a2 0%, #53e3a6 100%);
-  background: linear-gradient(to bottom right, #50a3a2 0%, #53e3a6 100%);
+  background-color: #19aa53;
 }
 
 #searchBar form {
@@ -103,12 +100,12 @@ input:focus {
   }
 }
 
-.Connect-signin{
+.Connect-signin {
   font-size: 1rem;
   color: white;
 }
 
-.Connect-signin:hover{
+.Connect-signin:hover {
   text-decoration: underline;
   cursor: pointer;
 }
