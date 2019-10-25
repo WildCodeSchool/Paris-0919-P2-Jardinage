@@ -1,3 +1,6 @@
+/////////////////////////////////////////////////////////
+/////////////////////* searchBar CSS *///////////////////
+/////////////////////////////////////////////////////////
 
 input,
 label,
@@ -80,14 +83,14 @@ input:focus {
 #searchBar input {
   outline: 0;
   height: 35px;
-  width: 125px;
+  width: 280px;
   margin: 20px 30px 20px 20px;
   padding: 0px 10px 0px 10px;
   border: 1px solid rgba(white, 0.5);
   background-color: rgba(white, 0.2);
   border-radius: 4px;
   font-size: 18px;
-  transition-duration: 0.75s;
+  transition-duration: 0.25s;
   font-weight: 300;
 
   &:hover {
@@ -150,18 +153,11 @@ input:focus {
   #searchBar form {
     justify-content: space-around;
   }
-  #searchBar {
-    flex-direction: column;
-  }
-  #buttonWeather {
-    margin-bottom: 20px;
-  }
   #searchBar label {
     margin-bottom: 0px;
   }
   #searchBar input {
     width: 200px;
-    justify-content: space-around;
     &:focus {
       width: 250px;
     }
