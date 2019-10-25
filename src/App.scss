@@ -49,6 +49,12 @@ h4 {
 }
 
 ////////////////////*  module de connexion sign in/up *///////////////////
+.header--title {
+  display: flex;
+}
+.header--title img {
+  width: 30px;
+}
 .Connect-signin {
   font-size: 1rem;
   color: #19aa53;
