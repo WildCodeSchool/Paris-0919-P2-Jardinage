@@ -24,12 +24,15 @@ class Weather extends React.Component {
 
     state = {
         modalIsOpen: false,
-        location: undefined
+        location: undefined,
+        city: undefined,
+        country: undefined
     }
 
     componentDidMount() {
         this.openModal()
     }
+
     ///////////////// open and close modal ////////////////
     openModal = () => {
         this.setState({ modalIsOpen: true })
@@ -38,7 +41,7 @@ class Weather extends React.Component {
     closeModal = () => {
         this.setState({ modalIsOpen: false })
     }
-    ///////////////// geolocation ////////////////
+    ///////////////// geolocation /////////////////////////
     agreeGeolocation = () => {
         this.closeModal()
         this.geolocationCall()
@@ -56,6 +59,13 @@ class Weather extends React.Component {
                 this.setState({ location: DATA })
             })
             .then(() => { console.log(this.state.location) })
+            .then(() => {
+                this.setState({
+                    city: this.state.location.city.name,
+                    country: this.state.location.country.name
+                })
+            }
+            )
     }
     ////////////////////////////////////////////////////////
 
