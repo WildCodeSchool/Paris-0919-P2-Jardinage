@@ -1,4 +1,5 @@
 import React from 'react'
+import background from "../ciel-soleil.jpg"
 
 const thekey = "68e21d29703f8eaf843514c213c70106"
 
@@ -11,7 +12,8 @@ class FormWeather extends React.Component {
     tapedCountry: undefined,
     weather: undefined,
     temp: undefined,
-    main: undefined
+    main: undefined,
+    background: background
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -67,13 +69,10 @@ class FormWeather extends React.Component {
 
   render() {
     return (
-      <div style={{ color: "black" }}>
+      <div className="wrapper_weather" style={{ backgroundImage: `url(${this.state.background})` }}>
 
         {this.state.actualCity ? <p style={{ color: "black" }}>{this.state.actualCity}</p> : <p style={{ color: "black" }}>{this.state.tapedCity}</p>}
         {this.state.actualCountry ? <p style={{ color: "black" }}>{this.state.actualCountry}</p> : <p style={{ color: "black" }}>{this.state.tapedCountry}</p>}
-
-        {/* <p style={{ color: "black" }}>{this.state.tapedCity ? this.state.tapedCity : this.props.city}</p>
-        <p style={{ color: "black" }}>{this.state.tapedCountry ? this.state.tapedCountry : this.props.country}</p> */}
         {this.state.temp && <p style={{ color: "black" }}>{this.state.temp}</p>}
         {this.state.main && <p style={{ color: "black" }}>{this.state.main}</p>}
 
@@ -102,7 +101,7 @@ class FormWeather extends React.Component {
         </form>
         {/* ///////////////////////////////////////// Conditionnal form end //////////////////////////////////////////////////////// */}
 
-      </div>
+      </div >
     )
   }
 }
