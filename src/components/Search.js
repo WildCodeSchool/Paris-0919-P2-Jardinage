@@ -15,7 +15,8 @@ class Search extends React.Component {
     common_name: undefined,
     scientific_name: undefined,
     image: undefined,
-    error: undefined 
+    error: undefined,
+    visible_caption: false
   }
 
   getPlant = async e => {
@@ -34,7 +35,8 @@ class Search extends React.Component {
           common_name: data_specific.main_species.common_name,
           scientific_name: data_specific.scientific_name,
           image: data_specific.images[0] !== undefined ? data_specific.images[0].url : default_img,
-          error: undefined 
+          error: undefined,
+          visible_caption: true
         })
       } else {
         this.setState({
@@ -42,6 +44,7 @@ class Search extends React.Component {
           common_name: undefined,
           scientific_name: undefined,
           image: undefined,
+          visible_caption: undefined,
           error: "Please enter a value"
         })
       }
@@ -51,12 +54,14 @@ class Search extends React.Component {
         common_name: undefined,
         scientific_name: undefined,
         image: undefined,
+        visible_caption: undefined,
         error: "Nothing was found"
       })
     }
   }
 
   render() {
+    const { id, common_name, scientific_name, image, error } = this.state
     return (
       <div className="search">
         <SearchForm getPlant={this.getPlant} />
@@ -67,6 +72,7 @@ class Search extends React.Component {
             scientific_name={this.state.scientific_name}
             image={this.state.image}
             error={this.state.error}
+            visible_caption={this.state.visible_caption}
           />
         </div>
       </div>

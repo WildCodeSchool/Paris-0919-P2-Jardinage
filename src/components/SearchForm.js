@@ -10,14 +10,16 @@ const SearchForm = props => {
     <div className="searchBar">
       <form onSubmit={props.getPlant}>
         <label><h2>What do you want to plant today ?</h2></label>
-        <button><img className="search--icon" src={iconSearch} alt="icon add" /></button>
-        <input 
-          type="text"
-          name="common_name"
-          // value={this.state.value} 
-          // onChange={this.handleChange} 
-          placeholder="Search" 
-        />
+        <div>
+          <button><img className="search--icon" src={iconSearch} alt="icon add" /></button>
+          <input 
+            type="text"
+            name="common_name"
+            // value={this.state.value} 
+            // onChange={this.handleChange} 
+            placeholder="Search" 
+          />
+        </div>
       </form>
     </div>
   )
