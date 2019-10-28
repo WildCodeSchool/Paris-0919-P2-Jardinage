@@ -5,7 +5,7 @@ import Connect from './components/Connect';
 import Footer from './components/Footer.js';
 import NavBar from './components/NavBar.js';
 import PlantList from './components/PlantList';
-import SearchBar from './components/SearchBar';
+import Search from './components/Search';
 import Weather from './components/Weather';
 
 import './App.scss';
@@ -22,7 +22,7 @@ class App extends React.Component {
         <Weather />
 
         {/* bare de recherche lié à une API plante */}
-        <SearchBar />
+        <Search />
 
         {/* grille suggestion plantes */}
         <PlantList />

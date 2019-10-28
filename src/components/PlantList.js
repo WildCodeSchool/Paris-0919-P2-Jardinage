@@ -10,9 +10,9 @@ const API_KEY = "YjlIUlp5QktVcXRIZTEzVGNMSmlOZz09"
 const plants = [
   { id: 141569 },
   { id: 131368 },
-  { id: 145216 },
-  { id: 192303 },
+  { id: 111119 },
   { id: 105072 },
+  { id: 145216 },
   { id: 166663 },
   { id: 125336 },
   { id: 175878 },
@@ -20,7 +20,7 @@ const plants = [
   { id: 158107 },
   { id: 174523 },
   { id: 175722 },
-  { id: 158107 }
+  { id: 192303 }
 ]
 
 const seasonalPlants = []
@@ -47,8 +47,8 @@ class PlantList extends React.Component {
           common_name: species,
           scientific_name: data.scientific_name,
           image: data.images[imgLen].url
-        }, _=> {
-          if (i < 6) {
+        }, ()=> {
+          if (i < plants.length / 2-1) {
             popPlants.push(this.state)
           } else {
             seasonalPlants.push(this.state)
