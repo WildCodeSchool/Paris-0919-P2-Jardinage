@@ -2,7 +2,7 @@ import React from 'react';
 
 // import des différents composants
 import Connect from './components/Connect';
-import Weather from './components/Weather';
+import Geoloc from './components/weatherComp/Geoloc';
 import SearchBar from './components/SearchBar';
 import PlantList from './components/PlantList';
 import Footer from './components/Footer.js';
@@ -22,7 +22,7 @@ class App extends React.Component {
         <Connect />
 
         {/* affichage météo relié à une API */}
-        <Weather />
+        <Geoloc />
 
         {/* bare de recherche lié à une API plante */}
         <SearchBar />
