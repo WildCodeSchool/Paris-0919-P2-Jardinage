@@ -48,7 +48,7 @@ class PlantList extends React.Component {
           scientific_name: data.scientific_name,
           image: data.images[imgLen].url
         }, ()=> {
-          if (i < plants.length / 2-1) {
+          if (i < (plants.length / 2) - 1) {
             popPlants.push(this.state)
           } else {
             seasonalPlants.push(this.state)
