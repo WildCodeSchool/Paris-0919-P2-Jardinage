@@ -18,23 +18,22 @@ class App extends React.Component {
       <div className="app">
 
         {/* module de connexion sign in/up */}
-        <Connect />
+        {/* <Connect /> */}
 
         {/* affichage météo relié à une API */}
-        
         <Weather />
 
         {/* barre de recherche lié à une API plante */}
-        <SearchBar />
+        {/* <SearchBar /> */}
 
         {/* grille suggestion plantes */}
-        <PlantList />
+        {/* <PlantList /> */}
 
         {/* infos / réseaux sociaux */}
-        <Footer />
+        {/* <Footer /> */}
 
         {/* menu de l'appli une fois connecté garden/board/alerts */}
-        <NavBar />
+        {/* <NavBar /> */}
       </div>
     );
   }

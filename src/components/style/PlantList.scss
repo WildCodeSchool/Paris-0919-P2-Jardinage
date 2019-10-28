@@ -1,18 +1,24 @@
 //////////////////* grille suggestion plantes *//////////////
 
-// Style des deux 
+// Style des deux
 #plantList {
   display: flex;
   width: 100vw;
   justify-content: center;
   background: #f2fffe;
+  padding-bottom: 20px;
 }
 .plantList--section {
   width: 100%;
-  text-align: center; 
+  text-align: center;
 }
 .plantList--section h2 {
-  color: #00a060;
+  color: #1d1a26;
   margin: 20px 0;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+}
+@media only screen and (min-width: 576px) {
+  .plantList--section h2 {
+    font-size: 1.5rem;
+  }
 }

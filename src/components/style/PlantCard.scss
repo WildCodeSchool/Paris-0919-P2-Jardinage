@@ -16,21 +16,29 @@
 .plantCard img {
   display: block;
   height: 100%;
+  min-height: 200px;
+  max-height: 200px;
   width: 100%;
+  min-width: 150px;
   object-fit: cover;
   border-radius: 10px;
 }
 
 .plantCard figcaption {
-  font-size: .8rem;
+  font-size: 0.8rem;
   font-weight: 400;
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: rgba(0, 160, 96, 0.6);
+  background-color: rgba(25, 170, 83, 0.6);
   padding: 10px 0;
   border-radius: 0 0 10px 10px;
+}
+.plantCard figcaption strong,
+.plantCard figcaption em {
+  display: block;
+  text-transform: capitalize;
 }
 
 /*  Medium devices (tablets, 768px and up) */
@@ -39,7 +47,10 @@
     flex-flow: row wrap;
   }
   .plantCard {
-    transition: .3s;
+    transition: 0.3s;
+  }
+  .plantCard img {
+    min-width: 300px;
   }
   .plantCard:hover {
     cursor: pointer;
@@ -52,17 +63,32 @@
   }
 
   @keyframes slidein {
-    from { transform: scaleY(0); }
-    to   { transform: scaleY(1); }
+    from {
+      transform: scaleY(0);
+    }
+    to {
+      transform: scaleY(1);
+    }
   }
   .plantCard:hover figcaption {
     display: block;
-    animation: .8s slidein;
+    animation: 0.8s slidein;
   }
 }
 /* Extra large devices (large desktops, 1200px and up) */
 @media only screen and (min-width: 1272px) {
   .plantCard--container :nth-child(2n) {
+    margin-left: 0;
+  }
+}
+@media only screen and (min-width: 1910px) {
+  .plantCard--container :nth-child(3n) {
+    margin-left: 0;
+  }
+  .plantCard--container :nth-child(4) {
+    margin-left: 10px;
+  }
+  .plantCard--container :nth-child(5) {
     margin-left: 0;
   }
 }

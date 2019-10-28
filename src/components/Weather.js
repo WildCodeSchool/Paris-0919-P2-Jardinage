@@ -1,68 +1,84 @@
-import React from 'react';
-import FormWeather from './FormWeather';
-import '../App.scss';
-import { whileStatement } from '@babel/types';
+import React from 'react'
+import axios from "axios"
 
+import FormWeather from './FormWeather'
 
+import './style/Weather.scss'
+import { whileStatement } from '@babel/types'
+
+const API_KEY = "5fb2333ba75358bc5030738944a75305"
 class Weather extends React.Component {
-
   state = {
     weatherImage: '',
-    weather : {}
+    weather : {},
+    weatherCss : "",
+    isLoad: false
   };
- //appel api
-  getWeather = (weather) => {
-    
-      this.setState({
-        weather : weather
-      });
-      const {description} = this.state.weather
-      if (description === 'broken clouds') {
-        return "weatherBrokenClouds"
-        // this.setState({
-        //   weatherImage:
-        //     '../assets/img/weather/overcast-clouds.jpeg',
-        // });
-      } else if (description === 'overcast clouds') {
-        return "weatherOvercastClouds"
-      } else if (description === 'rain') {
-        return "weatherRain"
-      } else if (description === 'snowy') {
-        return "weatherSnowy"
-      } else if (description === 'foggy') {
-        return "weatherFoggy"
-      }
 
+  modifState = (paramCss) => {
+    console.log(paramCss)
+    this.setState({isLoad: true, weatherCss: paramCss})
+  }
+   getWeatherCss =  () => {
+      const {description} = this.state.weather.weather[0]
+        if (description === 'broken clouds') {
+          this.modifState("weatherBrokenClouds" )
+        } else if (description === 'overcast clouds') {
+          this.modifState("weatherOvercastClouds" )
+        } else if (description === 'rain') {
+          this.modifState("weatherRain")
+        } else if (description === 'snowy') {
+          this.modifState("weatherSnowy")
+        } else if (description === 'foggy') {
+          this.modifState("weatherFoggy")
+        } else {
+          return "nike ta mere"
+        }
+  }
+ //appel api
+  getWeatherData = async (city, country) => { 
+    const getData = await axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&APPID=${API_KEY}`)
+    await this.setState({weather: getData.data})
+    console.log("dsqdsd",this.state.weather)
+    this.getWeatherCss()
+    if (city && country) {
+       this.setState ({
+           temperature: getData.data.main.temp,
+           city: getData.data.name,
+           country: getData.data.sys.country,
+           humidity: getData.data.main.humidity,
+           description: getData.data.weather[0].description,
+           error: ''
+         });
+         // this.props.getWeather(weather);
+       } else {
+         this.setState ({
+           temperature: undefined,
+           city: undefined,
+           country: undefined,
+           humidity: undefined,
+           description: undefined,
+         error: "Please enter the value."
+         });
+         // this.state.getWeatherData(weather);
+       }
+    
 
   }
-  
-  
-  // componentDidMount() {
-  //   if (this.state.description === 'broken clouds') {
-  //     this.setState({
-  //       weatherImage:
-  //         'assets/img/weather/overcast-clouds.jpeg',
-  //     });
-  //   } else {
-  //     this.setState({
-  //       weatherImage:
-  //         'assets/img/weather/thunderstorm.jpeg',
-  //     });
-  //   }
-  // }
-
-  render() {
-    console.log(this.state.weatherImage);
-    const weather = this.getWeather()
+  componentDidMount() {
+    // this.getWeather()
+  }
+  render(){
+    const { isLoad } = this.state
     return (
-      <section id={weather}>
-        <FormWeather getWeather={this.getWeather}/>
+      <section id={isLoad ? this.state.weatherCss : "weatherBrokenClouds"}>
+        <FormWeather getWeatherData={this.getWeatherData}/>
         <p>
           Location: {this.state.weather.city}, {this.state.weather.country}
         </p>
         <p>Temperature: {this.state.weather.temperature}</p>
         <p>Humidity: {this.state.weather.humidity}</p>
-        <p>description : {this.state.weather.description}</p>
+        <p>description : {this.state.weather.description}</p> 
         {/* <img src="https://images.unsplash.com/photo-1488279790500-92397988c0c1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"></img> */}
       </section>
     );
@@ -71,3 +87,34 @@ class Weather extends React.Component {
 export default Weather;
 
 //style={{backgroundImage:"url('https://images.unsplash.com/photo-1488279790500-92397988c0c1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60')"}}
+
+
+  // createWeather = async (e)=> {
+  //   e.preventDefault();
+    // const city = e.target.elements.city.value;
+    // const country = e.target.elements.country.value;
+    // const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&APPID=${API_KEY}`);
+    // const data = await api_call.json();
+    // console.log("  weatherCat : ""a fetch :",data)
+    // if (city && country) {
+    //   const weather = {
+    //     temperature: data.main.temp,
+    //     city: data.name,
+    //     country: data.sys.country,
+    //     humidity: data.main.humidity,
+    //     description: data.weather[0].description,
+    //     error: ''
+    //   };
+    //   this.props.getWeather(weather);
+    // } else {
+    //   const weather = {
+    //     temperature: undefined,
+    //     city: undefined,
+    //     country: undefined,
+    //     humidity: undefined,
+    //     description: undefined,
+    //     error: "Please enter the value."
+    //   };
+    //   this.props.getWeather(weather);
+    // }
+  

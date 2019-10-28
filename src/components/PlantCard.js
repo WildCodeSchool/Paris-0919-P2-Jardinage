@@ -1,12 +1,14 @@
 import React from 'react'
 
-import plant1 from '../plant1.jpg'
 import './style/PlantCard.scss'
 
-const PlantCard = () => (
+const PlantCard = props => (
   <figure className="plantCard">
-    <img src={plant1} alt="" />
-    <figcaption className="subtitle">Blabla blibli blou blou</figcaption>
+    <img src={props.image} alt={props.common_name} />
+    <figcaption className="subtitle">
+      <strong>{props.common_name}</strong>
+      <em>{props.scientific_name}</em>
+    </figcaption>
   </figure>
 )
     

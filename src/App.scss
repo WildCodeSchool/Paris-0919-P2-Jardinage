@@ -2,14 +2,16 @@
 //////////////////////////* Style de la home page *//////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////
 
-
 ///////////////////////////////////* imports *//////////////////////////////////
 
 // import des fonts via google font, OpenSans pour le texte + Ubuntu pour les titres
-@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700|Source+Sans+Pro:300,300i,400,400i,700,900&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,700|Source+Sans+Pro:300,300i,400,400i,700,900&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Pacifico&display=swap");
 
 //////////////////////////////////* Reset CSS *//////////////////////////////
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   text-decoration: none;
@@ -21,12 +23,9 @@
 //   font-size: calc(1vw + 0.7em);
 //}
 
-// Modal 
-.modali-overlay{
-  opacity: .8;
+.ReactModalPortal > .ReactModal__Overlay.ReactModal__Overlay--after-open {
+  background-color: #000000a9 !important;
 }
-
-
 
 ////////////////////////* Style global conteneurs *////////////////////////
 body {
@@ -46,28 +45,50 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: "Josefin Sans", sans-serif;
 }
 
 ////////////////////*  module de connexion sign in/up *///////////////////
+.Connect-signin {
+  font-size: 1rem;
+  color: #19aa53;
+  border: 2px solid #19aa53;
+  padding: 10px;
+  border-radius: 15px 0 15px 0;
+  transition: border-radius 1s;
+  font-weight: bold;
+  &:hover {
+    border-radius: 0 15px 0 15px;
+    cursor: pointer;
+  }
+}
 #connect {
   width: 100%;
-  height: 60px;
+  height: 80px;
   display: flex;
-  background-color: #2c3e50;
+  background-color: white;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   text-align: center;
   align-items: center;
+  box-sizing: border-box;
+  box-shadow: 0 3px 35px 0 #00000022;
+  padding: 15px 80px;
+  position: absolute;
 }
 
 #connect a:hover {
   text-decoration: underline;
 }
+#connect h1 {
+  padding-left: 20px;
+  font-family: "Pacifico", cursive;
+  color: #19aa53
+}
 
 .sign {
-  width: 160px;
-  display: flex;
+  margin-left: auto;
+  color: #19aa53;
 }
 
 .sign li {
@@ -75,40 +96,10 @@ h4 {
 }
 
 ///////////////////* Composant météo *////////////////////
-
-
-
-//////////////////* grille suggestion plantes *//////////////
-#plantList {
-  padding: 2% 0px 3% 0px;
-  background-color: #ffffff;
-}
-
-#plantList section {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-#suggestTitle {
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#suggestTitle h2 {
-  color: #000000;
-}
-
-article {
-  margin: 10px;
-}
-
-article img {
-  height: 300px;
-  width: 300px;
-  object-fit: cover;
+#weather {
+  width: 100%;
+  height: 350px;
+  // background: #f2fffe;
 }
 
 /////////////////////////* footer infos/réseaux sociaux *////////////////////
@@ -117,9 +108,9 @@ article img {
   font-size: 1.1em;
   display: flex;
   flex-wrap: wrap;
-  background-color: #336e7b;
+  background-color: #19aa53;
 }
-
+////#1D1A26 / #19AA53
 ///////////////////////* footer infos
 #footer #infos {
   width: 100%;
@@ -133,7 +124,7 @@ article img {
 
 #footer #infos ul {
   width: 220px;
-  padding: 60px 30px 60px 30px;
+  padding: 10px 10px 10px 10px;
 }
 
 #footer #infos li {
@@ -144,20 +135,19 @@ article img {
   text-decoration: underline;
 }
 
-
 //////////////////////* footer social
 #footer #social {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  background-color: #2c3e50;
+  background-color: #1d1a26;
   width: 100%;
 }
 
 #footer #social ul {
   display: flex;
-  padding: 20px 30px 20px 30px;
+  padding: 10px 10px 10px 10px;
 }
 
 #footer #social ul li {
@@ -198,7 +188,6 @@ article img {
   align-items: center;
 } */
 
-
 /////////////////////////////////////////////////////////////////////////////
 ////////////////////////////* Media Queries *////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////
@@ -208,26 +197,14 @@ article img {
   #footer #social {
     min-height: 100px;
   }
-  .modali-wrapper-centered.modali-wrapper{  // Modal behaviour on small devices
-    top: 0 !important;
-    padding: 0;
-  }  
 }
 
 /* Small devices (landscape phones, 576px and up) */
 @media only screen and (min-width: 576px) and (max-width: 767.98px) {
-  .modali-wrapper-centered.modali-wrapper{ // Modal behaviour on small devices
-    top: 0 !important;
-    padding: 0;
-  }  
 }
 
 /* Medium devices (tablets, 768px and up) */
 @media only screen and (min-width: 768px) and (max-width: 997.99px) {
-  .modali-wrapper-centered.modali-wrapper{ // Modal behaviour on small devices
-    top: 0 !important;
-    padding: 0;
-  }  
 }
 
 /* Large devices (desktops, 992px and up) */
