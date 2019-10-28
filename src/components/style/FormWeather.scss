@@ -65,6 +65,7 @@ input:focus {
 #searchBar form {
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 #searchBar label {
@@ -119,20 +120,23 @@ input:focus {
 
 /* Extra small devices (portrait phones, less than 649.98px) */
 
-@media only screen and (max-width: 700px) {
-  #searchBar form {
+@media only screen and (max-width: 768px) {
+  .searchBar form {
     justify-content: space-around;
   }
-  #searchBar label {
-    margin-bottom: 0px;
-  }
-  #searchBar input {
+  .searchBar input {
     width: 200px;
     &:focus {
       width: 250px;
     }
   }
 }
+@media only screen and (max-width: 645px) {
+  .searchBar label {
+    margin-bottom: 0px;
+  }
+}
+
 
 
 

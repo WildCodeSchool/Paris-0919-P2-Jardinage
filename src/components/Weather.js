@@ -31,8 +31,8 @@ class Weather extends React.Component {
           this.modifState("weatherSnowy")
         } else if (description === 'foggy') {
           this.modifState("weatherFoggy")
-        } else {
-          return "nike ta mere"
+        } else if (description === 'clear sky') {
+          this.modifState("weatherClearSky")
         }
   }
  //appel api
