@@ -8,6 +8,7 @@ import Weather from './components/Weather';
 import SearchBar from './components/SearchBar';
 import PlantList from './components/PlantList';
 import './App.scss';
+import FormWeather from './components/FormWeather';
 
  
 class App extends React.Component {
@@ -17,24 +18,23 @@ class App extends React.Component {
     return (
       <div className="app">
 
-        {/* module de connexion sign in/up */}
-        {/* <Connect /> */}
-
+       
+        <Connect /> 
         {/* affichage météo relié à une API */}
+        <FormWeather />
         <Weather />
 
         {/* barre de recherche lié à une API plante */}
-        {/* <SearchBar /> */}
-
+        <SearchBar /> 
         {/* grille suggestion plantes */}
-        {/* <PlantList /> */}
+        <PlantList /> 
 
         {/* infos / réseaux sociaux */}
-        {/* <Footer /> */}
+        <Footer />
 
         {/* menu de l'appli une fois connecté garden/board/alerts */}
-        {/* <NavBar /> */}
-      </div>
+        <NavBar /> 
+        </div>
     );
   }
 }

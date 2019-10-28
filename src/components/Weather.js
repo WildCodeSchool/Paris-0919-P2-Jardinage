@@ -57,7 +57,7 @@ class Weather extends React.Component {
            city: undefined,
            country: undefined,
            humidity: undefined,
-           description: undefined,
+           Description: undefined,
          error: "Please enter the value."
          });
          // this.state.getWeatherData(weather);
@@ -71,14 +71,14 @@ class Weather extends React.Component {
   render(){
     const { isLoad } = this.state
     return (
-      <section id={isLoad ? this.state.weatherCss : "weatherBrokenClouds"}>
+      <section className='weather' id={isLoad ? this.state.weatherCss : "weatherBrokenClouds"}>
         <FormWeather getWeatherData={this.getWeatherData}/>
         <p>
-          Location: {this.state.weather.city}, {this.state.weather.country}
+          Location: {this.state.city}, {this.state.country}
         </p>
-        <p>Temperature: {this.state.weather.temperature}</p>
-        <p>Humidity: {this.state.weather.humidity}</p>
-        <p>description : {this.state.weather.description}</p> 
+        <p>Temperature: {this.state.temperature}</p>
+        <p>Humidity: {this.state.humidity}</p>
+        <p>description : {this.state.description}</p> 
         {/* <img src="https://images.unsplash.com/photo-1488279790500-92397988c0c1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"></img> */}
       </section>
     );
