@@ -1,7 +1,7 @@
 import React from 'react';
 import Titles from "./weatherComp/Titles"
 import Form from "./weatherComp/Form"
-import Demo from "./weatherComp/Demo"
+import Geoloc from "./weatherComp/Geoloc"
 import WeatherDetails from "./weatherComp/WeatherDetails"
 import '../App.scss';
 
@@ -60,8 +60,7 @@ class Weather extends React.Component {
           description={this.state.description}
           error={this.state.error}
         />
-        <Demo/>
-
+        <Geoloc/>
       </div>
     )
   }
