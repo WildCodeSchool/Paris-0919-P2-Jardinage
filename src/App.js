@@ -4,9 +4,8 @@ import React from 'react';
 import Connect from './components/Connect';
 import Footer from './components/Footer.js';
 import NavBar from './components/NavBar.js';
-import Notifications from './components/Notifications';
 import PlantList from './components/PlantList';
-import SearchBar from './components/SearchBar';
+import Search from './components/Search';
 import Weather from './components/Weather';
 
 import './App.scss';
@@ -19,7 +18,14 @@ class App extends React.Component {
         {/* module de connexion sign in/up */}
         <Connect />
 
-        <Notifications />
+        {/* affichage météo relié à une API */}
+        <Weather />
+
+        {/* bare de recherche lié à une API plante */}
+        <Search />
+
+        {/* grille suggestion plantes */}
+        <PlantList />
 
         {/* infos / réseaux sociaux */}
         <Footer />
