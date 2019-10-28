@@ -1,12 +1,12 @@
 import React from 'react';
-import Titles from "./weatherComp/Titles"
-import Form from "./weatherComp/Form"
-import WeatherDetails from "./weatherComp/WeatherDetails"
-import '../App.scss';
+import Titles from "./Titles"
+import Form from "./Form"
+import WeatherDetails from "./WeatherDetails"
+import '../../App.scss';
 
 const API_KEY = "7db2e8659b5a9fb66a3f54bcc4e4a67f";
 
-class Weather extends React.Component {
+class GeolocFalse extends React.Component {
   state = {
     temperature: undefined,
     city: undefined,
@@ -64,4 +64,4 @@ class Weather extends React.Component {
   }
 }
 
-export default Weather;
+export default GeolocFalse;

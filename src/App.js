@@ -2,7 +2,7 @@ import React from 'react';
 
 // import des différents composants
 import Connect from './components/Connect';
-import Geoloc from './components/weatherComp/Geoloc';
+import Geoloc from './components/Geoloc';
 import SearchBar from './components/SearchBar';
 import PlantList from './components/PlantList';
 import Footer from './components/Footer.js';
