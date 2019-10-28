@@ -61,18 +61,18 @@ class Search extends React.Component {
   }
 
   render() {
-    const { id, common_name, scientific_name, image, error } = this.state
+    const { id, common_name, scientific_name, image, error, visible_caption } = this.state
     return (
       <div className="search">
         <SearchForm getPlant={this.getPlant} />
         <div className="search-result">
           <PlantCard
-            id={this.state.id}
-            common_name={this.state.common_name}
-            scientific_name={this.state.scientific_name}
-            image={this.state.image}
-            error={this.state.error}
-            visible_caption={this.state.visible_caption}
+            id={id}
+            common_name={common_name}
+            scientific_name={scientific_name}
+            image={image}
+            error={error}
+            visible_caption={visible_caption}
           />
         </div>
       </div>
