@@ -1,4 +1,3 @@
-import axios from 'axios'
 import FormWeather from './FormWeather'
 import Modal from 'react-modal'
 import React from 'react';
@@ -51,21 +50,19 @@ class Weather extends React.Component {
         this.closeModal()
     }
 
-    geolocationCall = () => {
-        axios.get(`https://api.userinfo.io/userinfos`)
-            // .then(res => console.log(res))
-            .then(res => res.data)
-            .then(DATA => {
-                this.setState({ location: DATA })
-            })
-            .then(() => { console.log(this.state.location) })
-            .then(() => {
-                this.setState({
-                    city: this.state.location.city.name,
-                    country: this.state.location.country.name
-                })
-            }
-            )
+    geolocationCall = async () => {
+
+        const apicall = await fetch(`https://api.userinfo.io/userinfos`)
+        const data = await apicall.json()
+        console.log(data)
+        const siespace = data.city.name.indexOf(" ")
+        const cut = data.city.name.slice(0, siespace)
+        console.log(siespace, cut)
+        this.setState({
+            location: data,
+            city: cut,
+            country: data.country.name
+        })
     }
     ////////////////////////////////////////////////////////
 
@@ -86,7 +83,7 @@ class Weather extends React.Component {
                 </Modal>
 
 
-                <FormWeather city={this.state.location ? this.state.location.city.name : "NO GEO NO CITY"} country={this.state.location ? this.state.location.country.name : "NO GEO NO COUNTRY"} />
+                <FormWeather city={this.state.location ? this.state.city : "false"} country={this.state.location ? this.state.location.country.name : "false"} />
 
 
             </div>

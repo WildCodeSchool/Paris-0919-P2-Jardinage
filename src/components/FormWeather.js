@@ -1,5 +1,5 @@
 import React from 'react'
-import background from "../ciel-soleil.jpg"
+import './style/FormWeather.scss'
 
 const thekey = "68e21d29703f8eaf843514c213c70106"
 
@@ -13,7 +13,8 @@ class FormWeather extends React.Component {
     weather: undefined,
     temp: undefined,
     main: undefined,
-    background: background
+    background: `grey`
+    // background: background
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -37,6 +38,7 @@ class FormWeather extends React.Component {
       actualCity: city,
       actualCountry: country
     })
+    this.conditionalBackground()
   }
   ///////////////// call api weather when geo NOT authorized //////////////////////
   callWeatherApi = async (e) => {
@@ -54,8 +56,27 @@ class FormWeather extends React.Component {
       tapedCity: "",
       tapedCountry: ""
     })
+    this.conditionalBackground()
   }
+  ///////////////// conditional background to put into caalWeatherApi //////////////////////  
 
+  conditionalBackground = () => {
+    if (this.state.main === "Clear") {
+      this.setState({ background: `yellow` })
+    } else if (this.state.main === "Rain") {
+      this.setState({ background: `red` })
+    } else if (this.state.main === "Clouds") {
+      this.setState({ background: `green` })
+    } else if (this.state.main === "Thunderstorm") {
+      this.setState({ background: `purple` })
+    } else if (this.state.main === "Drizzle") {
+      this.setState({ background: `pink` })
+    } else if (this.state.main === "Snow") {
+      this.setState({ background: `brown` })
+    } else {
+      this.setState({ background: `orange` })
+    }
+  }
   ///////////////// dynamic form ////////////////////// 
   handleCityChange = (e) => {
     const cityChange = e.target.value
@@ -69,7 +90,7 @@ class FormWeather extends React.Component {
 
   render() {
     return (
-      <div className="wrapper_weather" style={{ backgroundImage: `url(${this.state.background})` }}>
+      <div className="wrapper_weather" style={{ background: this.state.background }}> {/* style={{ backgroundImage: `url(${this.state.background})` }} */}
 
         {this.state.actualCity ? <p style={{ color: "black" }}>{this.state.actualCity}</p> : <p style={{ color: "black" }}>{this.state.tapedCity}</p>}
         {this.state.actualCountry ? <p style={{ color: "black" }}>{this.state.actualCountry}</p> : <p style={{ color: "black" }}>{this.state.tapedCountry}</p>}
@@ -78,23 +99,23 @@ class FormWeather extends React.Component {
 
         {/* ///////////////////////////////////////// Conditionnal form start //////////////////////////////////////////////////////// */}
         <form onSubmit={this.callWeatherApi}>
-          {this.props.city === "NO GEO NO CITY"
+          {this.props.city === "false"
             &&
             <label htmlFor="">
               Your city
             <input value={this.state.tapedCity} onChange={this.handleCityChange} type="text" />
             </label>}
 
-          {this.props.country === "NO GEO NO COUNTRY"
+          {this.props.country === "false"
             &&
             <label htmlFor="">
               Your country
           <input value={this.state.tapedCountry} onChange={this.handleCountryChange} type="text" />
             </label>}
 
-          {this.props.city === "NO GEO NO CITY"
+          {this.props.city === "false"
             &&
-            this.props.country === "NO GEO NO COUNTRY"
+            this.props.country === "false"
             &&
             <button>Click me!!!</button>
           }
