@@ -15,8 +15,6 @@ const SearchForm = props => {
           <input 
             type="text"
             name="common_name"
-            // value={this.state.value} 
-            // onChange={this.handleChange} 
             placeholder="Search" 
           />
         </div>

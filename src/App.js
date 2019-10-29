@@ -1,14 +1,7 @@
 import React from 'react';
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 
-// import des différents composants
-import Connect from './components/Connect';
-import Geoloc from './components/Geoloc';
-import PlantList from './components/PlantList';
-import Footer from './components/Footer.js';
-import NavBar from './components/NavBar.js';
-import Search from './components/Search';
-
-import './App.scss';
+import Home from './components/Home'
 
 class App extends React.Component {
   // componentDidMount() {
@@ -17,26 +10,13 @@ class App extends React.Component {
   // }
   render() {
     return (
-      <div className="app">
-
-        {/* module de connexion sign in/up */}
-        <Connect />
-
-        {/* affichage météo relié à une API */}
-        <Geoloc />
-
-        {/* bare de recherche lié à une API plante */}
-        <Search />
-
-        {/* grille suggestion plantes */}
-        <PlantList />
-
-        {/* infos / réseaux sociaux */}
-        <Footer />
-
-        {/* menu de l'appli une fois connecté garden/board/alerts */}
-        <NavBar />
-      </div>
+      <Router>
+        <div>
+          <Switch>
+            <Route exact path="/" component={Home} />
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }

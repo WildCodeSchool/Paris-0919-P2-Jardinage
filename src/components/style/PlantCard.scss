@@ -52,6 +52,24 @@
     transform: scale(1.3, 1.3);
   }
 }
+.plantCard-error {
+  background: #19aa53;
+  text-align: center;
+  padding: 10px 0;
+}
+.plant-loader {
+  margin: 0 auto;
+  border: 8px solid #f3f3f3; /* Light grey */
+  border-top: 8px solid #19aa53; /* Blue */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 
 /*  Medium devices (tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
