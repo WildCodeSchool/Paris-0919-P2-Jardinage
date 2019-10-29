@@ -16,7 +16,8 @@ class Search extends React.Component {
     scientific_name: undefined,
     image: undefined,
     error: undefined,
-    visible_caption: false
+    visible_caption: false,
+    isLoaded: false
   }
 
   getPlant = async e => {
@@ -35,45 +36,42 @@ class Search extends React.Component {
           common_name: data_specific.main_species.common_name,
           scientific_name: data_specific.scientific_name,
           image: data_specific.images[0] !== undefined ? data_specific.images[0].url : default_img,
-          error: undefined,
-          visible_caption: true
+          visible_caption: true,
+          isLoaded: true,
+          error: undefined
         })
       } else {
         this.setState({
-          id: undefined,
-          common_name: undefined,
-          scientific_name: undefined,
-          image: undefined,
-          visible_caption: undefined,
           error: "Please enter a value"
         })
       }
     } else {
       this.setState({
-        id: undefined,
-        common_name: undefined,
-        scientific_name: undefined,
-        image: undefined,
-        visible_caption: undefined,
-        error: "Nothing was found"
+        error: "Sorry, nothing was found. Please make another research."
       })
     }
   }
 
   render() {
-    const { id, common_name, scientific_name, image, error, visible_caption } = this.state
+    const { id, common_name, scientific_name, image, error, visible_caption, isLoaded } = this.state
     return (
       <div className="search">
         <SearchForm getPlant={this.getPlant} />
+
         <div className="search-result">
-          <PlantCard
-            id={id}
-            common_name={common_name}
-            scientific_name={scientific_name}
-            image={image}
-            error={error}
-            visible_caption={visible_caption}
-          />
+          {!error ? (
+            <PlantCard
+              id={id}
+              common_name={common_name}
+              scientific_name={scientific_name}
+              image={image}
+              error={error}
+              visible_caption={visible_caption}
+            />
+          ) : (
+            <div>{error && <p className="plantCard-error">{error}</p>}</div>
+          ) }
+          
         </div>
       </div>
     );
