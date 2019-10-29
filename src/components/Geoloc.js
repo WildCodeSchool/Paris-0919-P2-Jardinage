@@ -2,12 +2,12 @@ import React from "react";
 import { geolocated } from "react-geolocated";
 import GeolocTrue from "./weatherComp/GeolocTrue"
 import GeolocFalse from "./weatherComp/GeolocFalse"
-import '../App.scss';
+import './style/Weather.scss'
 
 class Geoloc extends React.Component {
   render() {
     return !this.props.isGeolocationAvailable ? (
-      <div>Your browser does not support Geolocation</div>
+      <div id="weather"><div>Your browser does not support Geolocation</div></div>
     ) : !this.props.isGeolocationEnabled ? (
       <GeolocFalse>{console.log('Geolocation is not enabled')}</GeolocFalse>
     ) : this.props.coords ? (

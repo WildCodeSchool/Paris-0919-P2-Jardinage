@@ -1,14 +1,15 @@
-import React from 'react';
+import React from 'react'
+import '../style/WeatherForm.scss'
 
 class Form extends React.Component {
 
   render() {
     return (
-      <div id="form">
+      <div id="searchBar">
         <form onSubmit={this.props.getWeather}>
           <input type="text" name="city" placeholder="City..." />
           <input type="text" name="country" placeholder="Country..." />
-          <button>Get Weather</button>
+          <button className="buttonWeather">Get Weather</button>
         </form>
       </div>
     )

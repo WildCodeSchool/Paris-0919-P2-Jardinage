@@ -1,0 +1,128 @@
+input,
+label,
+select,
+button,
+textarea {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  display: inline-block;
+  vertical-align: middle;
+  white-space: normal;
+  background: none;
+  line-height: 1;
+  color: #50a3a2;
+  /* Browsers have different default form fonts */
+  font-size: 13px;
+  font-family: Arial;
+}
+/* Remove the stupid outer glow in Webkit */
+input:focus {
+  outline: 0;
+}
+::-webkit-input-placeholder {
+  /* WebKit browsers */
+  font-family: "Source Sans Pro", sans-serif;
+  color: white;
+  font-weight: 300;
+  text-align: center;
+}
+:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  font-family: "Source Sans Pro", sans-serif;
+  color: white;
+  opacity: 1;
+  font-weight: 300;
+  text-align: center;
+}
+::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  font-family: "Source Sans Pro", sans-serif;
+  color: white;
+  opacity: 1;
+  font-weight: 300;
+  text-align: center;
+}
+:-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  font-family: "Source Sans Pro", sans-serif;
+  color: white;
+  font-weight: 300;
+  text-align: center;
+}
+#searchBar {
+  width: 100%;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #19aa53;
+}
+#searchBar form {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+#searchBar label {
+  display: flex;
+  align-items: center;
+  margin: 20px;
+}
+#searchBar input {
+  outline: 0;
+  height: 35px;
+  width: 280px;
+  margin: 20px 30px 20px 20px;
+  padding: 0px 10px 0px 10px;
+  border: 1px solid rgba(white, 0.5);
+  background-color: rgba(white, 0.2);
+  border-radius: 4px;
+  font-size: 18px;
+  transition-duration: 0.25s;
+  font-weight: 300;
+  &:hover {
+    background-color: rgba(white, 40%);
+  }
+  &:focus {
+    background-color: white;
+    width: 350px;
+  }
+}
+.buttonWeather {
+  height: 35px;
+  margin: 20px 30px 20px 20px;
+  padding: 0px 10px 0px 10px;
+  appearance: none;
+  outline: 0;
+  background-color: white;
+  border: 0;
+  color: 53e3a6;
+  border-radius: 3px;
+  width: 150px;
+  cursor: pointer;
+  font-size: 18px;
+  transition-duration: 0.75s;
+
+  &:hover {
+    background-color: rgb(218, 218, 218);
+  }
+}
+
+/* Extra small devices (portrait phones, less than 649.98px) */
+@media only screen and (max-width: 768px) {
+  .searchBar form {
+    justify-content: space-around;
+  }
+  .searchBar input {
+    width: 200px;
+    &:focus {
+      width: 250px;
+    }
+  }
+}
+@media only screen and (max-width: 645px) {
+  .searchBar label {
+    margin-bottom: 0px;
+  }
+}
+

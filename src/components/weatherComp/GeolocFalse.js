@@ -2,7 +2,6 @@ import React from 'react';
 import Titles from "./Titles"
 import Form from "./Form"
 import WeatherDetails from "./WeatherDetails"
-import '../../App.scss';
 
 const API_KEY = "7db2e8659b5a9fb66a3f54bcc4e4a67f";
 
@@ -13,8 +12,35 @@ class GeolocFalse extends React.Component {
     country: undefined,
     humidity: undefined,
     description: undefined,
-    error: undefined
+    error: undefined,
+
+    weatherImage: '',
+    weather: {},
+    weatherCss: '',
+    isLoad: false
   }
+
+  modifState = (paramCss) => {
+    console.log(paramCss)
+    this.setState({ isLoad: true, weatherCss: paramCss })
+  }
+  getWeatherCss = () => {
+    const { description } = this.state.weather.weather[0]
+    if (description === 'broken clouds') {
+      this.modifState("weatherBrokenClouds")
+    } else if (description === 'overcast clouds') {
+      this.modifState("weatherOvercastClouds")
+    } else if (description === 'rain') {
+      this.modifState("weatherRain")
+    } else if (description === 'snow') {
+      this.modifState("weatherSnow")
+    } else if (description === 'mist') {
+      this.modifState("weatherMist")
+    } else if (description === 'clear sky') {
+      this.modifState("weatherClearSky")
+    }
+  }
+
   getWeather = async (e) => {
     e.preventDefault();
     const city = e.target.elements.city.value;
@@ -22,6 +48,7 @@ class GeolocFalse extends React.Component {
     const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`);
     const data = await api_call.json();
     console.log(data)
+    // this.getWeatherCss()
     if (data.cod === "404") {
       this.setState({
         temperature: undefined,
@@ -44,22 +71,24 @@ class GeolocFalse extends React.Component {
     }
   }
   render() {
+    const { isLoad } = this.state.isLoad
+    {console.log("weatherCss", this.state.weather)}
     return (
-      <div id="weather">
-
-        <Titles />
-
+      < div id="weather" className={isLoad ? this.state.weatherCss : "weatherBrokenClouds"} >
+        {/* <Titles /> */}
         <Form getWeather={this.getWeather} />
 
-        <WeatherDetails
-          temperature={this.state.temperature}
-          humidity={this.state.humidity}
-          city={this.state.city}
-          country={this.state.country}
-          description={this.state.description}
-          error={this.state.error}
-        />
-      </div>
+        <div id="weather__container">
+          <WeatherDetails
+            temperature={this.state.temperature}
+            humidity={this.state.humidity}
+            city={this.state.city}
+            country={this.state.country}
+            description={this.state.description}
+            error={this.state.error}
+          />
+        </div>
+      </div >
     )
   }
 }
