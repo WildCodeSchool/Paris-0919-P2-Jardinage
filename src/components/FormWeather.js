@@ -22,6 +22,4 @@ class FormWeather extends React.Component {
   }
 }
 
-// onClick={this.props.setWeatherImage}
-
 export default FormWeather;
