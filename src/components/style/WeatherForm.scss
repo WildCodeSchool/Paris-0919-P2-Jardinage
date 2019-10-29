@@ -85,7 +85,7 @@ input:focus {
   }
   &:focus {
     background-color: white;
-    width: 350px;
+    width: 330px;
   }
 }
 .buttonWeather {
@@ -108,21 +108,17 @@ input:focus {
   }
 }
 
-/* Extra small devices (portrait phones, less than 649.98px) */
-@media only screen and (max-width: 768px) {
-  .searchBar form {
-    justify-content: space-around;
+/* Extra small devices (portrait phones, less than 576px) */
+@media only screen and (max-width: 575.98px) {
+  #searchBar form {
+    justify-content: center;
   }
-  .searchBar input {
-    width: 200px;
-    &:focus {
-      width: 250px;
-    }
-  }
-}
-@media only screen and (max-width: 645px) {
-  .searchBar label {
+  #searchBar input{
     margin-bottom: 0px;
   }
+
 }
 
+/* Small devices (landscape phones, 576px and up) */
+@media only screen and (min-width: 576px) and (max-width: 767.98px) {
+}

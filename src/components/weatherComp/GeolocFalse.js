@@ -1,5 +1,5 @@
 import React from 'react';
-import Titles from "./Titles"
+// import Titles from "./Titles"
 import Form from "./Form"
 import WeatherDetails from "./WeatherDetails"
 
@@ -12,35 +12,8 @@ class GeolocFalse extends React.Component {
     country: undefined,
     humidity: undefined,
     description: undefined,
-    error: undefined,
-
-    weatherImage: '',
-    weather: {},
-    weatherCss: '',
-    isLoad: false
+    error: undefined
   }
-
-  modifState = (paramCss) => {
-    console.log(paramCss)
-    this.setState({ isLoad: true, weatherCss: paramCss })
-  }
-  getWeatherCss = () => {
-    const { description } = this.state.weather.weather[0]
-    if (description === 'broken clouds') {
-      this.modifState("weatherBrokenClouds")
-    } else if (description === 'overcast clouds') {
-      this.modifState("weatherOvercastClouds")
-    } else if (description === 'rain') {
-      this.modifState("weatherRain")
-    } else if (description === 'snow') {
-      this.modifState("weatherSnow")
-    } else if (description === 'mist') {
-      this.modifState("weatherMist")
-    } else if (description === 'clear sky') {
-      this.modifState("weatherClearSky")
-    }
-  }
-
   getWeather = async (e) => {
     e.preventDefault();
     const city = e.target.elements.city.value;
@@ -48,7 +21,6 @@ class GeolocFalse extends React.Component {
     const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`);
     const data = await api_call.json();
     console.log(data)
-    // this.getWeatherCss()
     if (data.cod === "404") {
       this.setState({
         temperature: undefined,
@@ -71,10 +43,8 @@ class GeolocFalse extends React.Component {
     }
   }
   render() {
-    const { isLoad } = this.state.isLoad
-    {console.log("weatherCss", this.state.weather)}
     return (
-      < div id="weather" className={isLoad ? this.state.weatherCss : "weatherBrokenClouds"} >
+      < div id="weather" >
         {/* <Titles /> */}
         <Form getWeather={this.getWeather} />
 
