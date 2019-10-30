@@ -13,7 +13,7 @@ class Geoloc extends React.Component {
     ) : this.props.coords ? (
       <GeolocTrue lat={this.props.coords.latitude} lon={this.props.coords.longitude} />
     ) : (
-            <div id="weather">Getting the location data&hellip; </div>
+            <div id="weather"><div className="weather__info">Getting the location data&hellip; </div></div>
           );
   }
 }

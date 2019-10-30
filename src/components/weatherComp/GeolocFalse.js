@@ -12,7 +12,8 @@ class GeolocFalse extends React.Component {
     country: undefined,
     humidity: undefined,
     description: undefined,
-    error: undefined
+    error: undefined,
+    main: undefined
   }
   getWeather = async (e) => {
     e.preventDefault();
@@ -28,7 +29,8 @@ class GeolocFalse extends React.Component {
         country: undefined,
         humidity: undefined,
         description: undefined,
-        error: "Please enter correct values."
+        error: "Please enter correct values.",
+        main: undefined
       });
     }
     else if (city && country) {
@@ -38,7 +40,8 @@ class GeolocFalse extends React.Component {
         country: data.sys.country,
         humidity: data.main.humidity,
         description: data.weather[0].description,
-        error: ""
+        error: "",
+        main: data.weather[0].main
       });
     }
   }
@@ -56,6 +59,7 @@ class GeolocFalse extends React.Component {
             country={this.state.country}
             description={this.state.description}
             error={this.state.error}
+            main ={this.state.main}
           />
         </div>
       </div >
