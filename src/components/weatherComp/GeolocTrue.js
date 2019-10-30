@@ -1,5 +1,6 @@
 import React from "react"
 import WeatherDetails from "./WeatherDetails"
+import '../style/Weather.scss'
 
 const API_KEY = "7db2e8659b5a9fb66a3f54bcc4e4a67f"
 
@@ -12,12 +13,40 @@ class GeolocTrue extends React.Component {
     humidity: undefined,
     description: undefined,
     error: undefined,
-    main: undefined
+    main: undefined,
+    background: "default"
+  }
+
+  // ///////////////// conditional background to put into caalWeatherApi //////////////////////  
+
+  conditionalBackground = () => {
+    if (this.state.main === "Clear") {
+      this.setState({ background: `clear` })
+    } else if (this.state.main === "Rain") {
+      this.setState({ background: `rain` })
+    } else if (this.state.main === "Clouds") {
+      this.setState({ background: `clouds` })
+    } else if (this.state.main === "Thunderstorm") {
+      this.setState({ background: `thunderstorm` })
+    } else if (this.state.main === "Drizzle") {
+      this.setState({ background: `drizzle` })
+    } else if (this.state.main === "Snow") {
+      this.setState({ background: `snow` })
+    } else {
+      this.setState({ background: `default` })
+    }
   }
 
   componentDidMount() {
     this.getWeather()
   }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.city !== this.state.city) {
+      this.conditionalBackground()
+    }
+  }
+
   getWeather = async () => {
     const lat = this.props.lat
     const lon = this.props.lon
@@ -53,9 +82,9 @@ class GeolocTrue extends React.Component {
     }
   }
   render() {
-    console.log("geoloc state" ,this.state)
+    console.log("state", this.state)
     return (
-      <div id="weather">
+      <div id="weather" className={this.state.background}>
         <div className="weather__container">
           <WeatherDetails
             temperature={this.state.temperature}
