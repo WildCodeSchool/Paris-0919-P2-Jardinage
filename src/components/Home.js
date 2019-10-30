@@ -6,7 +6,7 @@ import Footer from './Footer.js';
 import NavBar from './NavBar.js';
 import PlantList from './PlantList';
 import Search from './Search';
-import Weather from './Weather';
+import Geoloc from './Geoloc';
 
 import '../App.scss';
 
@@ -19,7 +19,7 @@ class Home extends React.Component {
         <Connect />
 
         {/* affichage météo relié à une API */}
-        <Weather />
+        <Geoloc />
 
         {/* bare de recherche lié à une API plante */}
         <Search />
