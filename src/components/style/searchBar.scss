@@ -57,7 +57,10 @@ input:focus {
   text-align: center;
 }
 
-#searchBar {
+.search {
+  width: 100%;
+}
+.searchBar {
   width: 100%;
   min-height: 80px;
   display: flex;
@@ -66,18 +69,23 @@ input:focus {
   background-color: #19aa53;
 }
 
-#searchBar form {
+.searchBar form {
   display: flex;
   flex-wrap: wrap;
 }
 
-#searchBar label {
+.searchBar label {
   display: flex;
   align-items: center;
   margin: 20px;
+  white-space: nowrap;
+}
+.search--icon {
+  width: 30px;
+  cursor: pointer;
 }
 
-#searchBar input {
+.searchBar input {
   outline: 0;
   height: 35px;
   width: 280px;
@@ -99,20 +107,41 @@ input:focus {
     width: 350px;
   }
 }
+.search-result {
+  margin: 0 auto;
+  padding: 20px 0;
+  background: #f2fffe;
+}
+.search-result .plantCard {
+  margin: 0 auto;
+  max-width: 50%;
+}
+.search-result .plantCard-img {
+  min-height: 250px;
+  max-height: 300px;
+}
+.subtitle {
+  text-align: center;
+}
+.search-result .invisible {
+  visibility: hidden;
+}
 
-/* Extra small devices (portrait phones, less than 649.98px) */
+/* Extra small devices (portrait phones, less than 768px) */
 
-@media only screen and (max-width: 700px) {
-  #searchBar form {
+@media only screen and (max-width: 768px) {
+  .searchBar form {
     justify-content: space-around;
   }
-  #searchBar label {
-    margin-bottom: 0px;
-  }
-  #searchBar input {
+  .searchBar input {
     width: 200px;
     &:focus {
       width: 250px;
     }
+  }
+}
+@media only screen and (max-width: 645px) {
+  .searchBar label {
+    margin-bottom: 0px;
   }
 }

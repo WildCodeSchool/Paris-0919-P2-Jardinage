@@ -1,8 +1,9 @@
 import React from 'react';
 
 import Modal from 'react-modal';
-
 import Connexion from './Connexion'
+
+import iconTree from '../icon-tree.svg'
 import '../App.scss';
 
 
@@ -40,7 +41,8 @@ class Connect extends React.Component {
     
     return (
       <div id="connect">
-        <ul>
+        <ul className="header--title">
+          <li><img src={iconTree} alt="icon tree" /></li>
           <li><h1>PlantMe</h1></li>
         </ul>
         <ul className="sign">

@@ -13,7 +13,7 @@
   border-radius: 10px;
 }
 
-.plantCard img {
+.plantCard-img {
   display: block;
   height: 100%;
   min-height: 200px;
@@ -25,7 +25,8 @@
 }
 
 .plantCard figcaption {
-  font-size: 0.8rem;
+  position: relative;
+  font-size: .8rem;
   font-weight: 400;
   position: absolute;
   bottom: 0;
@@ -40,6 +41,35 @@
   display: block;
   text-transform: capitalize;
 }
+.plantCard-icon {
+  width: 20px;
+  position: absolute;
+  fill: #f2fffe;
+  bottom: 25px;
+  right: 10px;
+  transition: .3s;
+  &:hover {
+    transform: scale(1.3, 1.3);
+  }
+}
+.plantCard-error {
+  background: #19aa53;
+  text-align: center;
+  padding: 10px 0;
+}
+.plant-loader {
+  margin: 0 auto;
+  border: 8px solid #f3f3f3; /* Light grey */
+  border-top: 8px solid #19aa53; /* Blue */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 
 /*  Medium devices (tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
@@ -49,7 +79,7 @@
   .plantCard {
     transition: 0.3s;
   }
-  .plantCard img {
+  .plantCard-img {
     min-width: 300px;
   }
   .plantCard:hover {

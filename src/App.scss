@@ -49,6 +49,12 @@ h4 {
 }
 
 ////////////////////*  module de connexion sign in/up *///////////////////
+.header--title {
+  display: flex;
+}
+.header--title img {
+  width: 30px;
+}
 .Connect-signin {
   font-size: 1rem;
   color: #19aa53;
@@ -76,7 +82,6 @@ h4 {
   padding: 15px 80px;
   position: absolute;
 }
-
 #connect a:hover {
   text-decoration: underline;
 }
@@ -105,7 +110,7 @@ h4 {
 /////////////////////////* footer infos/réseaux sociaux *////////////////////
 #footer {
   width: 100%;
-  font-size: 1.1em;
+  font-size: 1rem;
   display: flex;
   flex-wrap: wrap;
   background-color: #19aa53;
