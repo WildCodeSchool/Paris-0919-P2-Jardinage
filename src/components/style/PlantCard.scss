@@ -25,7 +25,6 @@
 }
 
 .plantCard figcaption {
-  position: relative;
   font-size: .8rem;
   font-weight: 400;
   position: absolute;
@@ -42,10 +41,12 @@
   text-transform: capitalize;
 }
 .plantCard-icon {
-  width: 20px;
+  width: 25px;
   position: absolute;
-  fill: #f2fffe;
-  bottom: 25px;
+  padding: 5px;
+  border-radius: 15px;
+  background: #19aa53;
+  top: 10px;
   right: 10px;
   transition: .3s;
   &:hover {

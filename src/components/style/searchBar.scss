@@ -108,23 +108,33 @@ input:focus {
   }
 }
 .search-result {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 auto;
   padding: 20px 0;
+  scroll-snap-type: x mandatory;
+  /* Necessary for mobile scrolling */
+  -webkit-overflow-scrolling: touch;
+  /* For layout purposes */
+  display: flex;
+  /* To allow horizontal scrolling */
+  overflow-x: scroll;
 }
 .search-result p {
   width: 100%;
 }
 .search-result .plantCard {
-  margin: 20px auto;
-  max-width: 90vw;
+  margin: 20px 20px;
+  max-width: calc(50vw - 20px);
+  height: 45vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Set where the snapping should happen */
+  scroll-snap-align: start;
 }
 .search-result .plantCard-img {
-  width: 90vw;
-  min-width: 100px;
-  max-width: 400px;
-  height: 200px;
+  min-height: 100%;
+  width: calc(50vw - 20px);
+  // max-width: 400px;
+  // height: 200px;
 }
 .subtitle {
   text-align: center;
@@ -139,6 +149,12 @@ input:focus {
   .searchBar form {
     justify-content: space-around;
   }
+  .search-result .plantCard {
+    max-width: 100vw;
+  }
+  .search-result .plantCard-img {
+    width: 100vw;
+  }
   .searchBar input {
     width: 200px;
     &:focus {
@@ -150,7 +166,7 @@ input:focus {
   .searchBar label {
     margin-bottom: 0px;
   }
-  .search-result .plantCard-img {
-    height: 250px;
-  }
+  // .search-result .plantCard-img {
+  //   height: 250px;
+  // }
 }
