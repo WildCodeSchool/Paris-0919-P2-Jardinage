@@ -117,14 +117,14 @@ input:focus {
   width: 100%;
 }
 .search-result .plantCard {
-  margin: 0 auto;
+  margin: 20px auto;
   max-width: 90vw;
 }
 .search-result .plantCard-img {
-  min-width: 50px;
+  width: 90vw;
+  min-width: 100px;
   max-width: 400px;
-  min-height: 200px;
-  max-height: 250px;
+  height: 200px;
 }
 .subtitle {
   text-align: center;
@@ -149,5 +149,8 @@ input:focus {
 @media only screen and (max-width: 645px) {
   .searchBar label {
     margin-bottom: 0px;
+  }
+  .search-result .plantCard-img {
+    height: 250px;
   }
 }

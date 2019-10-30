@@ -8,7 +8,6 @@ import './style/searchBar.scss'
 import './style/PlantCard.scss'
 
 const API_KEY = "YjlIUlp5QktVcXRIZTEzVGNMSmlOZz09"
-let idSearchResult = []
 let finalResult = []
 
 const getRandomInt = max => {
@@ -27,21 +26,17 @@ class Search extends React.Component {
   }
 
   getPlant = async e => {
-    idSearchResult = []
     finalResult = []
     e.preventDefault()
     const common_name = e.target.common_name.value
     const default_img = "https://s2.best-wallpaper.net/wallpaper/1600x900/1708/Art-drawing-tree-earth-green_1600x900.jpg"
     const api_1st_call = await fetch(`https://trefle.io/api/plants?q=${common_name}&complete_data=true&token=${API_KEY}`)
     const data = await api_1st_call.json()
-    data.forEach((item) => {
-      idSearchResult.push(item.id)
-    });
-    const idTen = idSearchResult.filter((item, index) => index < 11)
+    const idTen = data.filter((item, index) => index < 11)
     
     if(idTen[0]){
       for (let i=0; i < idTen.length; i++) {
-        const api_2nd_call = await fetch(`https://trefle.io/api/plants/${idTen[i]}?token=${API_KEY}`)
+        const api_2nd_call = await fetch(`https://trefle.io/api/plants/${idTen[i].id}?token=${API_KEY}`)
         const data_specific = await api_2nd_call.json()
         const species = data_specific.main_species ? data_specific.main_species.common_name:'undefined'
         if(common_name && idTen[0]){
@@ -91,8 +86,7 @@ class Search extends React.Component {
             </>
           ) : (
             <>{error && <p className="plantCard-error">{error}</p>}</>
-          ) }
-          
+          )}     
         </div>
       </div>
     );
