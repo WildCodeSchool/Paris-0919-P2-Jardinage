@@ -8,6 +8,12 @@ import './style/searchBar.scss'
 import './style/PlantCard.scss'
 
 const API_KEY = "YjlIUlp5QktVcXRIZTEzVGNMSmlOZz09"
+let idSearchResult = []
+let finalResult = []
+
+const getRandomInt = max => {
+  return Math.floor(Math.random() * Math.floor(max));
+}
 
 class Search extends React.Component {
   state = { 
@@ -22,51 +28,72 @@ class Search extends React.Component {
 
   getPlant = async e => {
     e.preventDefault()
+    
     const common_name = e.target.common_name.value
     const default_img = "https://s2.best-wallpaper.net/wallpaper/1600x900/1708/Art-drawing-tree-earth-green_1600x900.jpg"
     const api_1st_call = await fetch(`https://trefle.io/api/plants?q=${common_name}&complete_data=true&token=${API_KEY}`)
     const data = await api_1st_call.json()
-    if(data[0]){
-      const api_2nd_call = await fetch(`https://trefle.io/api/plants/${data[0].id}?token=${API_KEY}`)
-      const data_specific = await api_2nd_call.json()
-      if(common_name && data[0]){
-        this.setState({
-          id: data_specific.id,
-          common_name: data_specific.main_species.common_name,
-          scientific_name: data_specific.scientific_name,
-          image: data_specific.images[0] !== undefined ? data_specific.images[0].url : default_img,
-          visible_caption: true,
-          isLoaded: true,
-          error: undefined
-        })
-      } else {
-        this.setState({
-          error: "Please enter a value"
-        })
+    data.forEach((item) => {
+      idSearchResult.push(item.id)
+    });
+    console.log('1st array', idSearchResult);
+    const idTen = idSearchResult.filter((item, index) => index < 10)
+    
+    if(idTen[0]){
+      for (let i=0; i < idTen.length; i++) {
+        const api_2nd_call = await fetch(`https://trefle.io/api/plants/${idTen[i]}?token=${API_KEY}`)
+        const data_specific = await api_2nd_call.json()
+        const species = data_specific.main_species ? data_specific.main_species.common_name:'undefined'
+        if(common_name && idTen[0]){
+          this.setState({
+            id: data_specific.id,
+            common_name: species,
+            scientific_name: data_specific.scientific_name,
+            image: data_specific.images[getRandomInt(data_specific.images.length)] !== undefined ? data_specific.images[0].url : default_img,
+            visible_caption: true,
+            isLoaded: true,
+            error: undefined
+          }, () => {
+            finalResult.push(this.state)
+            console.log('2nd array', finalResult);
+            
+          })
+        } else {
+          this.setState({
+            error: "Please enter a value"
+          })
+        }
       }
+
     } else {
       this.setState({
         error: "Sorry, nothing was found. Please make another research."
       })
     }
+    
   }
 
   render() {
-    const { id, common_name, scientific_name, image, error, visible_caption, isLoaded } = this.state
+    const { error } = this.state
     return (
       <div className="search">
         <SearchForm getPlant={this.getPlant} />
 
         <div className="search-result">
           {!error ? (
-            <PlantCard
-              id={id}
-              common_name={common_name}
-              scientific_name={scientific_name}
-              image={image}
-              error={error}
-              visible_caption={visible_caption}
-            />
+            <>
+            {finalResult.map(item => (
+              <PlantCard
+                key={item.id}
+                common_name={item.common_name}
+                scientific_name={item.scientific_name}
+                image={item.image}
+                error={item.error}
+                visible_caption={item.visible_caption}
+              />
+            ))}
+            {/* {finalResult.length =4 } */}
+            </>
           ) : (
             <div>{error && <p className="plantCard-error">{error}</p>}</div>
           ) }
