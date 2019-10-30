@@ -23,7 +23,6 @@ class Search extends React.Component {
   getPlant = async e => {
     e.preventDefault()
     const common_name = e.target.common_name.value
-    console.log(common_name)
     const default_img = "https://s2.best-wallpaper.net/wallpaper/1600x900/1708/Art-drawing-tree-earth-green_1600x900.jpg"
     const api_1st_call = await fetch(`https://trefle.io/api/plants?q=${common_name}&complete_data=true&token=${API_KEY}`)
     const data = await api_1st_call.json()
