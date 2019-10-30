@@ -108,16 +108,23 @@ input:focus {
   }
 }
 .search-result {
+  display: flex;
+  flex-wrap: wrap;
   margin: 0 auto;
   padding: 20px 0;
 }
+.search-result p {
+  width: 100%;
+}
 .search-result .plantCard {
   margin: 0 auto;
-  max-width: 50%;
+  max-width: 90vw;
 }
 .search-result .plantCard-img {
-  min-height: 250px;
-  max-height: 300px;
+  min-width: 50px;
+  max-width: 400px;
+  min-height: 200px;
+  max-height: 250px;
 }
 .subtitle {
   text-align: center;

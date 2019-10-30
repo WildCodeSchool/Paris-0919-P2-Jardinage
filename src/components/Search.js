@@ -27,8 +27,9 @@ class Search extends React.Component {
   }
 
   getPlant = async e => {
+    idSearchResult = []
+    finalResult = []
     e.preventDefault()
-    
     const common_name = e.target.common_name.value
     const default_img = "https://s2.best-wallpaper.net/wallpaper/1600x900/1708/Art-drawing-tree-earth-green_1600x900.jpg"
     const api_1st_call = await fetch(`https://trefle.io/api/plants?q=${common_name}&complete_data=true&token=${API_KEY}`)
@@ -36,8 +37,7 @@ class Search extends React.Component {
     data.forEach((item) => {
       idSearchResult.push(item.id)
     });
-    console.log('1st array', idSearchResult);
-    const idTen = idSearchResult.filter((item, index) => index < 10)
+    const idTen = idSearchResult.filter((item, index) => index < 11)
     
     if(idTen[0]){
       for (let i=0; i < idTen.length; i++) {
@@ -49,28 +49,24 @@ class Search extends React.Component {
             id: data_specific.id,
             common_name: species,
             scientific_name: data_specific.scientific_name,
-            image: data_specific.images[getRandomInt(data_specific.images.length)] !== undefined ? data_specific.images[0].url : default_img,
+            image: data_specific.images[0] !== undefined ? data_specific.images[getRandomInt(data_specific.images.length)].url : default_img,
             visible_caption: true,
             isLoaded: true,
             error: undefined
           }, () => {
             finalResult.push(this.state)
-            console.log('2nd array', finalResult);
-            
           })
         } else {
           this.setState({
             error: "Please enter a value"
           })
         }
-      }
-
+      }  
     } else {
       this.setState({
         error: "Sorry, nothing was found. Please make another research."
       })
     }
-    
   }
 
   render() {
@@ -92,10 +88,9 @@ class Search extends React.Component {
                 visible_caption={item.visible_caption}
               />
             ))}
-            {/* {finalResult.length =4 } */}
             </>
           ) : (
-            <div>{error && <p className="plantCard-error">{error}</p>}</div>
+            <>{error && <p className="plantCard-error">{error}</p>}</>
           ) }
           
         </div>
