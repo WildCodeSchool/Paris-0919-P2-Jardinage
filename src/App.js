@@ -4,6 +4,10 @@ import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 import Home from './components/Home'
 
 class App extends React.Component {
+  // componentDidMount() {
+  //   fetch('http://localhost:/3000/')
+  //     .then(response => console.log(response))
+  // }
   render() {
     return (
       <Router>

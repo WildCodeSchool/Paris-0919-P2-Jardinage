@@ -1,0 +1,104 @@
+///////////////////* Composant météo *////////////////////
+#weather {
+  background: url("https://images.unsplash.com/photo-1486016006115-74a41448aea2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60")
+    no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#weather__container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.weather__info {
+  margin: 20px 0px 0px 50px;
+  padding: 0px 0px 15px 15px;
+  width: 500px;
+  border-left: 4px solid #19aa53;
+  text-shadow: 1px 4px 3px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 0px 27px 18px -16px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 27px 18px -16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 27px 18px -16px rgba(0, 0, 0, 0.2);
+  font-size: 1.6em;
+  font-weight: 600;
+}
+
+.weather__key {
+  padding: 10px;
+  font-size: 1em;
+  font-weight: 500;
+}
+
+.weather__value {
+  font-size: 1.1em;
+  font-weight: 600;
+}
+
+.weatherBrokenClouds {
+  width: 100%;
+  height: 350px;
+  background-image: url("https://images.unsplash.com/photo-1486016006115-74a41448aea2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60");
+  background-size: cover;
+}
+.weatherRain {
+  width: 100%;
+  height: 350px;
+  background-image: url("https://images.unsplash.com/photo-1486016006115-74a41448aea2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60");
+  background-size: cover;
+}
+.weatherOvercastClouds {
+  width: 100%;
+  height: 350px;
+  background-image: url("https://images.unsplash.com/photo-1501630834273-4b5604d2ee31?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60");
+  background-size: cover;
+}
+.weatherSnow {
+  width: 100%;
+  height: 350px;
+  background-image: url("https://images.unsplash.com/photo-1482489603187-f0ae98f407a3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60");
+  background-size: cover;
+}
+.weatherMist {
+  width: 100%;
+  height: 350px;
+  background-image: url('https://images.unsplash.com/photo-1488279790500-92397988c0c1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"');
+  background-size: cover;
+}
+.weatherClearSky {
+  width: 100%;
+  height: 350px;
+  background-image: url("https://images.unsplash.com/photo-1488279790500-92397988c0c1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60");
+  background-size: cover;
+}
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media only screen and (max-width: 575.98px) {
+  #weather {
+    height: 400px;  
+  }
+
+  .weather__info {
+    margin: 20px 0px 0px 50px;
+    padding: 0px 0px 15px 15px;
+    width: 300px;
+  }
+
+  .weather__key {
+    padding: 8px;
+    font-size: 0.8em;
+    font-weight: 500;
+  }
+  .weather__value {
+    font-size: 0.9em;
+    font-weight: 600;
+  }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media only screen and (min-width: 576px) and (max-width: 767.98px) {
+}
+
