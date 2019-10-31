@@ -121,8 +121,8 @@ input:focus {
   width: 100%;
 }
 .search-result .plantCard {
-  margin: 20px 20px;
-  max-width: calc(50vw - 20px);
+  margin: 20px 20px 20px 0;
+  max-width: calc(50vw - 10px);
   height: 45vh;
   display: flex;
   align-items: center;
@@ -132,15 +132,16 @@ input:focus {
 }
 .search-result .plantCard-img {
   min-height: 100%;
-  width: calc(50vw - 20px);
-  // max-width: 400px;
-  // height: 200px;
+  width: calc(50vw - 10px);
 }
 .subtitle {
   text-align: center;
 }
 .search-result .invisible {
   visibility: hidden;
+}
+.search-result .lonely {
+  margin: 20px auto;
 }
 
 /* Extra small devices (portrait phones, less than 768px) */
@@ -166,7 +167,4 @@ input:focus {
   .searchBar label {
     margin-bottom: 0px;
   }
-  // .search-result .plantCard-img {
-  //   height: 250px;
-  // }
 }

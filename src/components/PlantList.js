@@ -41,7 +41,6 @@ class PlantList extends React.Component {
       const data = await api_call.json()      
       const imgLen = data.images ? data.images.length - 1 : 'none'
       const species = data.main_species ? data.main_species.common_name:'undefined' 
-      // if(imgLen) {...}  <= si imgLen = 0  alors imgLen = false donc on rentre pas dans les instructions
       if (imgLen !== 'none'){          
         this.setState({
           id: data.id,

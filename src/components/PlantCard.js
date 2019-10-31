@@ -3,7 +3,7 @@ import iconAdd from '../icon-plus.svg'
 import './style/PlantCard.scss'
 
 const PlantCard = props => (
-  <figure className="plantCard">
+  <figure className={props.oneItemResult ? "plantCard lonely":"plantCard"}>
     {props.image && props.common_name && <img className="plantCard-img" src={props.image} alt={props.common_name} />} 
     <img className="plantCard-icon" src={iconAdd} alt="icon add" />
     <figcaption className={props.visible_caption ? "subtitle" : "invisible"}>
