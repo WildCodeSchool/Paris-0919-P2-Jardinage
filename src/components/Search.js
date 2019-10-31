@@ -80,13 +80,13 @@ class Search extends React.Component {
       })
     }
   }
-
+  
   render() {
-    const { error } = this.state
+    const { error, visible_caption } = this.state
     return (
       <div className="search">
         <SearchForm getPlant={this.getPlant} />
-
+        <p className={visible_caption? "plantCard-error":"plantCard-error invisible"} >{`${finalResult.length} plants found. Please scroll to watch the following results.`}</p>
         <div className="search-result">
           {!error ? (
             <>

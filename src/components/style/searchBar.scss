@@ -137,8 +137,8 @@ input:focus {
 .subtitle {
   text-align: center;
 }
-.search-result .invisible {
-  visibility: hidden;
+.invisible {
+  display: none;
 }
 .search-result .lonely {
   margin: 20px auto;
