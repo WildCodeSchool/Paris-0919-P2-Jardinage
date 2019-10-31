@@ -1,96 +1,117 @@
 import React from 'react';
 
-import iconSearch from '../icon-search.svg'
-
 import PlantCard from './PlantCard';
+import SearchForm from './SearchForm'
 
 import '../App.scss';
 import './style/searchBar.scss'
 import './style/PlantCard.scss'
 
 const API_KEY = "YjlIUlp5QktVcXRIZTEzVGNMSmlOZz09"
+let finalResult = []
 
-class SearchBar extends React.Component {
+class Search extends React.Component {
   state = { 
     id: undefined,
     common_name: undefined,
     scientific_name: undefined,
     image: undefined,
-    error: undefined 
+    error: undefined,
+    visible_caption: false,
+    isLoaded: false,
+    oneItemResult: false
   }
 
-  // handleChange(event) {
-  //   this.setState({ value: event.target.value });
-  // }
+  getRandomInt = max => {
+    return Math.floor(Math.random() * Math.floor(max));
+  }
 
-  // handleSubmit(event) {
-  //   event.preventDefault();
-  // }
   getPlant = async e => {
+    finalResult = []
     e.preventDefault()
-    const common_name = e.target.elements.common_name.value
-    const default_img = "https://image.freepik.com/vecteurs-libre/dessin-anime-plantes-pot_18591-43973.jpg"
+    const common_name = e.target.common_name.value
+    const default_img = "https://res.cloudinary.com/dsbgj0oop/image/upload/v1572516426/default_img.png"
     const api_1st_call = await fetch(`https://trefle.io/api/plants?q=${common_name}&complete_data=true&token=${API_KEY}`)
     const data = await api_1st_call.json()
-    data.setHeader('Access')
+    
     if(data[0]){
-      const api_2nd_call = await fetch(`https://trefle.io/api/plants/${data[0].id}?token=${API_KEY}`)
-      const data_specific = await api_2nd_call.json()
-      if(common_name && data[0]){
-        this.setState({
-          id: data_specific.id,
-          common_name: data_specific.main_species.common_name,
-          scientific_name: data_specific.scientific_name,
-          image: data_specific.images[0] !== undefined ? data_specific.images[0].url : default_img,
-          error: undefined 
-        })
-      } else {
-        this.setState({
-          id: undefined,
-          common_name: undefined,
-          scientific_name: undefined,
-          image: undefined,
-          error: "Please enter a value"
-        })
-      }
+      for (let i=0; i < data.length; i++) {
+        const api_2nd_call = await fetch(`https://trefle.io/api/plants/${data[i].id}?token=${API_KEY}`)
+        const data_plant = await api_2nd_call.json()
+        const species = data_plant.main_species ? data_plant.main_species.common_name:'undefined'
+        if(common_name && data[0]){
+          if (data.length === 1) {
+            this.setState({
+              id: data_plant.id,
+              common_name: species,
+              scientific_name: data_plant.scientific_name,
+              image: data_plant.images[0] !== undefined ? data_plant.images[this.getRandomInt(data_plant.images.length)].url : default_img,
+              visible_caption: true,
+              isLoaded: true,
+              error: undefined,
+              oneItemResult: true
+            }, () => {
+              finalResult.push(this.state)
+            })
+          } else {
+            this.setState({
+              id: data_plant.id,
+              common_name: species,
+              scientific_name: data_plant.scientific_name,
+              image: data_plant.images[0] !== undefined ? data_plant.images[this.getRandomInt(data_plant.images.length)].url : default_img,
+              visible_caption: true,
+              isLoaded: true,
+              error: undefined,
+              oneItemResult: false
+            }, () => {
+              finalResult.push(this.state)
+            })
+          }
+        } else {
+          this.setState({
+            error: "Please enter a value"
+          })
+        }
+      }  
     } else {
       this.setState({
         id: undefined,
         common_name: undefined,
         scientific_name: undefined,
         image: undefined,
-        error: "Nothing was found"
+        error: "Sorry, nothing was found. Please make another research."
       })
     }
   }
-
+  
   render() {
+    const { error, visible_caption } = this.state
     return (
-      <div>
-        <div id="searchBar">
-          <form onSubmit={this.getPlant}>
-            <label><h2>What do you want to plant today ?</h2></label>
-            <input 
-              type="text" 
-              // value={this.state.value} 
-              // onChange={this.handleChange} 
-              placeholder="Search" 
-            />
-            <img className="search--icon" src={iconSearch} alt="icon add" />
-          </form>
-        </div>
-        <div className="search--result">
-          <PlantCard
-            id={this.state.id}
-            common_name={this.state.common_name}
-            scientific_name={this.state.scientific_name}
-            image={this.state.image}
-            error={this.state.error}
-          />
+      <div className="search">
+        <SearchForm getPlant={this.getPlant} />
+        <p className={visible_caption? "plantCard-error":"plantCard-error invisible"} >{`${finalResult.length} plants found. Please scroll to watch the following results.`}</p>
+        <div className="search-result">
+          {!error ? (
+            <>
+            {finalResult.map(item => (
+              <PlantCard
+                key={item.id}
+                common_name={item.common_name}
+                scientific_name={item.scientific_name}
+                image={item.image}
+                error={item.error}
+                visible_caption={item.visible_caption}
+                oneItemResult={item.oneItemResult}
+              />
+            ))}
+            </>
+          ) : (
+            <>{error && <p className="plantCard-error">{error}</p>}</>
+          )}     
         </div>
       </div>
     );
   }
 }
 
-export default SearchBar;
+export default Search;
