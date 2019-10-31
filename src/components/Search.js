@@ -79,7 +79,7 @@ class Search extends React.Component {
         common_name: undefined,
         scientific_name: undefined,
         image: undefined,
-        error: "Nothing was found"
+        error: "Sorry, nothing was found. Please make another research."
       })
     }
   }
