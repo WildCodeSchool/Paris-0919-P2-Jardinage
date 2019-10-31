@@ -1,9 +1,9 @@
-import React from 'react'
+import React from 'react';
 
-import PlantCard from './PlantCard'
+import PlantCard from './PlantCard';
 import SearchForm from './SearchForm'
 
-import '../App.scss'
+import '../App.scss';
 import './style/searchBar.scss'
 import './style/PlantCard.scss'
 
@@ -33,7 +33,6 @@ class Search extends React.Component {
     const default_img = "https://res.cloudinary.com/dsbgj0oop/image/upload/v1572516426/default_img.png"
     const api_1st_call = await fetch(`https://trefle.io/api/plants?q=${common_name}&complete_data=true&token=${API_KEY}`)
     const data = await api_1st_call.json()
-    // const idTen = data.filter((item, index) => index < 11)
     
     if(data[0]){
       for (let i=0; i < data.length; i++) {
@@ -76,7 +75,11 @@ class Search extends React.Component {
       }  
     } else {
       this.setState({
-        error: "Sorry, nothing was found. Please make another research."
+        id: undefined,
+        common_name: undefined,
+        scientific_name: undefined,
+        image: undefined,
+        error: "Nothing was found"
       })
     }
   }
@@ -111,4 +114,4 @@ class Search extends React.Component {
   }
 }
 
-export default Search
+export default Search;

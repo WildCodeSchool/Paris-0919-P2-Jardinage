@@ -1,0 +1,58 @@
+.Notifications-container{
+  width: 100%;
+  display: flex;
+  padding: 50px;
+  justify-content: center;
+  flex-direction: column;
+  margin: 100px;
+  border-left: 3px solid #19aa53;
+    h1{
+      color: black;
+    }
+    .Notification{
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      margin: 5px;
+      .Notification-date{
+        color: black;
+        margin: 5px;
+      }
+      .Notification-container{
+        display: flex;
+        justify-content: center;
+        margin: 5px;
+          &:hover{
+            opacity: .8;
+            cursor: pointer;
+          }
+      }
+      .Notification-badge{
+        background: #19aa53;
+        padding: 20px;
+        border: 1px solid #19aa53;
+        border-radius: 3px 0 0 3px;
+        width: 100px;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1rem;
+      }
+      .Notification-body{
+        padding: 20px;
+        background: white;
+        border: 1px solid #19aa53;
+        border-radius: 0 3px 3px 0;
+        color: #19aa53;
+        width: 70%;
+        display: flex;
+        .Notification-validation{
+          margin-left: auto;
+          path{
+            color: #19aa53;
+          }
+        }
+      }
+    }
+}
