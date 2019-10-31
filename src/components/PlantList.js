@@ -35,20 +35,20 @@ class PlantList extends React.Component {
   }
 
   getPlant = async () => {
-    for (let i=0; i < plants.length; i++) {
+    for (let i = 0; i < plants.length; i++) {
       const api_call = await fetch(`https://trefle.io/api/plants/${plants[i].id}?token=${API_KEY}`)
-      const data = await api_call.json()      
+      const data = await api_call.json()
       const imgLen = data.images ? data.images.length - 1 : 'none'
-      const species = data.main_species ?data.main_species.common_name:'undefined' 
+      const species = data.main_species ? data.main_species.common_name : 'undefined'
       // if(imgLen) {...}  <= si imgLen = 0  alors imgLen = false donc on rentre pas dans les instructions
-      if (imgLen !== 'none'){          
+      if (imgLen !== 'none') {
         this.setState({
           id: data.id,
           common_name: species,
           scientific_name: data.scientific_name,
           image: data.images[imgLen].url
-        }, ()=> {
-          if (i < plants.length / 2-1) {
+        }, () => {
+          if (i < plants.length / 2 - 1) {
             popPlants.push(this.state)
           } else {
             seasonalPlants.push(this.state)
@@ -61,8 +61,8 @@ class PlantList extends React.Component {
   componentDidMount() {
     this.getPlant()
   }
-  
-  render() { 
+
+  render() {
     return (
       <div id="plantList">
         <section className="plantList--section">
@@ -81,14 +81,14 @@ class PlantList extends React.Component {
         <section className="plantList--section">
           <h2>Seasonal plants</h2>
           <div className="plantCard--container">
-          {seasonalPlants.map(item => (
-            <PlantCard
-              key={item.id}
-              common_name={item.common_name}
-              scientific_name={item.scientific_name}
-              image={item.image}
-            />
-          ))}
+            {seasonalPlants.map(item => (
+              <PlantCard
+                key={item.id}
+                common_name={item.common_name}
+                scientific_name={item.scientific_name}
+                image={item.image}
+              />
+            ))}
           </div>
         </section>
       </div>
