@@ -1,32 +1,38 @@
-import React from 'react'
+import React from 'react';
 
-import PlantCard from './PlantCard'
-import SearchForm from './SearchForm'
+import iconSearch from '../icon-search.svg'
 
-import '../App.scss'
+import PlantCard from './PlantCard';
+
+import '../App.scss';
 import './style/searchBar.scss'
 import './style/PlantCard.scss'
 
 const API_KEY = "YjlIUlp5QktVcXRIZTEzVGNMSmlOZz09"
 
-class Search extends React.Component {
+class SearchBar extends React.Component {
   state = { 
     id: undefined,
     common_name: undefined,
     scientific_name: undefined,
     image: undefined,
-    error: undefined,
-    visible_caption: false,
-    isLoaded: false
+    error: undefined 
   }
 
+  // handleChange(event) {
+  //   this.setState({ value: event.target.value });
+  // }
+
+  // handleSubmit(event) {
+  //   event.preventDefault();
+  // }
   getPlant = async e => {
     e.preventDefault()
-    const common_name = e.target.common_name.value
-    console.log(common_name)
-    const default_img = "https://s2.best-wallpaper.net/wallpaper/1600x900/1708/Art-drawing-tree-earth-green_1600x900.jpg"
+    const common_name = e.target.elements.common_name.value
+    const default_img = "https://image.freepik.com/vecteurs-libre/dessin-anime-plantes-pot_18591-43973.jpg"
     const api_1st_call = await fetch(`https://trefle.io/api/plants?q=${common_name}&complete_data=true&token=${API_KEY}`)
     const data = await api_1st_call.json()
+    data.setHeader('Access')
     if(data[0]){
       const api_2nd_call = await fetch(`https://trefle.io/api/plants/${data[0].id}?token=${API_KEY}`)
       const data_specific = await api_2nd_call.json()
@@ -36,46 +42,55 @@ class Search extends React.Component {
           common_name: data_specific.main_species.common_name,
           scientific_name: data_specific.scientific_name,
           image: data_specific.images[0] !== undefined ? data_specific.images[0].url : default_img,
-          visible_caption: true,
-          isLoaded: true,
-          error: undefined
+          error: undefined 
         })
       } else {
         this.setState({
+          id: undefined,
+          common_name: undefined,
+          scientific_name: undefined,
+          image: undefined,
           error: "Please enter a value"
         })
       }
     } else {
       this.setState({
-        error: "Sorry, nothing was found. Please make another research."
+        id: undefined,
+        common_name: undefined,
+        scientific_name: undefined,
+        image: undefined,
+        error: "Nothing was found"
       })
     }
   }
 
   render() {
-    const { id, common_name, scientific_name, image, error, visible_caption, isLoaded } = this.state
     return (
-      <div className="search">
-        <SearchForm getPlant={this.getPlant} />
-
-        <div className="search-result">
-          {!error ? (
-            <PlantCard
-              id={id}
-              common_name={common_name}
-              scientific_name={scientific_name}
-              image={image}
-              error={error}
-              visible_caption={visible_caption}
+      <div>
+        <div id="searchBar">
+          <form onSubmit={this.getPlant}>
+            <label><h2>What do you want to plant today ?</h2></label>
+            <input 
+              type="text" 
+              // value={this.state.value} 
+              // onChange={this.handleChange} 
+              placeholder="Search" 
             />
-          ) : (
-            <div>{error && <p className="plantCard-error">{error}</p>}</div>
-          ) }
-          
+            <img className="search--icon" src={iconSearch} alt="icon add" />
+          </form>
+        </div>
+        <div className="search--result">
+          <PlantCard
+            id={this.state.id}
+            common_name={this.state.common_name}
+            scientific_name={this.state.scientific_name}
+            image={this.state.image}
+            error={this.state.error}
+          />
         </div>
       </div>
     );
   }
 }
 
-export default Search
+export default SearchBar;
