@@ -14,6 +14,7 @@ class GeolocTrue extends React.Component {
     description: undefined,
     error: undefined,
     main: undefined,
+    message: undefined,
     background: "default"
   }
 
