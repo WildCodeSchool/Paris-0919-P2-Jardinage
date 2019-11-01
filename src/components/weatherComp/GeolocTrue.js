@@ -85,17 +85,21 @@ class GeolocTrue extends React.Component {
     console.log("state", this.state)
     return (
       <div id="weather" className={this.state.background}>
-        <div className="weather__container">
-          <WeatherDetails
-            temperature={this.state.temperature}
-            humidity={this.state.humidity}
-            city={this.state.city}
-            country={this.state.country}
-            description={this.state.description}
-            error={this.state.error}
-            main ={this.state.main}
-          />
-        </div>
+        {this.state.city && this.state.country ?
+          <div className="weather__container">
+            <WeatherDetails
+              temperature={this.state.temperature}
+              humidity={this.state.humidity}
+              city={this.state.city}
+              country={this.state.country}
+              description={this.state.description}
+              error={this.state.error}
+              message={this.state.message}
+            />
+          </div>
+          : this.state.error ?
+            <div className="weather__info">{this.state.message}</div>
+            : <div className="weather__info">Unknown error</div>}
       </div>
     )
   }

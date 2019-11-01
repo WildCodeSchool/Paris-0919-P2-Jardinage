@@ -55,6 +55,8 @@ class GeolocFalse extends React.Component {
     if (data.cod === "404") {
       this.setState({
         temperature: undefined,
+        city: undefined,
+        country: undefined,
         humidity: undefined,
         description: undefined,
         error: data.cod,
@@ -94,8 +96,8 @@ class GeolocFalse extends React.Component {
             />
           </div>
           : this.state.error ?
-            <div className="weather__info">{this.state.message}</div>
-            : <div className="weather__info">Type your location</div>}
+            <div id="weather__container"><div className="weather__info">{this.state.message}</div></div>
+            : <div id="weather__container"><div className="weather__info">Type your location</div></div>}
       </div >
     )
   }
