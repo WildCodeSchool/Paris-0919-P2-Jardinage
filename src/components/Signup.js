@@ -18,8 +18,11 @@ class SignUp extends React.Component{
     const input = event.target
     const name = input.name
     this.setState({ 
-      [name]: input.value 
+      [name]: input.value
     })
+    if (name === 'email') {
+      localStorage.setItem('email', input.value);
+    }
   }
 
   showFirstForm = (event) => {

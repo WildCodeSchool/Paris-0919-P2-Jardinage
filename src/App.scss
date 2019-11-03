@@ -172,9 +172,6 @@ h4 {
 
 //////////////////////* menu de l'appli une fois connecté garden/board/alerts *///////////////////////////
 
-#navBar {
-  display: none;
-}
 
 /* #navBar {
   width: 100%;
@@ -190,6 +187,75 @@ h4 {
   text-align: center;
   align-items: center;
 } */
+
+.NavBar-logout {
+  font-size: 1rem;
+  color: #19aa53;
+  border: 2px solid #19aa53;
+  padding: 10px;
+  border-radius: 15px 0 15px 0;
+  transition: border-radius 1s;
+  font-weight: bold;
+  &:hover {
+    border-radius: 0 15px 0 15px;
+    cursor: pointer;
+  }
+}
+#navBar {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  background-color: white;
+  display: flex;
+  justify-content: flex-start;
+  text-align: center;
+  align-items: center;
+  box-sizing: border-box;
+  box-shadow: 0 3px 35px 0 #00000022;
+  padding: 15px 80px;
+}
+#navBar a:hover {
+  text-decoration: underline;
+}
+#navBar h1 {
+  padding-left: 20px;
+  font-family: "Pacifico", cursive;
+  color: #19aa53
+}
+
+.menu {
+  margin: 0 0 0 30%;
+  width: 30%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.menu li a {
+  font-weight: bold;
+  font-size: 1rem;
+  color: #19aa53;
+}
+
+.logout {
+  margin-left: auto;
+  padding-left: auto;
+  color: #19aa53;
+  display: flex;
+}
+
+.logout li {
+  padding: 6px;
+  text-align: center;
+}
+
+.logout img {
+  width: 40px;
+  margin-right: 20px;
+}
+
+// .NavBar-logout {
+//   margin-left: ;
+// }
 
 /////////////////////////////////////////////////////////////////////////////
 ////////////////////////////* Media Queries *////////////////////////////////
