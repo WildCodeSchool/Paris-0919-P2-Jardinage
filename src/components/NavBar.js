@@ -2,14 +2,16 @@ import React from 'react';
 
 import iconTree from '../icon-tree.svg'
 import iconUser from '../icon-user.svg'
+import { Link } from "react-router-dom";
+
 
 import '../App.scss';
 
 class NavBar extends React.Component {
- 
+
     logOut = (event) => {
         localStorage.removeItem('email');
-      }
+    }
 
     render() {
         return (
@@ -19,9 +21,9 @@ class NavBar extends React.Component {
                     <li><h1>PlantMe</h1></li>
                 </ul>
                 <ul className="menu">
-                    <li><a href="http://localhost:3000/">Garden</a></li>
-                    <li><a href="http://localhost:3000/">Board</a></li>
-                    <li><a href="http://localhost:3000/">Alerts</a></li>
+                        <li><Link to="/garden">Garden</Link></li>
+                        <li><Link to="/board">Board</Link></li>
+                        <li><Link to="/alerts">Alerts</Link></li>
                 </ul>
                 <ul className="logout">
                     <li><img src={iconUser} alt="icon user" /></li>
