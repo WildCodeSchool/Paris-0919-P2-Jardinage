@@ -1,0 +1,8 @@
+///////////////////* Composant météo *////////////////////
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media only screen and (max-width: 575.98px) {
+  #weather {
+    min-height: 200px;
+  }
+}

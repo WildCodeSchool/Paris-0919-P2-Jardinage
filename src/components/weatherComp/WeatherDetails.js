@@ -3,7 +3,7 @@ import React from 'react'
 class WeatherDetails extends React.Component {
 
   render() {
-    const { city, country, temperature, humidity, description, error } = this.props
+    const { city, country, temperature, humidity, description} = this.props
     // console.log(" props", this.props)
     // console.log(" state", this.state)
     // console.log("props.main", this.props.main)
@@ -29,9 +29,9 @@ class WeatherDetails extends React.Component {
 	 		<span className="weather__value"> {description} </span>
           </p>
         }
-        {
-          error && <p className="weather__error">{error}</p>
-        }
+        {/* {
+          message && <p className="weather__error">{message}</p>
+        } */}
       </div>)
   }
 }
