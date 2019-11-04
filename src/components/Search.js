@@ -39,40 +39,27 @@ class Search extends React.Component {
         const api_2nd_call = await fetch(`https://trefle.io/api/plants/${data[i].id}?token=${API_KEY}`)
         const data_plant = await api_2nd_call.json()
         const species = data_plant.main_species ? data_plant.main_species.common_name:'undefined'
+        const randImage = data_plant.images[0] !== undefined ? data_plant.images[this.getRandomInt(data_plant.images.length)].url : default_img
         if(common_name && data[0]){
-          if (data.length === 1) {
-            this.setState({
-              id: data_plant.id,
-              common_name: species,
-              scientific_name: data_plant.scientific_name,
-              image: data_plant.images[0] !== undefined ? data_plant.images[this.getRandomInt(data_plant.images.length)].url : default_img,
-              visible_caption: true,
-              isLoaded: true,
-              error: undefined,
-              oneItemResult: true
-            }, () => {
-              finalResult.push(this.state)
-            })
-          } else {
-            this.setState({
-              id: data_plant.id,
-              common_name: species,
-              scientific_name: data_plant.scientific_name,
-              image: data_plant.images[0] !== undefined ? data_plant.images[this.getRandomInt(data_plant.images.length)].url : default_img,
-              visible_caption: true,
-              isLoaded: true,
-              error: undefined,
-              oneItemResult: false
-            }, () => {
-              finalResult.push(this.state)
-            })
-          }
+          finalResult.push({id: data_plant.id, common_name: species, scientific_name:data_plant.scientific_name, image: randImage})
         } else {
           this.setState({
             error: "Please enter a value"
           })
         }
-      }  
+      }
+      this.setState({
+        id: finalResult.id,
+        common_name: finalResult.species,
+        scientific_name: finalResult.scientific_name,
+        image: finalResult.image,
+        visible_caption: true,
+        isLoaded: true,
+        error: undefined,
+        oneItemResult: false
+      }, () => {
+        finalResult.push(this.state)
+      })
     } else {
       this.setState({
         id: undefined,
@@ -93,7 +80,7 @@ class Search extends React.Component {
         <div className="search-result">
           {!error ? (
             <>
-            {finalResult.map(item => (
+            {finalResult.map(item =>(
               <PlantCard
                 key={item.id}
                 common_name={item.common_name}
