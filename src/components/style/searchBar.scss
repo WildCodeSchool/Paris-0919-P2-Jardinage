@@ -116,6 +116,7 @@ input:focus {
   display: flex;
   /* To allow horizontal scrolling */
   overflow-x: scroll;
+  background-color: white;
 }
 .search-result p {
   width: 100%;

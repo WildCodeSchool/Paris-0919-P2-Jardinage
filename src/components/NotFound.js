@@ -1,15 +1,14 @@
 import React from 'react';
 
 // import des différents composants
-import Home from './Home'
-import Footer from './Footer';
-import NavBar from './NavBar';
-import Notifications from './Notifications';
-import NavMobile from './NavMobile';
+import Home from './Home.js'
+import Footer from './Footer.js';
+import NavBar from './NavBar.js';
 
 import '../App.scss';
+import './style/Weather.scss'
 
-class Alerts extends React.Component {
+class NotFound extends React.Component {
   state = {
     isOnline: false,
     email: ''
@@ -37,11 +36,13 @@ class Alerts extends React.Component {
           {/* module de connexion sign in/up */}
           <NavBar />
 
-          {/* grille suggestion plantes */}
-          <Notifications />
-
-          {/* navbar mobile */}
-          <NavMobile />
+          <div id="weather" className="default">
+            <div id="weather__container">
+              <div className="weather__info">
+                Not Found
+              </div>
+            </div>
+          </div>
 
           {/* infos / réseaux sociaux */}
           <Footer />
@@ -57,4 +58,4 @@ class Alerts extends React.Component {
   }
 }
 
-export default Alerts;
+export default NotFound;

@@ -6,6 +6,7 @@ import Footer from './Footer.js';
 import NavBar from './NavBar.js';
 import Search from './Search';
 import GardenList from './gardenComp/GardenList'
+import NavMobile from './NavMobile'
 
 import '../App.scss';
 
@@ -43,6 +44,9 @@ class Garden extends React.Component {
           {/* grille suggestion plantes */}
           <GardenList />
 
+          {/* navbar mobile */}
+          <NavMobile />
+
           {/* infos / réseaux sociaux */}
           <Footer />
 
@@ -52,7 +56,7 @@ class Garden extends React.Component {
       )
     }
     else {
-      return (<Home/>)
+      return (<Home />)
     }
   }
 }
