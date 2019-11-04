@@ -91,12 +91,7 @@ class PlantList extends React.Component {
             <h2>Seasonal plants</h2>
             <div className="plantCard--container">
             {seasonalPlants.map(item => (
-              <Link to={{
-                pathname: "/plant_details",
-                state:{
-                  id: item.id
-                }
-              }}>
+              <Link to={`/plants/${item.id}`}>
                 <PlantCard
                   key={item.id}
                   common_name={item.common_name}
