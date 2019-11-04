@@ -1,14 +1,63 @@
 .PlantDetails{
-  padding: 100px 50px;
+  padding: 50px;
 }
 
 .Plant__header{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-content: center;
   align-items: center;
   padding: 30px;
-  height: 500px;
+}
+
+.Plant__body{
+  padding: 30px 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  h2{
+    color: black;
+    text-transform: uppercase;
+    font-family: 'Josefin', sans-serif;
+    padding: 0 0 15px 0;
+    text-align: center;
+  }
+  td{
+    color: black;
+  }
+}
+
+.Plant__specs{
+  display: table;
+  width: 100%;
+  padding: 15px 150px;
+  border-top: 1px solid #e6e6e6;
+  border-collapse: collapse;
+  tr:nth-child(2n+1) {
+    background-color: 
+    #19aa5333;
+  }
+  td:nth-child(1) {
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  td:nth-child(2) {
+    text-align: right;
+  }
+}
+
+.Plant__specs{
+  tr.Plant__specs--line{
+    td{
+      padding: 25px;
+      span.Plant__specs_icon{
+        margin-right: 20px;
+        path{
+          color: #19aa53;
+        }
+      }
+    }
+  }
 }
 
 .Plant__title{
@@ -22,8 +71,17 @@
   color: black;
   text-transform: capitalize;
   font-family: 'Josefin Sans', sans-serif;
-  margin-bottom: 35px;
+  text-align: center;
+  margin: 50px 35px auto;
   line-height: 110px;
+}
+
+.Plant__subtitle{
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #e6e6e6;
+  padding: 15px;
+  margin: 25px 40px;
 }
 
 .Plant__latin_title{
@@ -31,9 +89,6 @@
   font-style: italic;
   font-size: 1.5rem;
   font-family: 'Source Sans Pro', sans-serif;
-  border-bottom: 1px solid #e6e6e6;
-  padding: 0 0 15px 0;
-  margin: 0 25px 0 0;
 }
 
 .Plant__add_flower{
@@ -41,7 +96,7 @@
   border: 1px solid #19aa53;
   border-radius: 5px 0 5px 0;
   background: none;
-  margin: 25px auto;
+  margin-left: auto;
   color: #19aa53;
   transition: border-radius 1s;
 }
@@ -54,13 +109,12 @@
 
 .Plant__image{
   display: flex;
-  justify-content: flex-end;
-  margin-left: auto;
+  justify-content: center;
 }
 
 .Plant__image > img{
   width: 700px;
-  height: 600px;
+  height: 400px;
   object-fit: cover;
   border-radius: 10px;
 }
