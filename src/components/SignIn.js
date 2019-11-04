@@ -9,12 +9,15 @@ class SignIn extends React.Component{
     password: ""
   }
 
-  handleChanges = (event) => { // [name] is the property "name" of each input, permits to use a unique function to handle changes
+  handleChanges = (event) => { 
     const input = event.target
     const name = input.name
     this.setState({ 
       [name]: input.value 
     })
+    if (name === 'email') {
+      localStorage.setItem('email', input.value);
+    }
   }
 
   render(){
