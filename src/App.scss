@@ -33,11 +33,13 @@ body {
   min-width: 300px;
   overflow-x: hidden;
   line-height: 1.5rem;
+  background-color: #1d1a26;
 }
-
 .app {
+  background-color: white;
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 //////////////////////* Style global des éléments *///////////////////////
@@ -52,6 +54,11 @@ h4 {
 .header--title {
   display: flex;
 }
+
+.header--title ul {
+  display: flex;
+}
+
 .header--title img {
   width: 30px;
 }
@@ -72,7 +79,6 @@ h4 {
   width: 100%;
   height: 80px;
   display: flex;
-  background-color: white;
   display: flex;
   justify-content: flex-start;
   text-align: center;
@@ -87,7 +93,7 @@ h4 {
 #connect h1 {
   padding-left: 20px;
   font-family: "Pacifico", cursive;
-  color: #19aa53
+  color: #19aa53;
 }
 
 .sign {
@@ -169,24 +175,6 @@ h4 {
   text-decoration: underline;
 }
 
-//////////////////////* menu de l'appli une fois connecté garden/board/alerts *///////////////////////////
-
-
-/* #navBar {
-  width: 100%;
-  height: 60px;
-  display: flex;
-  background-color: #2C3E50;
-}
-
-#navBar ul {
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  text-align: center;
-  align-items: center;
-} */
-
 .NavBar-logout {
   font-size: 1rem;
   color: #19aa53;
@@ -200,11 +188,10 @@ h4 {
     cursor: pointer;
   }
 }
+
 #navBar {
   width: 100%;
   height: 80px;
-  display: flex;
-  background-color: white;
   display: flex;
   justify-content: flex-start;
   text-align: center;
@@ -219,7 +206,7 @@ h4 {
 #navBar h1 {
   padding-left: 20px;
   font-family: "Pacifico", cursive;
-  color: #19aa53
+  color: #19aa53;
 }
 
 .menu {
@@ -252,6 +239,10 @@ h4 {
   margin-right: 20px;
 }
 
+.nav-mobile {
+  display: none;
+}
+
 // .NavBar-logout {
 //   margin-left: ;
 // }
@@ -262,8 +253,60 @@ h4 {
 
 /* Extra small devices (portrait phones, less than 576px) */
 @media only screen and (max-width: 575.98px) {
-  #footer #social {
-    min-height: 100px;
+  #footer {
+    display: none;
+  }
+
+  #navBar {
+    justify-content: center;
+    .header--title:nth-child(1) {
+      order: 2;
+      padding: 0px 5% 0px 5%;
+    }
+    .menu:nth-child(2) {
+      display: none;
+    }
+    .logout:nth-child(3) {
+      order: 4;
+      padding: 0px 5% 0px 5%;
+    }
+    .ul-log:nth-child(4) {
+      order: 1;
+      padding: 0px 5% 0px 5%;
+    }
+  }
+
+ 
+
+  .logout img {
+    width: 40px;
+    margin-right: 0px;
+  }
+
+  .nav-mobile {
+    position: sticky;
+    bottom: 0px;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    background-color: #19aa53e1;
+    -webkit-box-shadow: -1px 0px 13px 0px rgba(0,0,0,0.72);
+    -moz-box-shadow: -1px 0px 13px 0px rgba(0,0,0,0.72);
+    box-shadow: -1px 0px 13px 0px rgba(0,0,0,0.72);
+  }
+
+  .nav-mobile .menu li a {
+    color: #f2fffe;
+    font-size: 1.2em;
+  }
+
+  .menu {
+    width: 100%;
+    margin: 0px;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    align-items: center;
   }
 }
 
