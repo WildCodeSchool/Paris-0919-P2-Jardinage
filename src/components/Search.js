@@ -14,14 +14,10 @@ let finalResult = []
 
 class Search extends React.Component {
   state = { 
-    id: undefined,
-    common_name: undefined,
-    scientific_name: undefined,
-    image: undefined,
     error: undefined,
     visible_caption: false,
-    isLoaded: false,
-    oneItemResult: false
+    oneItemResult: false,
+    scrollMsg: false
   }
 
   getRandomInt = max => {
@@ -37,74 +33,60 @@ class Search extends React.Component {
     const data = await api_1st_call.json()
     
     if(data[0]){
-      for (let i=0; i < data.length; i++) {
-        const api_2nd_call = await fetch(`https://trefle.io/api/plants/${data[i].id}?token=${API_KEY}`)
-        const data_plant = await api_2nd_call.json()
-        const species = data_plant.main_species ? data_plant.main_species.common_name:'undefined'
-        if(common_name && data[0]){
-          if (data.length === 1) {
-            this.setState({
-              id: data_plant.id,
-              common_name: species,
-              scientific_name: data_plant.scientific_name,
-              image: data_plant.images[0] !== undefined ? data_plant.images[this.getRandomInt(data_plant.images.length)].url : default_img,
-              visible_caption: true,
-              isLoaded: true,
-              error: undefined,
-              oneItemResult: true
-            }, () => {
-              finalResult.push(this.state)
-            })
-          } else {
-            this.setState({
-              id: data_plant.id,
-              common_name: species,
-              scientific_name: data_plant.scientific_name,
-              image: data_plant.images[0] !== undefined ? data_plant.images[this.getRandomInt(data_plant.images.length)].url : default_img,
-              visible_caption: true,
-              isLoaded: true,
-              error: undefined,
-              oneItemResult: false
-            }, () => {
-              finalResult.push(this.state)
-            })
-          }
+      if(common_name && data[0]){
+        for (let i=0; i < data.length; i++) {
+          const api_2nd_call = await fetch(`https://trefle.io/api/plants/${data[i].id}?token=${API_KEY}`)
+          const data_plant = await api_2nd_call.json()
+          const species = data_plant.main_species ? data_plant.main_species.common_name:'undefined'
+          const randImage = data_plant.images[0] !== undefined ? data_plant.images[this.getRandomInt(data_plant.images.length)].url : default_img
+          finalResult.push({id: data_plant.id, common_name: species, scientific_name:data_plant.scientific_name, image: randImage})
+        } if (finalResult.length > 1) {
+          this.setState({
+            visible_caption: true,
+            oneItemResult: false,
+            error: undefined
+          })
         } else {
           this.setState({
-            error: "Please enter a value"
+            visible_caption: true,
+            oneItemResult: true,
+            error: undefined
           })
         }
-      }  
+      } else {
+        this.setState({
+          visible_caption: false,
+          error: "Please enter a value"
+        })
+      }
     } else {
       this.setState({
-        id: undefined,
-        common_name: undefined,
-        scientific_name: undefined,
-        image: undefined,
+        visible_caption: false,
         error: "Sorry, nothing was found. Please make another research."
       })
     }
   }
-  
+
   render() {
-    const { error, visible_caption } = this.state
+    const { error, visible_caption, oneItemResult } = this.state
+    const scrollClass = (finalResult.length > 2) ? "scroll" : "no-scroll"
     return (
       <div className="search">
         <SearchForm getPlant={this.getPlant} />
-        <p className={visible_caption? "plantCard-error":"plantCard-error invisible"} >{`${finalResult.length} plants found. Please scroll to watch the following results.`}</p>
+        <p className={visible_caption? "plantCard-error":"plantCard-error invisible"}>{`${finalResult.length} plants found.`} <span className={scrollClass}>Please scroll to watch all the results !</span></p>
         <div className="search-result">
           {!error ? (
             <>
-            {finalResult.map(item => (
+            {finalResult.map(item =>(
               <Link to={`/plants/${item.id}`}>
                 <PlantCard
                   key={item.id}
                   common_name={item.common_name}
                   scientific_name={item.scientific_name}
                   image={item.image}
-                  error={item.error}
-                  visible_caption={item.visible_caption}
-                  oneItemResult={item.oneItemResult}
+                  error={error}
+                  visible_caption={visible_caption}
+                  oneItemResult={oneItemResult}
                 />
               </Link>
             ))}

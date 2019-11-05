@@ -15,6 +15,7 @@ class GeolocFalse extends React.Component {
     description: undefined,
     error: undefined,
     main: undefined,
+    message: undefined,
     background: "default"
   }
 
@@ -58,7 +59,8 @@ class GeolocFalse extends React.Component {
         country: undefined,
         humidity: undefined,
         description: undefined,
-        error: "Please enter correct values.",
+        error: data.cod,
+        message: data.message,
         main: undefined,
       });
     }
@@ -70,6 +72,7 @@ class GeolocFalse extends React.Component {
         humidity: data.main.humidity,
         description: data.weather[0].description,
         error: "",
+        message: "",
         main: data.weather[0].main
       });
     }
@@ -80,17 +83,21 @@ class GeolocFalse extends React.Component {
       <div id="weather" className={this.state.background}>
         {/* <Titles /> */}
         <Form getWeather={this.getWeather} />
-
-        <div id="weather__container">
-          <WeatherDetails
-            temperature={this.state.temperature}
-            humidity={this.state.humidity}
-            city={this.state.city}
-            country={this.state.country}
-            description={this.state.description}
-            error={this.state.error}
-          />
-        </div>
+        {this.state.city && this.state.country ?
+          <div id="weather__container">
+            <WeatherDetails
+              temperature={this.state.temperature}
+              humidity={this.state.humidity}
+              city={this.state.city}
+              country={this.state.country}
+              description={this.state.description}
+              error={this.state.error}
+              message={this.state.message}
+            />
+          </div>
+          : this.state.error ?
+            <div id="weather__container"><div className="weather__info">{this.state.message}</div></div>
+            : <div id="weather__container"><div className="weather__info">Type your location</div></div>}
       </div >
     )
   }

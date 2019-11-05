@@ -1,12 +1,10 @@
 import React from 'react';
 
-import { Link } from 'react-router-dom'
+import PlantCard from '../PlantCard';
 
-import PlantCard from './PlantCard';
-
-import '../App.scss';
-import './style/PlantList.scss'
-import './style/PlantCard.scss'
+import '../../App.scss';
+import '../style/PlantList.scss'
+import '../style/PlantCard.scss'
 
 const API_KEY = "YjlIUlp5QktVcXRIZTEzVGNMSmlOZz09"
 const plants = [
@@ -21,13 +19,19 @@ const plants = [
   { id: 139838 },
   { id: 158107 },
   { id: 174523 },
-  { id: 175722 }
+  { id: 175722 },
+  { id: 192303 }
 ]
 
-const plantsData = []
+const seasonalPlants = []
+const popPlants = []
 
-class PlantList extends React.Component {
+class GardenList extends React.Component {
   state = {
+    id: undefined,
+    common_name: undefined,
+    scientific_name: undefined,
+    image: undefined,
     isLoaded: false
   }
 
@@ -38,15 +42,24 @@ class PlantList extends React.Component {
       const imgLen = data.images ? data.images.length - 1 : 'none'
       const species = data.main_species ? data.main_species.common_name:'undefined' 
       if (imgLen !== 'none'){          
-        plantsData.push({id: data.id, common_name: species, scientific_name: data.scientific_name, image: data.images[imgLen].url})
+        this.setState({
+          id: data.id,
+          common_name: species,
+          scientific_name: data.scientific_name,
+          image: data.images[imgLen].url,
+          isLoaded: true
+        }, ()=> {
+          if (i < (plants.length / 2) - 1) {
+            popPlants.push(this.state)
+          } else {
+            seasonalPlants.push(this.state)
+          }
+        })
       }
     }
-    this.setState({
-      isLoaded: true
-    })
   }
 
-  componentDidMount = () => {
+  componentDidMount() {
     this.getPlant()
   }
   
@@ -60,31 +73,27 @@ class PlantList extends React.Component {
           <section className="plantList--section">
             <h2>Popular plants</h2>
             <div className="plantCard--container">
-              {plantsData.filter((elt, ind)=> ind < 6).map((item)=> (
-                <Link to={`/plants/${item.id}`}>
-                  <PlantCard
-                    key={item.id}
-                    common_name={item.common_name}
-                    scientific_name={item.scientific_name}
-                    image={item.image}
-                  />
-                </Link>
-              ))}
-            </div>
-          </section>
-          <section className="plantList--section">
-            <h2>Seasonal plants</h2>
-            <div className="plantCard--container">
-              <Link to={`/plants/${item.id}`}>
-              {plantsData.filter((elt, ind)=> ind >= 6).map(item => (
+              {popPlants.map(item => (
                 <PlantCard
                   key={item.id}
                   common_name={item.common_name}
                   scientific_name={item.scientific_name}
                   image={item.image}
                 />
-              </Link>
               ))}
+            </div>
+          </section>
+          <section className="plantList--section">
+            <h2>Seasonal plants</h2>
+            <div className="plantCard--container">
+            {seasonalPlants.map(item => (
+              <PlantCard
+                key={item.id}
+                common_name={item.common_name}
+                scientific_name={item.scientific_name}
+                image={item.image}
+              />
+            ))}
             </div>
           </section>
         </div>
@@ -94,4 +103,4 @@ class PlantList extends React.Component {
   }
 }
 
-export default PlantList;
+export default GardenList;

@@ -2,29 +2,31 @@ import React from 'react';
 
 // import des différents composants
 import Connect from './Connect';
-import Footer from './Footer.js';
-import NavBar from './NavBar.js';
+import Footer from './Footer';
+import NavBar from './NavBar';
 import PlantList from './PlantList';
 import Search from './Search';
 import Geoloc from './Geoloc';
+import Garden from './gardenComp/GardenList'
+import NavMobile from './NavMobile'
 
 import '../App.scss';
 
 class Home extends React.Component {
   state = {
-    isOnline : false,
-    email : ''
+    isOnline: false,
+    email: ''
   }
 
-  componentDidMount (){
+  componentDidMount() {
     const email = localStorage.getItem('email');
-    if(email) {
+    if (email) {
       this.setState({
-        isOnline : true
+        isOnline: true
       })
     } else {
       this.setState({
-        isOnline : false
+        isOnline: false
       })
     }
   }
@@ -35,25 +37,34 @@ class Home extends React.Component {
       <div className="app">
 
         {/* module de connexion sign in/up */}
-        {this.state.isOnline ? 
+        {this.state.isOnline ?
           <NavBar /> :
           <Connect />
         }
 
         {/* affichage météo relié à une API */}
-        <Geoloc />
+          <Geoloc />
 
         {/* bare de recherche lié à une API plante */}
         <Search />
 
         {/* grille suggestion plantes */}
-        <PlantList />
+
+        {this.state.isOnline ?
+          <Garden /> :
+          <PlantList />
+        }
+
+        {/* navbar mobile */}
+        {this.state.isOnline ?
+          <NavMobile /> :
+          null}
 
         {/* infos / réseaux sociaux */}
         <Footer />
 
         {/* menu de l'appli une fois connecté garden/board/alerts */}
-        
+
       </div>
     );
   }
