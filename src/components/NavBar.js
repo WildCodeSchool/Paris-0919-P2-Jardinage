@@ -17,8 +17,10 @@ class NavBar extends React.Component {
         return (
             <div id="navBar">
                 <ul className="header--title">
-                    <li><img src={iconTree} alt="icon tree" /></li>
-                    <li><h1>PlantMe</h1></li>
+                    <Link to="/" className="iconPlantMe">
+                        <li><img src={iconTree} alt="icon tree" /></li>
+                        <li><h1>PlantMe</h1></li>
+                    </Link>
                 </ul>
                 <ul className="menu">
                     <li><Link to="/garden">Garden</Link></li>
