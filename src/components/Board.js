@@ -13,7 +13,8 @@ import '../App.scss';
 class Board extends React.Component {
   state = {
     isOnline: false,
-    email: ''
+    email: '',
+    notifsCounter: 0
   }
 
   componentDidMount() {
@@ -29,24 +30,30 @@ class Board extends React.Component {
     }
   }
 
+  handleCount = () => {
+    this.setState({
+      notifsCounter: this.state.notifsCounter + 1
+    })
+    {console.log("counter",this.state.notifsCounter)}
+  }
+
   render() {
-    console.log(this.state.isOnline)
     if (this.state.isOnline) {
       return (
         <div className="app">
 
           {/* module de connexion sign in/up */}
-          <NavBar />
+          <NavBar counter={this.state.notifsCounter}/>
 
           {/* bare de recherche lié à une API plante */}
           <Search />
 
           {/* grille suggestion plantes */}
-          <GardenList />
+          <GardenList counter={this.handleCount}/>
 
 
           {/* navbar mobile */}
-          <NavMobile/>
+          <NavMobile counter={this.state.notifsCounter}/>
 
           {/* infos / réseaux sociaux */}
           <Footer />

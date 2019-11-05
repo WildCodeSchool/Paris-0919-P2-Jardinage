@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 
 import '../App.scss';
+import './style/notifs.scss'
 
 class NavBar extends React.Component {
 
@@ -23,7 +24,7 @@ class NavBar extends React.Component {
                     </ul>
                 </Link>
                 <ul className="menu">
-                    <li><Link to="/garden">Garden</Link></li>
+                    <li><div className="msg-count">{this.props.counter}</div><Link to="/garden">Garden</Link></li>
                     <li><Link to="/board">Board</Link></li>
                     <li><Link to="/alerts">Alerts</Link></li>
                 </ul>
