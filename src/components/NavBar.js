@@ -21,13 +21,15 @@ class NavBar extends React.Component {
                     <li><h1>PlantMe</h1></li>
                 </ul>
                 <ul className="menu">
-                        <li><Link to="/garden">Garden</Link></li>
-                        <li><Link to="/board">Board</Link></li>
-                        <li><Link to="/alerts">Alerts</Link></li>
+                    <li><Link to="/garden">Garden</Link></li>
+                    <li><Link to="/board">Board</Link></li>
+                    <li><Link to="/alerts">Alerts</Link></li>
                 </ul>
                 <ul className="logout">
-                    <li><img src={iconUser} alt="icon user" /></li>
-                    <li><form><button className="NavBar-logout" onClick={this.logOut} >Sign out</button></form></li>
+                    <li className="alert-icon"><img src={iconUser} alt="icon user" /></li>
+                </ul>
+                <ul className="ul-log">
+                    <li className="log"><form><button className="NavBar-logout" onClick={this.logOut} >Sign out</button></form></li>
                 </ul>
             </div>
         );

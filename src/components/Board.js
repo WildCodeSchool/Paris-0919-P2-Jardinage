@@ -5,7 +5,8 @@ import Home from './Home'
 import Footer from './Footer';
 import NavBar from './NavBar';
 import Search from './Search';
-import GardenList from './gardenComp/GardenList'
+import GardenList from './gardenComp/GardenList';
+import NavMobile from './NavMobile';
 
 import '../App.scss';
 
@@ -42,6 +43,10 @@ class Board extends React.Component {
 
           {/* grille suggestion plantes */}
           <GardenList />
+
+
+          {/* navbar mobile */}
+          <NavMobile/>
 
           {/* infos / réseaux sociaux */}
           <Footer />

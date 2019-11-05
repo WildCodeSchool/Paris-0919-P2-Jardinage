@@ -1,10 +1,16 @@
+
+.global-container{
+  min-width: 80%;
+  margin: auto;
+}
+
 .Notifications-container{
   width: 100%;
   display: flex;
-  padding: 50px;
+  padding: 20px;
   justify-content: center;
   flex-direction: column;
-  margin: 100px;
+  margin: 100px 0px 100px 0px;
   border-left: 3px solid #19aa53;
     h1{
       color: black;
