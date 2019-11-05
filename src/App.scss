@@ -54,6 +54,11 @@ h4 {
 .header--title {
   display: flex;
 }
+
+.header--title ul {
+  display: flex;
+}
+
 .header--title img {
   width: 30px;
 }
@@ -270,6 +275,8 @@ h4 {
       padding: 0px 5% 0px 5%;
     }
   }
+
+ 
 
   .logout img {
     width: 40px;

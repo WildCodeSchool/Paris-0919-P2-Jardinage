@@ -8,6 +8,7 @@ import PlantList from './PlantList';
 import Search from './Search';
 import Geoloc from './Geoloc';
 import Garden from './gardenComp/GardenList'
+import NavMobile from './NavMobile'
 
 import '../App.scss';
 
@@ -42,10 +43,7 @@ class Home extends React.Component {
         }
 
         {/* affichage météo relié à une API */}
-        {this.state.isOnline ?
-          null :
           <Geoloc />
-        }
 
         {/* bare de recherche lié à une API plante */}
         <Search />
@@ -56,6 +54,11 @@ class Home extends React.Component {
           <Garden /> :
           <PlantList />
         }
+
+        {/* navbar mobile */}
+        {this.state.isOnline ?
+          <NavMobile /> :
+          null}
 
         {/* infos / réseaux sociaux */}
         <Footer />

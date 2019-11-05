@@ -10,7 +10,7 @@
   padding: 20px;
   justify-content: center;
   flex-direction: column;
-  margin: 100px 0px 100px 0px;
+  margin: 8% 0px 8% 0px;
   border-left: 3px solid #19aa53;
     h1{
       color: black;
@@ -61,4 +61,20 @@
         }
       }
     }
+}
+
+
+/////////////////////////////////////////////////////////////////////////////
+////////////////////////////* Media Queries *////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media only screen and (max-width: 575.98px) {
+  #footer {
+    display: none;
+  }
+
+  .Notifications-container{
+    margin: 3% 0px 3% 0px;
+  }
 }
