@@ -3,7 +3,7 @@ import React from 'react'
 import NavBar from './NavBar'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLeaf, faClock, faTree, faRuler, faSpa, faChartLine } from '@fortawesome/free-solid-svg-icons'
+import { faLeaf, faClock, faTree, faRuler, faSpa, faChartLine, faHourglass, faSkullCrossbones} from '@fortawesome/free-solid-svg-icons'
 
 import './style/PlantDetails.scss'
 
@@ -53,7 +53,7 @@ class PlantDetails extends React.Component {
           </div>
         </div>
 
-        <p class="Plant__data_info">{plant && plant.main_species.complete_data ? "" : "The data about this plant might be incomplete :(" }</p>
+        <p class="Plant__data_info">{plant && plant.main_species && plant.main_species.complete_data ? "" : "The data about this plant might be incomplete :(" }</p>
 
         {/* BODY */}
         <div className="Plant__body">
@@ -63,6 +63,10 @@ class PlantDetails extends React.Component {
               <tr className="Plant__specs--line">
                 <td><span className="Plant__specs_icon"><FontAwesomeIcon icon={faClock}/></span>Duration</td>
                 <td>{plant && plant.duration ? plant.duration : "No data :("}</td>
+              </tr>
+              <tr className="Plant__specs--line">
+                <td><span className="Plant__specs_icon"><FontAwesomeIcon icon={faHourglass}/></span>Lifespan</td>
+                <td>{plant && plant.main_species.specifications.lifespan ? plant.main_species.specifications.lifespan : "No data :("}</td>
               </tr>
               <tr className="Plant__specs--line">
                 <td><span className="Plant__specs_icon"><FontAwesomeIcon icon={faTree}/></span>Family name</td>
@@ -75,6 +79,10 @@ class PlantDetails extends React.Component {
               <tr className="Plant__specs--line">
                 <td><span className="Plant__specs_icon"><FontAwesomeIcon icon={faChartLine}/></span> Growth rate</td>
                 <td>{plant && plant.main_species.specifications.growth_rate ? plant.main_species.specifications.growth_rate : "No data :("}</td>
+              </tr>
+              <tr className="Plant__specs--line">
+                <td><span className="Plant__specs_icon"><FontAwesomeIcon icon={faSkullCrossbones}/></span> Toxicity</td>
+                <td>{plant && plant.main_species.specifications.toxicity ? plant.main_species.specifications.toxicity : "No data :("}</td>
               </tr>
             </tbody>
           </table>
@@ -90,7 +98,7 @@ class PlantDetails extends React.Component {
                 <span><FontAwesomeIcon icon={faSpa}/></span>
               </div>
               <div class="Plant__card_body">
-                {plant && plant.main_species.flower.color ? plant.main_species.flower.color : "No data :("}
+                {plant && plant.main_species && plant.main_species.flower && plant.main_species.flower.color ? plant.main_species.flower.color : "No data :("}
               </div>
             </div>
             <div class="Plant__card">
@@ -101,11 +109,43 @@ class PlantDetails extends React.Component {
                 <span><FontAwesomeIcon icon={faLeaf}/></span>
               </div>
               <div class="Plant__card_body">
-                {plant && plant.main_species.foliage.color ? plant.main_species.foliage.color : "No data :("}
+                {plant && plant.main_species && plant.main_species.foliage &&plant.main_species.foliage.color ? plant.main_species.foliage.color : "No data :("}
               </div>
             </div>
           </div>
 
+          {/* BODY TIPS  <- this container might be refactored */}
+          
+          {((plant && plant.main_species && plant.main_species.growth && plant.main_species.growth.temperature_minimum && plant.main_species.growth.temperature_minimum.deg_c) || (plant && plant.main_species && plant.main_species.growth && plant.main_species.growth.drought_tolerance) || ((plant && plant.main_species && plant.main_species.soils_adaptation) && (plant.main_species.soils_adaptation.medium || plant.main_species.soils_adaptation.fine || plant.main_species.soils_adaptation.coarse)) || (plant && plant.main_species  && plant.main_species.seed && plant.main_species.seed.bloom_period)) && 
+
+          <div className="Tips__container">
+          <h2>Tips</h2>
+            {(plant && plant.main_species && plant.main_species.growth && plant.main_species.growth.temperature_minimum && plant.main_species.growth.temperature_minimum.deg_c) && 
+              <div className="Tip">
+                Be careful! Your seed is able to resist a maximum negative temperature of <span>{plant.main_species.growth.temperature_minimum.deg_c && 
+                  `${(plant.main_species.growth.temperature_minimum.deg_c).toFixed(0)} ° (celsius)`}</span>
+              </div>
+            }
+
+            {(plant && plant.main_species && plant.main_species.growth && plant.main_species.growth.drought_tolerance) && 
+              <div className="Tip">
+                Be sure to water your plant often, it has a <span>{plant.main_species.growth.drought_tolerance && 
+                plant.main_species.growth.drought_tolerance}</span> drought tolerance.
+              </div>
+            }
+
+            {(plant && plant.main_species && plant.main_species.soils_adaptation) && (plant.main_species.soils_adaptation.medium || plant.main_species.soils_adaptation.fine || plant.main_species.soils_adaptation.coarse) &&
+              <div className="Tip">Your seed is adapted to 
+                <span>{plant.main_species.soils_adaptation.medium && "- medium soil"}</span>
+                <span>{plant.main_species.soils_adaptation.fine && "- fine soil"}</span>
+                <span>{plant.main_species.soils_adaptation.coarse && "- coarse soil"}</span>
+              </div> 
+            }
+
+            {(plant && plant.main_species  && plant.main_species.seed && plant.main_species.seed.bloom_period) && <div className="Tip">If you plant your seeds correctly, your plant should be blooming around <span>{plant.main_species.seed.bloom_period}</span></div>}
+          </div>
+
+        }
         </div>
       </div>
     </>

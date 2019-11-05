@@ -168,5 +168,29 @@ p.Plant__data_info{
 }
 
 
+//  TIPS
+
+.Tips__container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  .Tip{
+    width: 100%;
+    color: black;
+    font-size: 20px;
+    border: 1px dotted #19aa53;
+    border-left: 5px solid #19aa53;
+    border-radius: 0 5px 5px 0;
+    background: white;
+    padding: 15px;
+    margin: 10px;
+    span{
+      color: black;
+      font-weight: bold;
+    }
+  }
+}
+
+
 
 
