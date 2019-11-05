@@ -144,6 +144,12 @@ input:focus {
   margin: 20px auto;
 }
 
+.no-scroll {
+  display: none;
+}
+.scroll {
+  color: orange;
+}
 /* Extra small devices (portrait phones, less than 768px) */
 
 @media only screen and (max-width: 768px) {

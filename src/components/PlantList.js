@@ -26,10 +26,6 @@ const plantsData = []
 
 class PlantList extends React.Component {
   state = {
-    id: undefined,
-    common_name: undefined,
-    scientific_name: undefined,
-    image: undefined,
     isLoaded: false
   }
 
@@ -43,12 +39,7 @@ class PlantList extends React.Component {
         plantsData.push({id: data.id, common_name: species, scientific_name: data.scientific_name, image: data.images[imgLen].url})
       }
     }
-    
     this.setState({
-      id: plantsData.id,
-      common_name: plantsData.species,
-      scientific_name: plantsData.scientific_name,
-      image: plantsData.image,
       isLoaded: true
     })
   }
