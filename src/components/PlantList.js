@@ -19,19 +19,13 @@ const plants = [
   { id: 139838 },
   { id: 158107 },
   { id: 174523 },
-  { id: 175722 },
-  { id: 192303 }
+  { id: 175722 }
 ]
 
-const seasonalPlants = []
-const popPlants = []
+const plantsData = []
 
 class PlantList extends React.Component {
   state = {
-    id: undefined,
-    common_name: undefined,
-    scientific_name: undefined,
-    image: undefined,
     isLoaded: false
   }
 
@@ -42,24 +36,15 @@ class PlantList extends React.Component {
       const imgLen = data.images ? data.images.length - 1 : 'none'
       const species = data.main_species ? data.main_species.common_name:'undefined' 
       if (imgLen !== 'none'){          
-        this.setState({
-          id: data.id,
-          common_name: species,
-          scientific_name: data.scientific_name,
-          image: data.images[imgLen].url,
-          isLoaded: true
-        }, ()=> {
-          if (i < (plants.length / 2) - 1) {
-            popPlants.push(this.state)
-          } else {
-            seasonalPlants.push(this.state)
-          }
-        })
+        plantsData.push({id: data.id, common_name: species, scientific_name: data.scientific_name, image: data.images[imgLen].url})
       }
     }
+    this.setState({
+      isLoaded: true
+    })
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     this.getPlant()
   }
   
@@ -73,7 +58,7 @@ class PlantList extends React.Component {
           <section className="plantList--section">
             <h2>Popular plants</h2>
             <div className="plantCard--container">
-              {popPlants.map(item => (
+              {plantsData.filter((elt, ind)=> ind < 6).map((item)=> (
                 <PlantCard
                   key={item.id}
                   common_name={item.common_name}
@@ -86,14 +71,14 @@ class PlantList extends React.Component {
           <section className="plantList--section">
             <h2>Seasonal plants</h2>
             <div className="plantCard--container">
-            {seasonalPlants.map(item => (
-              <PlantCard
-                key={item.id}
-                common_name={item.common_name}
-                scientific_name={item.scientific_name}
-                image={item.image}
-              />
-            ))}
+              {plantsData.filter((elt, ind)=> ind >= 6).map(item => (
+                <PlantCard
+                  key={item.id}
+                  common_name={item.common_name}
+                  scientific_name={item.scientific_name}
+                  image={item.image}
+                />
+              ))}
             </div>
           </section>
         </div>
