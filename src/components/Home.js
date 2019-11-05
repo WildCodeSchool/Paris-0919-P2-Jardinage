@@ -43,10 +43,7 @@ class Home extends React.Component {
         }
 
         {/* affichage météo relié à une API */}
-        {this.state.isOnline ?
-          null :
           <Geoloc />
-        }
 
         {/* bare de recherche lié à une API plante */}
         <Search />
