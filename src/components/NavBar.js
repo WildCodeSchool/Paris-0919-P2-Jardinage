@@ -16,12 +16,12 @@ class NavBar extends React.Component {
     render() {
         return (
             <div id="navBar">
-                <ul className="header--title">
-                    <Link to="/" className="iconPlantMe">
+                <Link to="/" className="header--title">
+                    <ul>
                         <li><img src={iconTree} alt="icon tree" /></li>
                         <li><h1>PlantMe</h1></li>
-                    </Link>
-                </ul>
+                    </ul>
+                </Link>
                 <ul className="menu">
                     <li><Link to="/garden">Garden</Link></li>
                     <li><Link to="/board">Board</Link></li>
@@ -33,7 +33,7 @@ class NavBar extends React.Component {
                 <ul className="ul-log">
                     <li className="log"><form><button className="NavBar-logout" onClick={this.logOut} >Sign out</button></form></li>
                 </ul>
-            </div>
+            </div >
         );
     };
 }

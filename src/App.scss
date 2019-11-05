@@ -54,6 +54,11 @@ h4 {
 .header--title {
   display: flex;
 }
+
+.header--title ul {
+  display: flex;
+}
+
 .header--title img {
   width: 30px;
 }
@@ -271,9 +276,7 @@ h4 {
     }
   }
 
- .iconPlantMe {
-    display: flex;
-  }
+ 
 
   .logout img {
     width: 40px;
