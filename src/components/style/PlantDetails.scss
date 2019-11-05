@@ -16,6 +16,7 @@
   flex-direction: column;
   justify-content: flex-start;
   h2{
+    margin-top: 80px;
     color: black;
     text-transform: uppercase;
     font-family: 'Josefin', sans-serif;
@@ -30,6 +31,7 @@
 .Plant__specs{
   display: table;
   width: 100%;
+  margin-top: 15px;
   padding: 15px 150px;
   border-top: 1px solid #e6e6e6;
   border-collapse: collapse;
@@ -118,3 +120,53 @@
   object-fit: cover;
   border-radius: 10px;
 }
+
+p.Plant__data_info{
+  text-align: center;
+  color: #19aa53;
+  font-style: italic;
+}
+
+// Plant cards
+
+.Plant__cards{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  margin-top: 15px;
+  .Plant__card{
+    display: flex;
+    margin: 20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    background: transparent;
+    border-radius: 10px 0 10px 0;
+    border: 1px solid #19aa53;
+    width: 270px;
+    .Plant__card_title{
+      font-size: 1.5rem;
+      font-weight: bold;
+      border-bottom: 1px solid #19aa5366;
+      padding-bottom: 15px;
+      color: #19aa53;
+    }
+    .Plant__card_icon{
+      font-size: 150px;
+      padding: 30px;
+      path{
+        color: #19aa53;
+      }
+    }
+    .Plant__card_body{
+      font-size: 20px;
+      position: relative;
+      color: #19aa53;
+    }
+  }
+}
+
+
+
+

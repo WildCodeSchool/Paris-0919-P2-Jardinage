@@ -3,7 +3,7 @@ import React from 'react'
 import NavBar from './NavBar'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLeaf, faClock, faTree, faRuler, faSpa } from '@fortawesome/free-solid-svg-icons'
+import { faLeaf, faClock, faTree, faRuler, faSpa, faChartLine } from '@fortawesome/free-solid-svg-icons'
 
 import './style/PlantDetails.scss'
 
@@ -15,7 +15,7 @@ class PlantDetails extends React.Component {
     plant_image: null
   }
 
-  componentDidMount() {
+  componentWillMount() {
     const handle = this.props.match.params.handle
     fetch(`https://trefle.io/api/plants/${handle}?token=${API_KEY}`)
     .then(data => data.json())
@@ -53,6 +53,8 @@ class PlantDetails extends React.Component {
           </div>
         </div>
 
+        <p class="Plant__data_info">{plant && plant.main_species.complete_data ? "" : "The data about this plant might be incomplete :(" }</p>
+
         {/* BODY */}
         <div className="Plant__body">
           <h2>Caracteristics</h2>
@@ -60,28 +62,51 @@ class PlantDetails extends React.Component {
             <tbody>
               <tr className="Plant__specs--line">
                 <td><span className="Plant__specs_icon"><FontAwesomeIcon icon={faClock}/></span>Duration</td>
-                <td>{plant && plant.duration}</td>
+                <td>{plant && plant.duration ? plant.duration : "No data :("}</td>
               </tr>
               <tr className="Plant__specs--line">
                 <td><span className="Plant__specs_icon"><FontAwesomeIcon icon={faTree}/></span>Family name</td>
-                <td>{plant && plant.family_common_name}</td>
+                <td>{plant && plant.family_common_name ? plant.family_common_name : "No data :("}</td>
               </tr>
               <tr className="Plant__specs--line">
                 <td><span className="Plant__specs_icon"><FontAwesomeIcon icon={faRuler}/></span> Mature height</td>
-                <td>{plant && (plant.main_species.specifications.mature_height.cm).toFixed(2)} cm</td>
+                <td>{plant && plant.main_species.specifications.mature_height.cm ? `${plant.main_species.specifications.mature_height.cm.toFixed(2)} cm` : "No data :("} </td>
               </tr>
               <tr className="Plant__specs--line">
-                <td><span className="Plant__specs_icon"><FontAwesomeIcon icon={faLeaf}/></span>Foliage color</td>
-                <td>{plant && plant.main_species.foliage.color}</td>
-              </tr>
-              <tr className="Plant__specs--line">
-                <td><span className="Plant__specs_icon"><FontAwesomeIcon icon={faSpa}/></span>Flower color</td>
-                <td>{plant && plant.main_species.flower.color}</td>
+                <td><span className="Plant__specs_icon"><FontAwesomeIcon icon={faChartLine}/></span> Growth rate</td>
+                <td>{plant && plant.main_species.specifications.growth_rate ? plant.main_species.specifications.growth_rate : "No data :("}</td>
               </tr>
             </tbody>
           </table>
-        </div>
 
+          {/* BODY CARDS */}
+          <h2>Colors</h2>
+          <div className="Plant__cards">
+            <div class="Plant__card">
+              <div class="Plant__card_title">
+                Foliage color
+              </div>
+              <div class="Plant__card_icon">
+                <span><FontAwesomeIcon icon={faSpa}/></span>
+              </div>
+              <div class="Plant__card_body">
+                {plant && plant.main_species.flower.color ? plant.main_species.flower.color : "No data :("}
+              </div>
+            </div>
+            <div class="Plant__card">
+              <div class="Plant__card_title">
+                Flower color
+              </div>
+              <div class="Plant__card_icon">
+                <span><FontAwesomeIcon icon={faLeaf}/></span>
+              </div>
+              <div class="Plant__card_body">
+                {plant && plant.main_species.foliage.color ? plant.main_species.foliage.color : "No data :("}
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
     </>
     )
