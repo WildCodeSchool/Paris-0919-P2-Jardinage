@@ -1,13 +1,12 @@
 import React from 'react';
 
-import PlantCard from '../PlantCard';
-
-import '../../App.scss';
-import '../style/PlantList.scss'
-import '../style/PlantCard.scss'
+import '../style/GardenList.scss'
 
 const API_KEY = "YjlIUlp5QktVcXRIZTEzVGNMSmlOZz09"
-const plants = [
+
+let localStorageData = localStorage
+//ci-dessous voué à être remplacé par data du local storage ci-dessus
+const dataMytho = [
   { id: 141569 },
   { id: 131368 },
   { id: 111119 },
@@ -19,88 +18,53 @@ const plants = [
   { id: 139838 },
   { id: 158107 },
   { id: 174523 },
-  { id: 175722 },
-  { id: 192303 }
+  { id: 175722 }
 ]
 
-const seasonalPlants = []
-const popPlants = []
-
 class GardenList extends React.Component {
-  state = {
-    id: undefined,
-    common_name: undefined,
-    scientific_name: undefined,
-    image: undefined,
-    isLoaded: false
-  }
 
-  getPlant = async () => {
-    for (let i=0; i < plants.length; i++) {
-      const api_call = await fetch(`https://trefle.io/api/plants/${plants[i].id}?token=${API_KEY}`)
-      const data = await api_call.json()      
-      const imgLen = data.images ? data.images.length - 1 : 'none'
-      const species = data.main_species ? data.main_species.common_name:'undefined' 
-      if (imgLen !== 'none'){          
-        this.setState({
-          id: data.id,
-          common_name: species,
-          scientific_name: data.scientific_name,
-          image: data.images[imgLen].url,
-          isLoaded: true
-        }, ()=> {
-          if (i < (plants.length / 2) - 1) {
-            popPlants.push(this.state)
-          } else {
-            seasonalPlants.push(this.state)
-          }
-        })
-      }
-    }
+  state = {
+    plantsAdded: []
   }
 
   componentDidMount() {
     this.getPlant()
   }
-  
-  render() { 
-    return (
-      <>
-      {!this.state.isLoaded ? (
-        <div className="plant-loader"></div>
-      ) : (
-        <div id="plantList">
-          <section className="plantList--section">
-            <h2>Popular plants</h2>
-            <div className="plantCard--container">
-              {popPlants.map(item => (
-                <PlantCard
-                  key={item.id}
-                  common_name={item.common_name}
-                  scientific_name={item.scientific_name}
-                  image={item.image}
-                />
-              ))}
-            </div>
-          </section>
-          <section className="plantList--section">
-            <h2>Seasonal plants</h2>
-            <div className="plantCard--container">
-            {seasonalPlants.map(item => (
-              <PlantCard
-                key={item.id}
-                common_name={item.common_name}
-                scientific_name={item.scientific_name}
-                image={item.image}
-              />
-            ))}
-            </div>
-          </section>
-        </div>
-      )}
-      </>
-    );
+
+  getPlant = async () => {
+    let toRender = []
+    for (let i = 0; i < dataMytho.length; i++) {
+      const api_call = await fetch(`https://trefle.io/api/plants/${dataMytho[i].id}?token=${API_KEY}`)
+      const data = await api_call.json()
+      console.log(data)
+      toRender.push(data)
+    }
+    this.setState({ plantsAdded: toRender })
+    console.log('ça marche ou quoi!!?', this.state.plantsAdded)
   }
+
+  theRender = () => {
+    return (
+      this.state.plantsAdded.map((obj, index) => (
+        <figure key={index} className='card'>
+          <h2>{obj.common_name}</h2>
+        </figure>
+      )
+      )
+    )
+  }
+
+  render() {
+    console.log(localStorageData)
+    return (
+      <div>
+
+        {this.state.plantsAdded.length > 0 && this.theRender()}
+
+      </div>
+    )
+  }
+
 }
 
 export default GardenList;
