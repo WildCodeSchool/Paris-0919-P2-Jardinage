@@ -2,15 +2,33 @@ import React from 'react'
 import iconAdd from '../icon-plus.svg'
 import './style/PlantCard.scss'
 
-const PlantCard = props => (
-  <figure className={props.oneItemResult ? "plantCard lonely":"plantCard"}>
-    {props.image && props.common_name && <img className="plantCard-img" src={props.image} alt={props.common_name} />} 
-    <img className="plantCard-icon" src={iconAdd} alt="icon add" />
-    <figcaption className={props.visible_caption ? "subtitle" : "invisible"}>
-      {props.common_name && <strong>{props.common_name}</strong>} 
-      {props.scientific_name && <em>{props.scientific_name}</em>}
-    </figcaption>
-  </figure>
-)
+class PlantCard extends React.Component {
+
+  componentDidMount() {
+    localStorage.setItem("ids", JSON.stringify([]))
+    
+  }
+
+  getId = () => {
+    let numId = this.props.id
+
+
+    localStorage.setItem('id', numId)
+    console.log(numId)
+  }
+
+  render() {
+    return (
+      <figure className={this.props.oneItemResult ? "plantCard lonely":"plantCard"}>
+        {this.props.image && this.props.common_name && <img className="plantCard-img" src={this.props.image} alt={this.props.common_name} />} 
+        <img className="plantCard-icon" src={iconAdd} alt="icon add" onClick={this.getId} />
+        <figcaption className={this.props.visible_caption ? "subtitle" : "invisible"}>
+          {this.props.common_name && <strong>{this.props.common_name}</strong>} 
+          {this.props.scientific_name && <em>{this.props.scientific_name}</em>}
+        </figcaption>
+      </figure>
+    )
+  }
+}
     
 export default PlantCard
