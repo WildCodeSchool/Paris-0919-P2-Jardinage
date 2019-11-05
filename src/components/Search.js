@@ -68,14 +68,20 @@ class Search extends React.Component {
   render() {
     const { error, visible_caption, oneItemResult } = this.state
     const scrollClass = (finalResult.length > 2) ? "scroll" : "no-scroll"
+    const displayS = (finalResult.length > 1) ? "s" : "no-s"
     return (
       <div className="search">
         <SearchForm getPlant={this.getPlant} />
-        <p className={visible_caption? "plantCard-error":"plantCard-error invisible"}>{`${finalResult.length} plants found.`} <span className={scrollClass}>Please scroll to watch all the results !</span></p>
+        <p className={visible_caption? "plantCard-error":"plantCard-error invisible"}>
+          {`${finalResult.length} plant`}
+          <span className={displayS}>s </span>{` found. `} 
+          <span className={scrollClass}>Please scroll to watch all the results !</span>
+        </p>
         <div className="search-result">
           {!error ? (
             <>
-            {finalResult.map(item =>(
+            {finalResult.map(item => 
+            (
               <PlantCard
                 key={item.id}
                 common_name={item.common_name}
