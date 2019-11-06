@@ -76,6 +76,7 @@ class GardenList extends React.Component {
               {popPlants.map(item => (
                 <PlantCard
                   key={item.id}
+                  id={item.id}
                   common_name={item.common_name}
                   scientific_name={item.scientific_name}
                   image={item.image}
@@ -89,6 +90,7 @@ class GardenList extends React.Component {
             {seasonalPlants.map(item => (
               <PlantCard
                 key={item.id}
+                id={item.id}
                 common_name={item.common_name}
                 scientific_name={item.scientific_name}
                 image={item.image}
