@@ -62,6 +62,7 @@ class PlantList extends React.Component {
               {plantsData.filter((elt, ind)=> ind < 6).map((item)=> (
                 <PlantCard
                   key={item.id}
+                  id={item.id}
                   common_name={item.common_name}
                   scientific_name={item.scientific_name}
                   image={item.image}
@@ -75,6 +76,7 @@ class PlantList extends React.Component {
               {plantsData.filter((elt, ind)=> ind >= 6).map(item => (
                 <PlantCard
                   key={item.id}
+                  id={item.id}
                   common_name={item.common_name}
                   scientific_name={item.scientific_name}
                   image={item.image}
