@@ -1,0 +1,35 @@
+.grid{
+  width : 100%;
+  margin: 0 2em 1em 2em;
+  display : grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap : 1em;
+}
+
+.card {
+  height: 300px;
+  font-size: calc(1vw + 0.7rem);
+}
+
+.card h3 {
+  text-align:center;
+}
+
+.names-wrapper {
+  padding : 0.5em;
+  background-color:#1d1a26;
+}
+
+@media screen and (min-width : 679px){
+
+.card:hover{
+  .names-wrapper{
+    display:block;
+  }
+  border: solid 2px white;
+}
+  
+.names-wrapper {
+  display:none;
+}
+}
