@@ -1,6 +1,5 @@
 import React from 'react';
 
-<<<<<<< HEAD
 import '../style/GardenList.scss'
 
 const API_KEY = "YjlIUlp5QktVcXRIZTEzVGNMSmlOZz09"
@@ -69,18 +68,6 @@ class GardenList extends React.Component {
 
       </div>
     )
-=======
-import '../../App.scss';
-import '../style/PlantList.scss'
-import '../style/PlantCard.scss'
-
-class GardenList extends React.Component {
-
-  render() { 
-    return (
-      <div></div>
-    );
->>>>>>> dev
   }
 
 }
