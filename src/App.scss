@@ -243,6 +243,14 @@ h4 {
   display: none;
 }
 
+#idnotif {
+  color: red;
+}
+
+#idnotifMobile {
+  color: red;
+}
+
 // .NavBar-logout {
 //   margin-left: ;
 // }
@@ -276,8 +284,6 @@ h4 {
     }
   }
 
- 
-
   .logout img {
     width: 40px;
     margin-right: 0px;
@@ -290,9 +296,9 @@ h4 {
     height: 50px;
     display: flex;
     background-color: #19aa53e1;
-    -webkit-box-shadow: -1px 0px 13px 0px rgba(0,0,0,0.72);
-    -moz-box-shadow: -1px 0px 13px 0px rgba(0,0,0,0.72);
-    box-shadow: -1px 0px 13px 0px rgba(0,0,0,0.72);
+    -webkit-box-shadow: -1px 0px 13px 0px rgba(0, 0, 0, 0.72);
+    -moz-box-shadow: -1px 0px 13px 0px rgba(0, 0, 0, 0.72);
+    box-shadow: -1px 0px 13px 0px rgba(0, 0, 0, 0.72);
   }
 
   .nav-mobile .menu li a {
