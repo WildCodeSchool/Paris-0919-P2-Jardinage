@@ -24,7 +24,7 @@ class NavBar extends React.Component {
                     </ul>
                 </Link>
                 <ul className="menu">
-                    <li><div className="msg-count">{this.props.counter}</div><Link to="/garden">Garden</Link></li>
+                    <li><Link data-bubble={this.props.counter} to="/garden">Garden</Link></li>
                     <li><Link to="/board">Board</Link></li>
                     <li><Link to="/alerts">Alerts</Link></li>
                 </ul>
