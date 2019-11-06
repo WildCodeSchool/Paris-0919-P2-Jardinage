@@ -3,7 +3,6 @@ import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 
 import Home from './components/Home'
 import Garden from './components/Garden'
-import Board from './components/Board'
 import Alerts from './components/Alerts'
 import NotFound from './components/NotFound'
 
