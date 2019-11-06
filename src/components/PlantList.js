@@ -22,7 +22,7 @@ const plants = [
   { id: 175722 }
 ]
 
-const plantsData = []
+let plantsData = []
 
 class PlantList extends React.Component {
   state = {
@@ -45,6 +45,7 @@ class PlantList extends React.Component {
   }
 
   componentDidMount = () => {
+    plantsData = []
     this.getPlant()
   }
   

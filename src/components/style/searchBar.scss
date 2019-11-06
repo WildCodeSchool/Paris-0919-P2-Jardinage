@@ -151,6 +151,9 @@ input:focus {
 .scroll {
   color: orange;
 }
+.no-s {
+  display: none;
+}
 /* Extra small devices (portrait phones, less than 768px) */
 
 @media only screen and (max-width: 768px) {
