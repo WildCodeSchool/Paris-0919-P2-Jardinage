@@ -14,7 +14,6 @@ class Garden extends React.Component {
     isOnline: false,
     email: ''
   }
-
   componentDidMount() {
     const email = localStorage.getItem('email');
     if (email) {
