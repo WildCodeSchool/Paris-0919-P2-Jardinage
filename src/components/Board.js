@@ -7,6 +7,7 @@ import NavBar from './NavBar';
 import Search from './Search';
 import GardenList from './gardenComp/GardenList';
 import NavMobile from './NavMobile';
+import PlantList from './PlantList'
 
 import '../App.scss';
 
@@ -42,11 +43,11 @@ class Board extends React.Component {
           <Search />
 
           {/* grille suggestion plantes */}
-          <GardenList />
+          <PlantList />
 
 
           {/* navbar mobile */}
-          <NavMobile/>
+          <NavMobile />
 
           {/* infos / réseaux sociaux */}
           <Footer />
@@ -57,7 +58,7 @@ class Board extends React.Component {
       )
     }
     else {
-      return (<Home/>)
+      return (<Home />)
     }
   }
 }
