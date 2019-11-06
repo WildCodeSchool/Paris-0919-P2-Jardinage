@@ -18,12 +18,17 @@ import {
 import '../App.scss';
 import './style/searchBar.scss';
 
+const API_KEY = "YjlIUlp5QktVcXRIZTEzVGNMSmlOZz09"
+
+
 class Garden extends React.Component {
   state = {
     isOnline: false,
-    email: ''
+    email: '',
+    plantsAdded: []
   };
   componentDidMount() {
+    this.getPlant()
     const email = localStorage.getItem('email');
     if (email) {
       this.setState({
@@ -34,6 +39,18 @@ class Garden extends React.Component {
         isOnline: false
       });
     }
+  }
+  getPlant = async () => {
+    if (localStorage.ids !== undefined) {
+    const localStorageData = JSON.parse(localStorage.ids)
+    let toRender = []
+    for (let i = 0; i < localStorageData.length; i++) {
+      const api_call = await fetch(`https://trefle.io/api/plants/${localStorageData[i]}?token=${API_KEY}`)
+      const data = await api_call.json()
+      toRender.push(data)
+    }
+    this.setState({ plantsAdded: toRender })
+    } 
   }
 
   gardenInfo = () => {
@@ -58,9 +75,9 @@ class Garden extends React.Component {
         <NavBar />
 
         {/* bare de recherche lié à une API plante */}
-        <Search />
+        <Search getPlant={this.getPlant} />
 
-        {isThereAPlant ? <GardenList /> : this.gardenInfo()}
+        {isThereAPlant ? <GardenList getPlant={this.getPlant} newPlants={this.state.plantsAdded} /> : this.gardenInfo()}
 
         {/* grille suggestion plantes
         <GardenList /> */}
