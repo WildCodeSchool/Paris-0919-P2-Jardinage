@@ -4,7 +4,7 @@ import '../style/GardenList.scss'
 
 const API_KEY = "YjlIUlp5QktVcXRIZTEzVGNMSmlOZz09"
 
-let localStorageData = localStorage
+let localStorageData = localStorage.email
 //ci-dessous voué à être remplacé par data du local storage ci-dessus
 const dataMytho = [
   { id: 141569 },
@@ -55,7 +55,7 @@ class GardenList extends React.Component {
   }
 
   render() {
-    console.log(localStorageData)
+    console.log('ici', localStorageData)
     return (
       <div>
 
