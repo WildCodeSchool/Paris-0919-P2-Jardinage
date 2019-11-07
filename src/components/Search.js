@@ -98,6 +98,7 @@ class Search extends React.Component {
                 error={error}
                 visible_caption={visible_caption}
                 oneItemResult={oneItemResult}
+                counter={this.props.counter}
               />
             ))}
             </>

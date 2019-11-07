@@ -34,11 +34,11 @@ class Home extends React.Component {
   classAdd = () => {
     const element = document.getElementById("idnotif");
     const element2 = document.getElementById("idnotifMobile");
-    element.classList.add('slide-in-blurred-right')
-    element2.classList.add('slide-in-blurred-right')
+    element.classList.add('bounce-top')
+    element2.classList.add('bounce-top')
     setTimeout(() => {
-      element.classList.remove('slide-in-blurred-right')
-      element2.classList.remove('slide-in-blurred-right')
+      element.classList.remove('bounce-top')
+      element2.classList.remove('bounce-top')
     }, 600)
   }
 
@@ -65,7 +65,7 @@ class Home extends React.Component {
         <Geoloc />
 
         {/* bare de recherche lié à une API plante */}
-        <Search />
+        <Search counter={this.handleCount} />
 
         {/* grille suggestion plantes */}
         <PlantList counter={this.handleCount} />/>

@@ -26,7 +26,7 @@ class NavBar extends React.Component {
           </ul>
         </Link>
         <ul className="menu">
-          <li><Link to="/garden">Garden</Link><div id="idnotif" className="">{this.props.counter}</div></li>
+          <li><Link to="/garden"><div id="idnotif" className="">{this.props.counter}</div>Garden</Link></li>
           <li><Link to="/board">Board</Link></li>
           <li><Link to="/alerts">Alerts</Link></li>
         </ul>
@@ -34,8 +34,6 @@ class NavBar extends React.Component {
           <li className="alert-icon">
             <img src={iconUser} alt="icon user" />
           </li>
-        </ul>
-        <ul className="ul-log">
           <li className="log">
             <form>
               <button className="NavBar-logout" onClick={this.logOut}>
