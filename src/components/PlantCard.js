@@ -1,4 +1,7 @@
 import React from 'react';
+
+import { Link } from 'react-router-dom' 
+
 import iconAdd from '../icon-plus.svg';
 import './style/PlantCard.scss';
 
@@ -23,11 +26,13 @@ class PlantCard extends React.Component {
         className={this.props.oneItemResult ? 'plantCard lonely' : 'plantCard'}
       >
         {this.props.image && this.props.common_name && (
-          <img
-            className="plantCard-img"
-            src={this.props.image}
-            alt={this.props.common_name}
-          />
+          <Link to={`/plants/${this.props.id}`}>
+            <img
+              className="plantCard-img"
+              src={this.props.image}
+              alt={this.props.common_name}
+            />
+          </Link>
         )}
         <img
           className="plantCard-icon"
