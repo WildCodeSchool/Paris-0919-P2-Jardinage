@@ -26,7 +26,7 @@ class PlantCard extends React.Component {
         className={this.props.oneItemResult ? 'plantCard lonely' : 'plantCard'}
       >
         {this.props.image && this.props.common_name && (
-          <Link to={`/plants/${this.props.id}`}>
+          <Link className="plantCard--link" to={`/plants/${this.props.id}`}>
             <img
               className="plantCard-img"
               src={this.props.image}
