@@ -28,20 +28,32 @@ class GardenList extends React.Component {
       this.setState({ plantsAdded: toRender })
     } else {
       return null
-      // console.log("do something if nothing")
     }
   }
 
   theRender = () => {
-    return (
-      this.state.plantsAdded.map((obj, index) => (
-        <figure key={index} className='card' style={{ background: `url(${obj.images.length > 0 ? obj.images[Math.floor(Math.random() * obj.images.length)].url : 'https://res.cloudinary.com/dsbgj0oop/image/upload/v1572516426/default_img.png'})`, backgroundSize: 'cover' }}>
-          <div className='names-wrapper'>
-            <h3>{obj.common_name}</h3>
-            <h3><em>{obj.scientific_name}</em></h3>
-          </div>
-        </figure>
-      )))
+    if (this.state.displayGarden === 'grid') {
+      return (
+        this.state.plantsAdded.map((obj, index) => (
+          <figure key={index} className='card' style={{ background: `url(${obj.images.length > 0 ? obj.images[Math.floor(Math.random() * obj.images.length)].url : 'https://res.cloudinary.com/dsbgj0oop/image/upload/v1572516426/default_img.png'})`, backgroundSize: 'cover' }}>
+            <div className='names-wrapper'>
+              <h3>{obj.common_name}</h3>
+              <h3><em>{obj.scientific_name}</em></h3>
+            </div>
+          </figure>
+        )))
+    }
+    else if (this.state.displayGarden === 'list') {
+      return (
+        this.state.plantsAdded.map((obj, index) => (
+          <figure key={index} className='card'>
+            <div className='names-wrapper'>
+              <h3>{obj.common_name}</h3>
+              <h3><em>{obj.scientific_name}</em></h3>
+            </div>
+          </figure>
+        )))
+    }
   }
 
   ChangeDisplayGarden = () => {

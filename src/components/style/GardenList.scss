@@ -49,14 +49,30 @@ button {
   .grid .names-wrapper {
     display: none;
   }
+
+  .list {
+    width: 60%;
+  }
+
 }
 
 /////////////////////////////////////////// display different ///////////////////////////////////////////////
+
+.list {
+  margin: 0 auto;
+}
 
 .list .card {
   padding: 1em;
 }
 
 .list figure:nth-child(even) {
-  border: 3px solid rgb(22, 40, 204);
+  background-color: #1d1a26;
 }
+
+
+.list figure:nth-child(odd) {
+  background-color: #19aa53;
+}
+
+// @media screen and (min-width : 679px) {
