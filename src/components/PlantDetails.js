@@ -122,7 +122,7 @@ class PlantDetails extends React.Component {
           <h2>Tips</h2>
             {(plant && plant.main_species && plant.main_species.growth && plant.main_species.growth.temperature_minimum && plant.main_species.growth.temperature_minimum.deg_c) && 
               <div className="Tip">
-                Be careful! Your seed is able to resist a maximum negative temperature of <span>{plant.main_species.growth.temperature_minimum.deg_c && 
+                Your seed is able to resist a maximum negative temperature of <span>{plant.main_species.growth.temperature_minimum.deg_c && 
                   `${(plant.main_species.growth.temperature_minimum.deg_c).toFixed(0)} ° (celsius)`}</span>
               </div>
             }
