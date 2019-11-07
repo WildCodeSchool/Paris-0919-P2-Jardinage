@@ -26,7 +26,10 @@ class NavBar extends React.Component {
           </ul>
         </Link>
         <ul className="menu">
-          <li><Link to="/garden"><div id="idnotif" className="">{this.props.counter}</div>Garden</Link></li>
+          <li><Link to="/garden">{this.props.counter ?
+            <div id="idnotif" className="">{this.props.counter}</div>
+            : null}
+            Garden</Link></li>
           <li><Link to="/board">Board</Link></li>
           <li><Link to="/alerts">Alerts</Link></li>
         </ul>
