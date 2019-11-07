@@ -3,7 +3,7 @@ import iconAdd from '../icon-plus.svg';
 import './style/PlantCard.scss';
 
 class PlantCard extends React.Component {
-  componentDidMount() {
+ componentDidMount() {
     if (localStorage.getItem('ids') === null) {
       //...
       localStorage.setItem('ids', JSON.stringify([]));
@@ -13,7 +13,6 @@ class PlantCard extends React.Component {
   addIdToLocalStorge = e => {
     const ids = JSON.parse(localStorage.getItem('ids'));
     ids.push(this.props.id);
-
     localStorage.setItem('ids', JSON.stringify(ids));
   };
 
