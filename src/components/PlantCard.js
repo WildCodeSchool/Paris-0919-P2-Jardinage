@@ -14,6 +14,7 @@ class PlantCard extends React.Component {
     const ids = JSON.parse(localStorage.getItem('ids'));
     ids.push(this.props.id);
     localStorage.setItem('ids', JSON.stringify(ids));
+    this.props.counter()
   };
 
   render() {

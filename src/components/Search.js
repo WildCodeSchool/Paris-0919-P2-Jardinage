@@ -13,7 +13,7 @@ const API_KEY = "YjlIUlp5QktVcXRIZTEzVGNMSmlOZz09"
 let finalResult = []
 
 class Search extends React.Component {
-  state = { 
+  state = {
     error: undefined,
     visible_caption: false,
     oneItemResult: false,
@@ -33,19 +33,19 @@ class Search extends React.Component {
     // Premier appel API
     const api_1st_call = await fetch(`https://trefle.io/api/plants?q=${common_name}&complete_data=true&token=${API_KEY}`)
     const data = await api_1st_call.json()
-    
+
     // Si le premier appel API renvoie des résultats...
-    if(data[0]){
+    if (data[0]) {
       // ... et que l'utilisateur a bien tapé quelque chose dans l'input
-      if(common_name && data[0]){
+      if (common_name && data[0]) {
         // ...on lance un second appel API en boucle sur chaque ID de plante récupérée dans le 1er appel API 
-        for (let i=0; i < data.length; i++) {
+        for (let i = 0; i < data.length; i++) {
           const api_2nd_call = await fetch(`https://trefle.io/api/plants/${data[i].id}?token=${API_KEY}`)
           const data_plant = await api_2nd_call.json()
-          const species = data_plant.main_species ? data_plant.main_species.common_name:'undefined'
+          const species = data_plant.main_species ? data_plant.main_species.common_name : 'undefined'
           const randImage = data_plant.images[0] !== undefined ? data_plant.images[this.getRandomInt(data_plant.images.length)].url : default_img
-          finalResult.push({id: data_plant.id, common_name: species, scientific_name:data_plant.scientific_name, image: randImage})
-        } 
+          finalResult.push({ id: data_plant.id, common_name: species, scientific_name: data_plant.scientific_name, image: randImage })
+        }
         // Condition d'affichage selon le nombre de plantes à afficher
         if (finalResult.length > 1) {
           this.setState({
@@ -81,33 +81,34 @@ class Search extends React.Component {
     return (
       <div className="search">
         <SearchForm getPlant={this.getPlant} />
-        <p className={visible_caption? "plantCard-error":"plantCard-error invisible"}>
+        <p className={visible_caption ? "plantCard-error" : "plantCard-error invisible"}>
           {`${finalResult.length} plant`}
-          <span className={displayS}>s </span>{` found. `} 
+          <span className={displayS}>s </span>{` found. `}
           <span className={scrollClass}>Please scroll to watch all the results !</span>
         </p>
         <div className="search-result">
           {!error ? (
             <>
-            {finalResult.map(item => 
-            (
-              <Link to={`/plants/${item.id}`}>
-                <PlantCard
-                  key={item.id}
-                  id={item.id}
-                  common_name={item.common_name}
-                  scientific_name={item.scientific_name}
-                  image={item.image}
-                  error={error}
-                  visible_caption={visible_caption}
-                  oneItemResult={oneItemResult}
-                />
-              </Link>
-            ))}
+              {finalResult.map(item =>
+                (
+                  <Link to={`/plants/${item.id}`}>
+                    <PlantCard
+                      key={item.id}
+                      id={item.id}
+                      common_name={item.common_name}
+                      scientific_name={item.scientific_name}
+                      image={item.image}
+                      error={error}
+                      visible_caption={visible_caption}
+                      oneItemResult={oneItemResult}
+                      counter={this.props.counter}
+                    />
+                  </Link>
+                ))}
             </>
           ) : (
-            <>{error && <p className="plantCard-error">{error}</p>}</>
-          )}     
+              <>{error && <p className="plantCard-error">{error}</p>}</>
+            )}
         </div>
       </div>
     );
