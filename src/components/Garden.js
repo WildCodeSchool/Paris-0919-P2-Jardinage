@@ -8,7 +8,7 @@ import GardenList from './gardenComp/GardenList'
 import NavMobile from './NavMobile'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCheckCircle, faTint, faSeedling, faLeaf  } from '@fortawesome/free-solid-svg-icons'
+import { faLeaf  } from '@fortawesome/free-solid-svg-icons'
 
 import '../App.scss';
 import './style/searchBar.scss'
@@ -32,10 +32,10 @@ class Garden extends React.Component {
   }
 
   gardenInfo = () => {
-    if (localStorage.id === undefined) {
+    if (localStorage.ids === 0) {
       return (
-        <div>
-          <p className="plantCard-error">Your garden is empty! You can add plants to take care of... :) <FontAwesomeIcon icon={faLeaf} /></p>
+        <div className="plantCard-error">
+          <p>Your garden is empty! You can add plants to take care of... <FontAwesomeIcon icon={faLeaf} /></p>
         </div>
       )
     }
@@ -52,9 +52,8 @@ class Garden extends React.Component {
 
         {/* bare de recherche lié à une API plante */}
         <Search />
-        <div>
-          {isThereAPlant ? <GardenList /> : this.gardenInfo()}
-        </div>
+
+        {isThereAPlant ? <GardenList /> : this.gardenInfo()}
 
         {/* grille suggestion plantes
         <GardenList /> */}

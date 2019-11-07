@@ -1,7 +1,6 @@
 import React from 'react';
 
 import '../style/GardenList.scss'
-import PlantCard from '../PlantCard';
 
 const API_KEY = "YjlIUlp5QktVcXRIZTEzVGNMSmlOZz09"
 
