@@ -47,7 +47,7 @@ class NavBar extends React.Component {
                 <button className="NavBar-logout" onClick={this.logOut}>
                   Sign out
                 </button>
-                </Link>
+              </Link>
             </form>
           </li>
         </ul>
