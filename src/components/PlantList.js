@@ -6,7 +6,9 @@ import '../App.scss';
 import './style/PlantList.scss'
 import './style/PlantCard.scss'
 
-const API_KEY = "YjlIUlp5QktVcXRIZTEzVGNMSmlOZz09"
+// YjlIUlp5QktVcXRIZTEzVGNMSmlOZz09
+
+const API_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpcCI6WzQ4LDQ2LDQ4LDQ2LDQ4LDQ2LDQ4XSwiaXNzdWVyX2lkIjoxNDYwLCJvcmlnaW4iOiJodHRwOi8vbG9jYWxob3N0OjMwMDAiLCJhdWQiOiJKb2tlbiIsImV4cCI6MTU3MzEyMjg1MiwiaWF0IjoxNTczMTE1NjUyLCJpc3MiOiJKb2tlbiIsImp0aSI6IjJuYWQ4bWYzcnFjM2pmbnYwMGRkcjFxMiIsIm5iZiI6MTU3MzExNTY1Mn0.2MyarZvGgt5oooz368yA2Y9jcRJ2Lj1yFdnGDjF5giM"
 const plants = [
   { id: 141569 },
   { id: 131368 },
