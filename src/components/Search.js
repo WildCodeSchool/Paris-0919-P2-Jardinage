@@ -91,7 +91,7 @@ class Search extends React.Component {
             <>
             {finalResult.map(item => 
             (
-              <Link to={`/plants/${item.id}`}>
+              <Link className="search--link" to={`/plants/${item.id}`}>
                 <PlantCard
                   key={item.id}
                   id={item.id}

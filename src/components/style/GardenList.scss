@@ -9,8 +9,14 @@
 .card {
   height: 300px;
   font-size: calc(1vw + 0.7rem);
+  position: relative;
 }
-
+.fa-trash-alt {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  cursor: pointer;
+}
 .card h3 {
   text-align:center;
 }

@@ -8,15 +8,18 @@ import GardenList from './gardenComp/GardenList'
 import NavMobile from './NavMobile'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLeaf  } from '@fortawesome/free-solid-svg-icons'
+import { faLeaf } from '@fortawesome/free-solid-svg-icons'
 
 import '../App.scss';
 import './style/searchBar.scss'
 
+const API_KEY = "YjlIUlp5QktVcXRIZTEzVGNMSmlOZz09"
+
 class Garden extends React.Component {
   state = {
     isOnline: false,
-    email: ''
+    email: '',
+    plantsAdded: []
   }
   componentDidMount() {
     const email = localStorage.getItem('email');
@@ -29,10 +32,37 @@ class Garden extends React.Component {
         isOnline: false
       })
     }
+    this.getPlant()
+  }
+
+  getPlant = async () => {
+    if (localStorage.ids !== undefined) {
+      const localStorageData = JSON.parse(localStorage.ids)
+      let toRender = []
+      for (let i = 0; i < localStorageData.length; i++) {
+        const api_call = await fetch(`https://trefle.io/api/plants/${localStorageData[i]}?token=${API_KEY}`)
+        const data = await api_call.json()
+        toRender.push(data)
+      }
+    this.setState({ plantsAdded: toRender })
+    } 
+  }
+ 
+  handleDeletePlant = (plantId) => {
+    console.log("cliiick", plantId);
+    const localStorageData = JSON.parse(localStorage.ids)
+    console.log(localStorageData[plantId]);
+    
+    // localStorageData.filter((elt, index) => {
+    
+    // })
+    
+    // localStorage.removeItem('ids')
+    // this.getPlant()
   }
 
   gardenInfo = () => {
-    if (localStorage.ids === 0) {
+    if (localStorage.ids === []) {
       return (
         <div className="plantCard-error">
           <p>Your garden is empty! You can add plants to take care of... <FontAwesomeIcon icon={faLeaf} /></p>
@@ -42,8 +72,8 @@ class Garden extends React.Component {
   }
 
   render() {
-    const isThereAPlant = localStorage.ids
-    
+    const isThereAPlant = this.state.plantsAdded
+    const {plantsAdded} = this.state
     return (
       <div className="app">
 
@@ -53,7 +83,13 @@ class Garden extends React.Component {
         {/* bare de recherche lié à une API plante */}
         <Search />
 
-        {isThereAPlant ? <GardenList /> : this.gardenInfo()}
+        {isThereAPlant ? 
+          <GardenList 
+            handleDeletePlant={this.handleDeletePlant}
+            plantsAdded={plantsAdded}
+          /> 
+          : 
+          this.gardenInfo()}
 
         {/* grille suggestion plantes
         <GardenList /> */}
