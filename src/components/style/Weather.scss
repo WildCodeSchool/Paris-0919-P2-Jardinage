@@ -4,16 +4,18 @@
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  background-attachment: fixed;
 }
 
 #weather__container {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  min-height: 250px;
 }
 
 .weather__info {
-  margin: 20px 0px 0px 50px;
+  margin: 25px 0px 25px 50px;
   padding: 0px 0px 15px 15px;
   width: 500px;
   border-left: 4px solid #19aa53;
@@ -55,17 +57,14 @@
   background-image: url("https://images.unsplash.com/photo-1547754980-3df97fed72a8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80");
 }
 
-.default{
+.default {
   background-image: url("https://images.unsplash.com/photo-1531147646552-1eec68116469?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80");
 }
 /* Extra small devices (portrait phones, less than 576px) */
 @media only screen and (max-width: 575.98px) {
-  #weather {
-    height: 400px;  
-  }
 
   .weather__info {
-    margin: 20px 0px 0px 50px;
+    margin: 25px 0px 25px 50px;
     padding: 0px 0px 15px 15px;
     width: 300px;
   }
@@ -82,6 +81,8 @@
 }
 
 /* Small devices (landscape phones, 576px and up) */
-@media only screen and (min-width: 576px) and (max-width: 767.98px) {
+@media only screen and (min-width: 576px) and (max-width: 900px) {
+  // #weather {
+  //   height: 450px;
+  // }
 }
-

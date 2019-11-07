@@ -35,9 +35,9 @@ class Connexion extends React.Component{
             {this.state.signin ? <SignIn /> : <SignUp />}
           </div>
           {this.state.signin ? 
-          <a className="SignIn-link" onClick={this.toggleConnexionType}>I don't have an account</a>
+          <a href="http://localhost:3000/" className="SignIn-link" onClick={this.toggleConnexionType}>I don't have an account</a>
           :
-          <a className="SignIn-link" onClick={this.toggleConnexionType}>I already have an account</a>
+          <a href="http://localhost:3000/" className="SignIn-link" onClick={this.toggleConnexionType}>I already have an account</a>
           }
         </div>
       </div>
