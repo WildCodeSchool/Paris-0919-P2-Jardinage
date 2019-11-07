@@ -5,10 +5,6 @@ import '../style/GardenList.scss'
 
 const API_KEY = "YjlIUlp5QktVcXRIZTEzVGNMSmlOZz09"
 
-
-
-
-
 class GardenList extends React.Component {
 
   state = {
@@ -19,16 +15,6 @@ class GardenList extends React.Component {
   componentDidMount() {
     this.getPlant()
   }
-
-  // Window.addEventListener('storage', () => console.log('yoyoyo'))
-
-  // componentDidUpdate(prevState) {
-  //   const plantsAddedId = this.state.plantsAdded
-  //   const prevStateId = this.state.prevState
-  //   if (plantsAddedId !== prevStateId) {
-  //     this.getPlant(plantsAddedId)
-  //   }
-  // }
 
   getPlant = async () => {
     if (localStorage.ids !== undefined) {
