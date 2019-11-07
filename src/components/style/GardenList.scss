@@ -50,3 +50,13 @@ button {
     display: none;
   }
 }
+
+/////////////////////////////////////////// display different ///////////////////////////////////////////////
+
+.list .card {
+  padding: 1em;
+}
+
+figure:nth-child(even) {
+  border: 3px solid rgb(22, 40, 204);
+}

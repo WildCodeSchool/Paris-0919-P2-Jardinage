@@ -13,7 +13,7 @@ class GardenList extends React.Component {
 
   state = {
     plantsAdded: [],
-    displayGarden: ''
+    displayGarden: 'grid'
   }
 
   componentDidMount() {
@@ -58,18 +58,20 @@ class GardenList extends React.Component {
       )))
   }
 
-  ChangeDislayGarden = () => {
-
+  ChangeDisplayGarden = () => {
+    this.setState(() => ({
+      displayGarden: this.state.displayGarden === 'grid' ? 'list' : 'grid'
+    }))
   }
 
   render() {
-    console.log('test test test : ', this.state.displayGarden)
+    console.log(this.state.displayGarden)
     return (
       <div className='bigWrapper'>
 
-        <button onChange={this.ChangeDislayGarden()}>{this.state.displayGarden === 'grid' ? 'grid' : 'list'}</button>
+        <button onClick={this.ChangeDisplayGarden}>{this.state.displayGarden === 'grid' ? 'list' : 'grid'}</button>
 
-        <div className='grid blocks'>
+        <div className={this.state.displayGarden}>
           {this.state.plantsAdded.length > 0 && this.theRender()}
         </div>
       </div>
