@@ -1,9 +1,12 @@
 import React from 'react';
+
+import { Link } from 'react-router-dom' 
+
 import iconAdd from '../icon-plus.svg';
 import './style/PlantCard.scss';
 
 class PlantCard extends React.Component {
-  componentDidMount() {
+ componentDidMount() {
     if (localStorage.getItem('ids') === null) {
       //...
       localStorage.setItem('ids', JSON.stringify([]));
@@ -13,8 +16,8 @@ class PlantCard extends React.Component {
   addIdToLocalStorge = e => {
     const ids = JSON.parse(localStorage.getItem('ids'));
     ids.push(this.props.id);
-
     localStorage.setItem('ids', JSON.stringify(ids));
+    this.props.counter()
   };
 
   render() {
@@ -23,11 +26,13 @@ class PlantCard extends React.Component {
         className={this.props.oneItemResult ? 'plantCard lonely' : 'plantCard'}
       >
         {this.props.image && this.props.common_name && (
-          <img
-            className="plantCard-img"
-            src={this.props.image}
-            alt={this.props.common_name}
-          />
+          <Link className="plantCard--link" to={`/plants/${this.props.id}`}>
+            <img
+              className="plantCard-img"
+              src={this.props.image}
+              alt={this.props.common_name}
+            />
+          </Link>
         )}
         <img
           className="plantCard-icon"

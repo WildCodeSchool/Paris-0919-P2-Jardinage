@@ -5,6 +5,7 @@ import iconUser from '../icon-user.svg';
 import { Link } from 'react-router-dom';
 
 import '../App.scss';
+import './style/notifs.scss'
 
 class NavBar extends React.Component {
   logOut = event => {
@@ -25,27 +26,24 @@ class NavBar extends React.Component {
           </ul>
         </Link>
         <ul className="menu">
-          <li>
-            <Link to="/garden">Garden</Link>
-          </li>
-          <li>
-            <Link to="/board">Board</Link>
-          </li>
-          <li>
-            <Link to="/alerts">Alerts</Link>
-          </li>
+          <li><Link to="/garden">{this.props.counter ?
+            <div id="idnotif" className="">{this.props.counter}</div>
+            : null}
+            Garden</Link></li>
+          <li><Link to="/board">Board</Link></li>
+          <li><Link to="/alerts">Alerts</Link></li>
         </ul>
         <ul className="logout">
           <li className="alert-icon">
             <img src={iconUser} alt="icon user" />
           </li>
-        </ul>
-        <ul className="ul-log">
           <li className="log">
             <form>
-              <button className="NavBar-logout" onClick={this.logOut}>
-                Sign out
-              </button>
+              <Link to="/">
+                <button className="NavBar-logout" onClick={this.logOut}>
+                  Sign out
+                </button>
+              </Link>
             </form>
           </li>
         </ul>

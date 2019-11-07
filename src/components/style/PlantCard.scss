@@ -13,6 +13,11 @@
   border-radius: 10px;
 }
 
+.plantCard--link{
+  max-width: calc(50vw - 10px);
+  height: 45vh;
+}
+
 .plantCard-img {
   display: block;
   height: 100%;
@@ -107,6 +112,7 @@
   .plantCard:hover figcaption {
     display: block;
     animation: 0.8s slidein;
+    text-align: center;
   }
 }
 /* Extra large devices (large desktops, 1200px and up) */

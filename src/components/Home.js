@@ -14,7 +14,8 @@ import '../App.scss';
 class Home extends React.Component {
   state = {
     isOnline: false,
-    email: ''
+    email: '',
+    notifsCounter: 0
   }
 
   componentDidMount() {
@@ -30,14 +31,41 @@ class Home extends React.Component {
     }
   }
 
+  classAdd = () => {
+    const element = document.getElementById("idnotif");
+    const element2 = document.getElementById("idnotifMobile");
+    if (element === null || element2 === null) {
+      return null
+    }
+    else if (element === 0 || element2 === 0) {
+      return null
+    }
+    else {
+      element.classList.add('bounce-top')
+      element2.classList.add('bounce-top')
+      setTimeout(() => {
+        element.classList.remove('bounce-top')
+        element2.classList.remove('bounce-top')
+      }, 600)
+    }
+  }
+
+  handleCount = () => {
+    this.setState({
+      notifsCounter: this.state.notifsCounter + 1
+    })
+    { console.log("counter", this.state.notifsCounter) }
+    this.classAdd()
+  }
+
   render() {
-    console.log(this.state.isOnline)
+    console.log(this.state.toggle)
     return (
       <div className="app">
 
         {/* module de connexion sign in/up */}
         {this.state.isOnline ?
-          <NavBar /> :
+          <NavBar counter={this.state.notifsCounter} /> :
           <Connect />
         }
 
@@ -45,14 +73,14 @@ class Home extends React.Component {
         <Geoloc />
 
         {/* bare de recherche lié à une API plante */}
-        <Search />
+        <Search counter={this.handleCount} />
 
         {/* grille suggestion plantes */}
-        <PlantList />
+        <PlantList counter={this.handleCount} />/>
 
         {/* navbar mobile */}
         {this.state.isOnline ?
-          <NavMobile /> :
+          <NavMobile counter={this.state.notifsCounter} /> :
           null}
 
         {/* infos / réseaux sociaux */}
