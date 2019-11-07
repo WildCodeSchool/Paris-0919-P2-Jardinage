@@ -2,6 +2,7 @@ import React from 'react';
 
 // import des différents composants
 import Footer from './Footer.js';
+import Connect from './Connect'
 import NavBar from './NavBar.js';
 import Search from './Search';
 import GardenList from './gardenComp/GardenList'
@@ -33,7 +34,10 @@ class Garden extends React.Component {
       <div className="app">
 
         {/* module de connexion sign in/up */}
-        <NavBar />
+        {this.state.isOnline ?
+          <NavBar /> :
+          <Connect />
+        }
 
         {/* bare de recherche lié à une API plante */}
         <Search />

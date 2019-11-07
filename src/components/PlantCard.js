@@ -6,7 +6,7 @@ import iconAdd from '../icon-plus.svg';
 import './style/PlantCard.scss';
 
 class PlantCard extends React.Component {
-  componentDidMount() {
+ componentDidMount() {
     if (localStorage.getItem('ids') === null) {
       //...
       localStorage.setItem('ids', JSON.stringify([]));

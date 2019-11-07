@@ -34,12 +34,20 @@ class Home extends React.Component {
   classAdd = () => {
     const element = document.getElementById("idnotif");
     const element2 = document.getElementById("idnotifMobile");
-    element.classList.add('bounce-top')
-    element2.classList.add('bounce-top')
-    setTimeout(() => {
-      element.classList.remove('bounce-top')
-      element2.classList.remove('bounce-top')
-    }, 600)
+    if (element === null || element2 === null) {
+      return null
+    }
+    else if (element === 0 || element2 === 0) {
+      return null
+    }
+    else {
+      element.classList.add('bounce-top')
+      element2.classList.add('bounce-top')
+      setTimeout(() => {
+        element.classList.remove('bounce-top')
+        element2.classList.remove('bounce-top')
+      }, 600)
+    }
   }
 
   handleCount = () => {

@@ -1,0 +1,78 @@
+.bigWrapper {
+  width: 100%;
+  margin: 0 2em 2em;
+}
+
+button {
+  border: 1px solid black;
+  margin-bottom: 1em;
+}
+
+.grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 1em;
+}
+
+.grid .card {
+  height: 300px;
+  border-radius: 10px;
+}
+
+.grid .card h3 {
+  text-align: center;
+  font-size: calc(1vw + 0.8rem);
+}
+
+.grid .card h3 em {
+  text-align: center;
+  font-size: calc(1vw + 0.5rem);
+}
+
+.grid .names-wrapper {
+  padding: 1em;
+  background-color: rgba(25, 170, 83, .6);
+  animation: 0.8s slidein;
+}
+
+@media screen and (min-width : 679px) {
+
+  .grid .card:hover {
+    .names-wrapper {
+      display: block;
+    }
+
+    border: solid 2px white;
+  }
+
+  .grid .names-wrapper {
+    display: none;
+  }
+
+  .list {
+    width: 60%;
+  }
+
+}
+
+/////////////////////////////////////////// display different ///////////////////////////////////////////////
+
+.list {
+  margin: 0 auto;
+}
+
+.list .card {
+  padding: 1em;
+}
+
+.list figure:nth-child(even) {
+  background-color: #1d1a26;
+}
+
+
+.list figure:nth-child(odd) {
+  background-color: #19aa53;
+}
+
+// @media screen and (min-width : 679px) {
