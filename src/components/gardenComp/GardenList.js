@@ -2,32 +2,32 @@ import React from 'react';
 
 import '../style/GardenList.scss'
 
+
 const API_KEY = "YjlIUlp5QktVcXRIZTEzVGNMSmlOZz09"
+
+
+
+
 
 class GardenList extends React.Component {
 
   state = {
-    plantsAdded: [],
-    // lsIDSLength : ''
+    plantsAdded: []
   }
 
   componentDidMount() {
     this.getPlant()
-    // this.lengthCheck()
   }
 
-  // componentDidUpdate() {
-  //   const localStorageData = JSON.parse(localStorage.ids)
-  //   if (localStorageData !== this.state.lsIDSLength ) {
-  //     this.getPlant()
-  //   this.test()
-  //   }
-  
+// Window.addEventListener('storage', () => console.log('yoyoyo'))
 
-  // lengthCheck = () => {
-  //   const localStorageData = JSON.parse(localStorage.ids)
-  //   this.setState({lsIDSLength : localStorageData.length})
-  // }
+// componentDidUpdate(prevState) {
+//   const plantsAddedId = this.state.plantsAdded
+//   const prevStateId = this.state.prevState
+//   if (plantsAddedId !== prevStateId) {
+//     this.getPlant(plantsAddedId)
+//   }
+// }
 
   getPlant = async () => {
     if (localStorage.ids !== undefined) {
@@ -40,7 +40,7 @@ class GardenList extends React.Component {
     }
     this.setState({ plantsAdded: toRender })
     } else {
-      console.log("yoyo")
+      console.log("do something if nothing")
     }
   }
 
@@ -57,7 +57,6 @@ class GardenList extends React.Component {
   }
 
   render() {
-    console.log(this.state.lsIDSLength)
     return (
       <div className='grid blocks'>
 
