@@ -55,7 +55,8 @@ class Garden extends React.Component {
     console.log(localStorageData)
      localStorageData.splice(plantId,1)
     console.log(localStorageData);
-    
+    localStorage.setItem('ids', JSON.stringify(localStorageData))
+    this.getPlant()
     // localStorageData.filter((elt, index) => {
     
     // })
