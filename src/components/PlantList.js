@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Link } from 'react-router-dom'
+
 import PlantCard from './PlantCard';
 
 import '../App.scss';
@@ -60,27 +62,31 @@ class PlantList extends React.Component {
             <h2>Popular plants</h2>
             <div className="plantCard--container">
               {plantsData.filter((elt, ind)=> ind < 6).map((item)=> (
-                <PlantCard
-                  key={item.id}
-                  id={item.id}
-                  common_name={item.common_name}
-                  scientific_name={item.scientific_name}
-                  image={item.image}
-                />
+                <Link to={`/plants/${item.id}`}>
+                  <PlantCard
+                    key={item.id}
+                    id={item.id}
+                    common_name={item.common_name}
+                    scientific_name={item.scientific_name}
+                    image={item.image}
+                  />
+                </Link>
               ))}
             </div>
           </section>
           <section className="plantList--section">
             <h2>Seasonal plants</h2>
-            <div className="plantCard--container">
+            <div className="plantCard--container"> 
               {plantsData.filter((elt, ind)=> ind >= 6).map(item => (
-                <PlantCard
-                  key={item.id}
-                  id={item.id}
-                  common_name={item.common_name}
-                  scientific_name={item.scientific_name}
-                  image={item.image}
-                />
+                <Link to={`/plants/${item.id}`}>
+                  <PlantCard
+                    key={item.id}
+                    id={item.id}
+                    common_name={item.common_name}
+                    scientific_name={item.scientific_name}
+                    image={item.image}
+                  />
+                </Link>
               ))}
             </div>
           </section>

@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Link } from 'react-router-dom'
+
 import PlantCard from './PlantCard';
 import SearchForm from './SearchForm'
 
@@ -89,16 +91,18 @@ class Search extends React.Component {
             <>
             {finalResult.map(item => 
             (
-              <PlantCard
-                key={item.id}
-                id={item.id}
-                common_name={item.common_name}
-                scientific_name={item.scientific_name}
-                image={item.image}
-                error={error}
-                visible_caption={visible_caption}
-                oneItemResult={oneItemResult}
-              />
+              <Link to={`/plants/${item.id}`}>
+                <PlantCard
+                  key={item.id}
+                  id={item.id}
+                  common_name={item.common_name}
+                  scientific_name={item.scientific_name}
+                  image={item.image}
+                  error={error}
+                  visible_caption={visible_caption}
+                  oneItemResult={oneItemResult}
+                />
+              </Link>
             ))}
             </>
           ) : (
