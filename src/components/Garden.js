@@ -52,7 +52,9 @@ class Garden extends React.Component {
   handleDeletePlant = (plantId) => {
     console.log("cliiick", plantId);
     const localStorageData = JSON.parse(localStorage.ids)
-    console.log(localStorageData[plantId]);
+    console.log(localStorageData)
+     localStorageData.splice(plantId,1)
+    console.log(localStorageData);
     
     // localStorageData.filter((elt, index) => {
     
