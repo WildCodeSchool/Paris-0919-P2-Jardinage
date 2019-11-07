@@ -129,7 +129,7 @@ class PlantDetails extends React.Component {
 
             {(plant && plant.main_species && plant.main_species.growth && plant.main_species.growth.drought_tolerance) && 
               <div className="Tip">
-                Be sure to water your plant often, it has a <span>{plant.main_species.growth.drought_tolerance && 
+                Be sure to water your plant when needed, it has a <span>{plant.main_species.growth.drought_tolerance && 
                 plant.main_species.growth.drought_tolerance}</span> drought tolerance.
               </div>
             }
