@@ -1,0 +1,198 @@
+.PlantDetails{
+  padding: 50px;
+}
+
+.Plant__header{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  padding: 30px;
+}
+
+.Plant__body{
+  padding: 30px 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  h2{
+    margin-top: 80px;
+    color: black;
+    text-transform: uppercase;
+    font-family: 'Josefin', sans-serif;
+    padding: 0 0 15px 0;
+    text-align: center;
+  }
+  td{
+    color: black;
+  }
+}
+
+.Plant__specs{
+  display: table;
+  width: 100%;
+  margin-top: 15px;
+  padding: 15px 150px;
+  border-top: 1px solid #e6e6e6;
+  border-collapse: collapse;
+  tr:nth-child(2n+1) {
+    background-color: 
+    #19aa5333;
+  }
+  td:nth-child(1) {
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  td:nth-child(2) {
+    text-align: right;
+  }
+}
+
+.Plant__specs{
+  tr.Plant__specs--line{
+    td{
+      padding: 25px;
+      span.Plant__specs_icon{
+        margin-right: 20px;
+        path{
+          color: #19aa53;
+        }
+      }
+    }
+  }
+}
+
+.Plant__title{
+  display: flex;
+  flex-direction: column;
+}
+
+.Plant__main_title{
+  font-size: 7.5rem;
+  font-weight: bold;
+  color: black;
+  text-transform: capitalize;
+  font-family: 'Josefin Sans', sans-serif;
+  text-align: center;
+  margin: 50px 35px auto;
+  line-height: 110px;
+}
+
+.Plant__subtitle{
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #e6e6e6;
+  padding: 15px;
+  margin: 25px 40px;
+}
+
+.Plant__latin_title{
+  color: #19aa53;
+  font-style: italic;
+  font-size: 1.5rem;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.Plant__add_flower{
+  padding: 10px 16px;
+  border: 1px solid #19aa53;
+  border-radius: 5px 0 5px 0;
+  background: none;
+  margin-left: auto;
+  color: #19aa53;
+  transition: border-radius 1s;
+}
+
+.Plant__add_flower:hover{
+  cursor: pointer;
+  opacity: .7;
+  border-radius: 0 5px 0 5px;
+}
+
+.Plant__image{
+  display: flex;
+  justify-content: center;
+}
+
+.Plant__image > img{
+  width: 700px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+p.Plant__data_info{
+  text-align: center;
+  color: #19aa53;
+  font-style: italic;
+}
+
+// Plant cards
+
+.Plant__cards{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  margin-top: 15px;
+  .Plant__card{
+    display: flex;
+    margin: 20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    background: transparent;
+    border-radius: 10px 0 10px 0;
+    border: 1px solid #19aa53;
+    width: 270px;
+    .Plant__card_title{
+      font-size: 1.5rem;
+      font-weight: bold;
+      border-bottom: 1px solid #19aa5366;
+      padding-bottom: 15px;
+      color: #19aa53;
+    }
+    .Plant__card_icon{
+      font-size: 150px;
+      padding: 30px;
+      path{
+        color: #19aa53;
+      }
+    }
+    .Plant__card_body{
+      font-size: 20px;
+      position: relative;
+      color: #19aa53;
+    }
+  }
+}
+
+
+//  TIPS
+
+.Tips__container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  .Tip{
+    width: 100%;
+    color: black;
+    font-size: 20px;
+    border: 1px dotted #19aa53;
+    border-left: 5px solid #19aa53;
+    border-radius: 0 5px 5px 0;
+    background: white;
+    padding: 15px;
+    margin: 10px;
+    span{
+      color: black;
+      font-weight: bold;
+    }
+  }
+}
+
+
+
+
+
+
