@@ -67,7 +67,7 @@ class GardenList extends React.Component {
     return (
       <div className='bigWrapper'>
 
-        <button onClick={this.ChangeDisplayGarden}>{this.state.displayGarden === 'grid' ? 'list' : 'grid'}</button>
+        <button className='garden_button' onClick={this.ChangeDisplayGarden}>{this.state.displayGarden === 'grid' ? 'list' : 'grid'}</button>
 
         <div className={this.state.displayGarden}>
           {this.state.plantsAdded.length > 0 && this.theRender()}
