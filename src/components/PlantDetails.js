@@ -42,7 +42,7 @@ class PlantDetails extends React.Component {
             <div class="Plant__image">
               <img
                 src={this.state.plant_image && plant.images[0] ? plant.images[0].url : "https://res.cloudinary.com/dsbgj0oop/image/upload/v1572516426/default_img.png"}
-                alt="Plant picture"
+                alt="Plant"
               />
             </div>
             <div class="Plant__title">

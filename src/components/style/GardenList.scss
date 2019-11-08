@@ -17,12 +17,21 @@
 
 .grid .card {
   height: 300px;
+  font-size: calc(1vw + 0.7rem);
+  position: relative;
   border-radius: 10px;
+}
+.fa-trash-alt {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  cursor: pointer;
 }
 
 .grid .card h3 {
   text-align: center;
   font-size: calc(1vw + 0.8rem);
+  border-radius: 10px;
 }
 
 .grid .card h3 em {
@@ -34,6 +43,7 @@
   padding: 1em;
   background-color: rgba(25, 170, 83, .6);
   animation: 0.8s slidein;
+  border-radius: 10px;
 }
 
 @media screen and (min-width : 679px) {

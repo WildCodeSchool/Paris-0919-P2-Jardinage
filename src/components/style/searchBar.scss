@@ -141,7 +141,10 @@ input:focus {
 .invisible {
   display: none;
 }
-.search-result .lonely {
+.search--link {
+  width: 100vw;
+}
+.search--link .lonely {
   margin: 20px auto;
 }
 
