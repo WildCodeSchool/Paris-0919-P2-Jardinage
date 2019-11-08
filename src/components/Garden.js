@@ -50,39 +50,31 @@ class Garden extends React.Component {
   }
  
   handleDeletePlant = (plantId) => {
-    console.log("cliiick", plantId);
     const localStorageData = JSON.parse(localStorage.ids)
-    console.log(localStorageData)
-     localStorageData.splice(plantId,1)
-    console.log(localStorageData);
+    localStorageData.splice(plantId,1)
     localStorage.setItem('ids', JSON.stringify(localStorageData))
     this.getPlant()
-    // localStorageData.filter((elt, index) => {
-    
-    // })
-    
-    // localStorage.removeItem('ids')
-    // this.getPlant()
   }
 
   gardenInfo = () => {
-    if (localStorage.ids === []) {
-      return (
-        <div className="plantCard-error">
-          <p>Your garden is empty! You can add plants to take care of... <FontAwesomeIcon icon={faLeaf} /></p>
-        </div>
-      )
-    }
+    return (
+      <div className="plantCard-error">
+        <p>Your garden is empty! You can add plants to take care of... <FontAwesomeIcon icon={faLeaf} /></p>
+      </div>
+    )
+  }
+
+  handleCounter=()=>{
+    this.props.counter()
   }
 
   render() {
-    const isThereAPlant = this.state.plantsAdded
-    const {plantsAdded} = this.state
+    const {plantsAdded, isOnline} = this.state
     return (
       <div className="app">
 
         {/* module de connexion sign in/up */}
-        {this.state.isOnline ?
+        {isOnline ?
           <NavBar /> :
           <Connect />
         }
@@ -90,7 +82,7 @@ class Garden extends React.Component {
         {/* bare de recherche lié à une API plante */}
         <Search />
 
-        {isThereAPlant ? 
+        {(plantsAdded.length !==0) ? 
           <GardenList 
             handleDeletePlant={this.handleDeletePlant}
             plantsAdded={plantsAdded}

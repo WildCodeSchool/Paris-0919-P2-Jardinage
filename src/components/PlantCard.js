@@ -14,6 +14,7 @@ class PlantCard extends React.Component {
   }
 
   addIdToLocalStorge = e => {
+    console.log(this.props);
     const ids = JSON.parse(localStorage.getItem('ids'));
     ids.push(this.props.id);
     localStorage.setItem('ids', JSON.stringify(ids));
@@ -21,6 +22,7 @@ class PlantCard extends React.Component {
   };
 
   render() {
+    console.log(this.props.counter)
     return (
       <figure
         className={this.props.oneItemResult ? 'plantCard lonely' : 'plantCard'}

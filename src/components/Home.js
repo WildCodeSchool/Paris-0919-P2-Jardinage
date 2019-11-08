@@ -54,7 +54,7 @@ class Home extends React.Component {
     this.setState({
       notifsCounter: this.state.notifsCounter + 1
     })
-    { console.log("counter", this.state.notifsCounter) }
+    //{ console.log("counter", this.state.notifsCounter) }
     this.classAdd()
   }
 
