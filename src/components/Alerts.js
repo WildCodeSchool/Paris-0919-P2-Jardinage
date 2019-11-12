@@ -12,7 +12,8 @@ import '../App.scss';
 class Alerts extends React.Component {
   state = {
     isOnline: false,
-    email: ''
+    email: '',
+    notifsCounter: 0
   }
 
   componentDidMount() {
@@ -26,22 +27,32 @@ class Alerts extends React.Component {
         isOnline: false
       })
     }
+    if (localStorage.getItem('ids') === null) {
+      localStorage.setItem('ids', JSON.stringify([]));
+    }
+    else {
+      this.handleCount()
+    }
+  }
+
+  handleCount = () => {
+    const localStorageData = JSON.parse(localStorage.ids)
+    this.setState({ notifsCounter: localStorageData.length })
   }
 
   render() {
-    console.log(this.state.isOnline)
     if (this.state.isOnline) {
       return (
         <div className="app">
 
           {/* module de connexion sign in/up */}
-          <NavBar />
+          <NavBar counter={this.state.notifsCounter} />
 
           {/* grille suggestion plantes */}
           <Notifications />
 
           {/* navbar mobile */}
-          <NavMobile />
+          <NavMobile counter={this.state.notifsCounter} />
 
           {/* infos / réseaux sociaux */}
           <Footer />

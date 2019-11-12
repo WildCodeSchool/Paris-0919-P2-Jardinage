@@ -2,7 +2,7 @@ import React from 'react';
 
 import iconTree from '../icon-tree.svg';
 import iconUser from '../icon-user.svg';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 import '../App.scss';
 import './style/notifs.scss'
@@ -15,7 +15,7 @@ class NavBar extends React.Component {
   render() {
     return (
       <div id="navBar">
-        <Link to="/" className="header--title">
+        <NavLink to="/" className="header--title">
           <ul>
             <li>
               <img src={iconTree} alt="icon tree" />
@@ -24,14 +24,13 @@ class NavBar extends React.Component {
               <h1>PlantMe</h1>
             </li>
           </ul>
-        </Link>
+        </NavLink>
         <ul className="menu">
-          <li><Link to="/garden">{this.props.counter ?
+          <li><NavLink to="/garden" activeClassName="active">
             <div id="idnotif" className="">{this.props.counter}</div>
-            : null}
-            Garden</Link></li>
-          <li><Link to="/board">Board</Link></li>
-          <li><Link to="/alerts">Alerts</Link></li>
+            Garden</NavLink></li>
+          <li><NavLink to="/board" activeClassName="active">Board</NavLink></li>
+          <li><NavLink to="/alerts" activeClassName="active">Alerts</NavLink></li>
         </ul>
         <ul className="logout">
           <li className="alert-icon">
@@ -39,11 +38,9 @@ class NavBar extends React.Component {
           </li>
           <li className="log">
             <form>
-              <Link to="/">
-                <button className="NavBar-logout" onClick={this.logOut}>
-                  Sign out
-                </button>
-              </Link>
+              <button className="NavBar-logout" onClick={this.logOut}>
+                Sign out
+              </button>
             </form>
           </li>
         </ul>

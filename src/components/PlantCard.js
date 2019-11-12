@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { Link } from 'react-router-dom' 
+import { Link } from 'react-router-dom'
 
 import iconAdd from '../icon-plus.svg';
 import './style/PlantCard.scss';
 
 class PlantCard extends React.Component {
- componentDidMount() {
+  componentDidMount() {
     if (localStorage.getItem('ids') === null) {
       //...
       localStorage.setItem('ids', JSON.stringify([]));
@@ -14,15 +14,41 @@ class PlantCard extends React.Component {
   }
 
   addIdToLocalStorge = e => {
-    console.log(this.props);
+    this.classAdd()
+    console.log('anim')
     const ids = JSON.parse(localStorage.getItem('ids'));
     ids.push(this.props.id);
     localStorage.setItem('ids', JSON.stringify(ids));
     this.props.counter()
   };
 
+  classAdd = () => {
+    let element = document.getElementById("idnotif");
+    let element2 = document.getElementById("idnotifMobile");
+    console.log('BEFORE anim notif navBar', element)
+    console.log('BEFORE anim notif navBarMobile', element2)
+    if (this.props.counter === 0) {
+      element = null
+      element2 = null
+    }
+    if (element) {
+      element.classList.add('bounce-top')
+      setTimeout(() => {
+        element.classList.remove('bounce-top')
+      }, 600)
+    }
+    if (element2) {
+      element2.classList.add('bounce-top')
+      setTimeout(() => {
+        element2.classList.remove('bounce-top')
+      }, 600)
+    }
+    else {
+      return null
+    }
+  }
+
   render() {
-    console.log(this.props.counter)
     return (
       <figure
         className={this.props.oneItemResult ? 'plantCard lonely' : 'plantCard'}

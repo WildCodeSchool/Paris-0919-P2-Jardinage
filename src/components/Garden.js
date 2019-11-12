@@ -20,7 +20,8 @@ class Garden extends React.Component {
   state = {
     isOnline: false,
     email: '',
-    plantsAdded: []
+    plantsAdded: [],
+    notifsCounter: 0
   }
   componentDidMount() {
     const email = localStorage.getItem('email');
@@ -34,6 +35,12 @@ class Garden extends React.Component {
       })
     }
     this.getPlant()
+    if (localStorage.getItem('ids') === null) {
+      localStorage.setItem('ids', JSON.stringify([]));
+    }
+    else {
+      this.handleCount()
+    }
   }
 
   getPlant = async () => {
@@ -45,14 +52,19 @@ class Garden extends React.Component {
         const data = await api_call.json()
         toRender.push(data)
       }
-    this.setState({ plantsAdded: toRender })
-    } 
+      this.setState({ plantsAdded: toRender })
+    }
   }
- 
+
   handleDeletePlant = (plantId) => {
     const localStorageData = JSON.parse(localStorage.ids)
+<<<<<<< HEAD
     localStorageData.splice(plantId,1)
     localStorage.setItem('ids', JSON.stringify(localStorageData))  
+=======
+    localStorageData.splice(plantId, 1)
+    localStorage.setItem('ids', JSON.stringify(localStorageData))
+>>>>>>> cbbb0741eb80b5d39193a1dda0e314cf000c95a9
     this.getPlant()
     this.gardenDelete()
   }
@@ -74,13 +86,17 @@ class Garden extends React.Component {
         </div>
       )
     }, 5000)
+  }  
+  handleCount = () => {
+    const localStorageData = JSON.parse(localStorage.ids)
+    this.setState({ notifsCounter: localStorageData.length })
   }
     // handleCounter=()=>{
     //   this.props.counter()
     // }
 
   render() {
-    const {plantsAdded, isOnline} = this.state
+    const { plantsAdded, isOnline } = this.state
     return (
       <div className="app">
         {/* <>
@@ -89,12 +105,12 @@ class Garden extends React.Component {
 
         {/* module de connexion sign in/up */}
         {isOnline ?
-          <NavBar /> :
+          <NavBar counter={this.state.notifsCounter} /> :
           <Connect />
         }
 
         {/* bare de recherche lié à une API plante */}
-        <Search />
+        <Search counter={this.handleCount}/>
         
         {(plantsAdded.length !==0) ? 
           <>
@@ -106,14 +122,14 @@ class Garden extends React.Component {
             plantsAdded={plantsAdded}
           /> 
           </>
-          : 
-          this.gardenInfo()}
+        :
+        this.gardenInfo()}
 
         {/* grille suggestion plantes
         <GardenList /> */}
 
         {/* navbar mobile */}
-        <NavMobile />
+        <NavMobile counter={this.state.notifsCounter} />
 
         {/* infos / réseaux sociaux */}
         <Footer />
