@@ -20,7 +20,8 @@ class Garden extends React.Component {
   state = {
     isOnline: false,
     email: '',
-    plantsAdded: []
+    plantsAdded: [],
+    notifsCounter: 0
   }
   componentDidMount() {
     const email = localStorage.getItem('email');
@@ -34,6 +35,12 @@ class Garden extends React.Component {
       })
     }
     this.getPlant()
+    if (localStorage.getItem('ids') === null) {
+      localStorage.setItem('ids', JSON.stringify([]));
+    }
+    else {
+      this.handleCount()
+    }
   }
 
   getPlant = async () => {
@@ -45,13 +52,13 @@ class Garden extends React.Component {
         const data = await api_call.json()
         toRender.push(data)
       }
-    this.setState({ plantsAdded: toRender })
-    } 
+      this.setState({ plantsAdded: toRender })
+    }
   }
- 
+
   handleDeletePlant = (plantId) => {
     const localStorageData = JSON.parse(localStorage.ids)
-    localStorageData.splice(plantId,1)
+    localStorageData.splice(plantId, 1)
     localStorage.setItem('ids', JSON.stringify(localStorageData))
     this.getPlant()
   }
@@ -64,37 +71,38 @@ class Garden extends React.Component {
     )
   }
 
-  handleCounter=()=>{
-    this.props.counter()
+  handleCount = () => {
+    const localStorageData = JSON.parse(localStorage.ids)
+    this.setState({ notifsCounter: localStorageData.length })
   }
 
   render() {
-    const {plantsAdded, isOnline} = this.state
+    const { plantsAdded, isOnline } = this.state
     return (
       <div className="app">
 
         {/* module de connexion sign in/up */}
         {isOnline ?
-          <NavBar /> :
+          <NavBar counter={this.state.notifsCounter} /> :
           <Connect />
         }
 
         {/* bare de recherche lié à une API plante */}
-        <Search />
+        <Search counter={this.handleCount} />
 
-        {(plantsAdded.length !==0) ? 
-          <GardenList 
+        {(plantsAdded.length !== 0) ?
+          <GardenList
             handleDeletePlant={this.handleDeletePlant}
             plantsAdded={plantsAdded}
-          /> 
-          : 
+          />
+          :
           this.gardenInfo()}
 
         {/* grille suggestion plantes
         <GardenList /> */}
 
         {/* navbar mobile */}
-        <NavMobile />
+        <NavMobile counter={this.state.notifsCounter} />
 
         {/* infos / réseaux sociaux */}
         <Footer />

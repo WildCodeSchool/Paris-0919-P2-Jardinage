@@ -29,40 +29,24 @@ class Home extends React.Component {
         isOnline: false
       })
     }
-  }
-
-  classAdd = () => {
-    const element = document.getElementById("idnotif");
-    const element2 = document.getElementById("idnotifMobile");
-    if (element === null || element2 === null) {
-      return null
-    }
-    else if (element === 0 || element2 === 0) {
-      return null
+    if (localStorage.getItem('ids') === null) {
+      localStorage.setItem('ids', JSON.stringify([]));
     }
     else {
-      element.classList.add('bounce-top')
-      element2.classList.add('bounce-top')
-      setTimeout(() => {
-        element.classList.remove('bounce-top')
-        element2.classList.remove('bounce-top')
-      }, 600)
+      this.handleCount()
     }
   }
 
   handleCount = () => {
-    this.setState({
-      notifsCounter: this.state.notifsCounter + 1
-    })
-    //{ console.log("counter", this.state.notifsCounter) }
-    this.classAdd()
+    const localStorageData = JSON.parse(localStorage.ids)
+    this.setState({ notifsCounter: localStorageData.length })
   }
 
   render() {
-    console.log(this.state.toggle)
+    // console.log(this.state.toggle)
     return (
       <div className="app">
-
+        {console.log('counter', this.state.notifsCounter)}
         {/* module de connexion sign in/up */}
         {this.state.isOnline ?
           <NavBar counter={this.state.notifsCounter} /> :
