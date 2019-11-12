@@ -12,14 +12,6 @@ class NavBar extends React.Component {
     localStorage.removeItem('email');
   };
 
-  func() {
-    let element = document.getElementById("idnotif")
-    element.classList.add('bounce-top')
-    setTimeout(() => {
-      element.classList.remove('bounce-top')
-    }, 600)
-  }
-
   render() {
     return (
       <div id="navBar">
