@@ -7,7 +7,7 @@
   margin-right: 20px;
   padding: 5px;
   background: red;
-  border-radius: 40%;
+  border-radius: 60%;
   font-weight: 700;
   color: white;
 }
@@ -22,6 +22,141 @@
   font-weight: 700;
   color: white;
 }
+
+.NavbarMobile__item{
+  list-style-type: none;
+  margin: 0 30px;
+  position: relative;
+  font-size: 1.5rem;
+  transition: color .5s;
+  &:hover{
+    cursor: pointer;
+    opacity: .8;
+  }
+  // FIRST ITEM
+  &:nth-child(1)::before{
+    content: "";
+    display: block;
+    position: absolute;
+    width: 60%;
+    height: 2px;
+    border-radius: 30px;
+    background: white;
+    top: 2px;
+    transform: translateX(100%);
+    opacity: 0;
+    transition: opacity .5s, transform .5s;
+  }
+  &:nth-child(1)::after{
+    content: "";
+    display: block;
+    position: absolute;
+    width: 60%;
+    height: 2px;
+    border-radius: 30px;
+    background: white;
+    bottom: 2px;
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: opacity .5s, transform .5s;
+  }
+  // SECOND ITEM
+  &:nth-child(2)::before{
+    content: "";
+    display: block;
+    position: absolute;
+    width: 60%;
+    height: 2px;
+    border-radius: 30px;
+    background: white;
+    top: 2px;
+    transform: translateX(100%);
+    opacity: 0;
+    transition: opacity .5s, transform .5s;
+  }
+  &:nth-child(2)::after{
+    content: "";
+    display: block;
+    position: absolute;
+    width: 60%;
+    height: 2px;
+    border-radius: 30px;
+    background: white;
+    bottom: 2px;
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: opacity .5s, transform .5s;
+  }
+  // THIRD ITEM
+  &:nth-child(3)::before{
+    content: "";
+    display: block;
+    position: absolute;
+    width: 60%;
+    height: 2px;
+    border-radius: 30px;
+    background: white;
+    top: 2px;
+    left: 5px;
+    transform: translateX(100%);
+    opacity: 0;
+    transition: opacity .5s, transform .5s;
+  }
+  &:nth-child(3)::after{
+    content: "";
+    display: block;
+    position: absolute;
+    width: 60%;
+    height: 2px;
+    border-radius: 30px;
+    background: white;
+    bottom: 2px;
+    left: 5px;
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: opacity .5s, transform .5s;
+  }
+}
+
+.NavbarMobile__item.active{
+  &:nth-child(1){
+    color: white;
+  }
+  // FIRST ITEM
+  &:nth-child(1)::before{
+    transform: translateX(0);
+    opacity: 1;
+  }
+  &:nth-child(1)::after{
+    transform: translateX(0);
+    opacity: 1;
+  }
+// SECOND ITEM
+  &:nth-child(2){
+    color: white;
+  }
+  &:nth-child(2)::before{
+    transform: translateX(0);
+    opacity: 1;
+  }
+  &:nth-child(2)::after{
+    transform: translateX(0);
+    opacity: 1;
+  }
+// THIRD ITEM
+  &:nth-child(3){
+    color: white;
+  }
+  &:nth-child(3)::before{
+    transform: translateX(0);
+    opacity: 1;
+  }
+  &:nth-child(3)::after{
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
 .bounce-top {
   display: inline-block;
   animation: bounce-top 0.6s both;
@@ -36,7 +171,7 @@
     opacity: 1;
   }
   40% {
-    transform: translateY(-10px);
+    transform: translateY(2px);
     animation-timing-function: ease-in;
   }
   65% {

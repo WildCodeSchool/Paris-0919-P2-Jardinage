@@ -59,7 +59,6 @@ class Home extends React.Component {
   }
 
   render() {
-    console.log(this.state.toggle)
     return (
       <div className="app">
 
@@ -80,8 +79,10 @@ class Home extends React.Component {
 
         {/* navbar mobile */}
         {this.state.isOnline ?
-          <NavMobile counter={this.state.notifsCounter} /> :
-          null}
+          <NavMobile counter={this.state.notifsCounter} /> 
+        :
+          null
+        }
 
         {/* infos / réseaux sociaux */}
         <Footer />
