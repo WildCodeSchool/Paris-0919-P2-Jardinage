@@ -13,6 +13,11 @@
   border-radius: 10px;
 }
 
+.plantCard--link{
+  max-width: calc(50vw - 10px);
+  height: 45vh;
+}
+
 .plantCard-img {
   display: block;
   height: 100%;
@@ -25,7 +30,6 @@
 }
 
 .plantCard figcaption {
-  position: relative;
   font-size: .8rem;
   font-weight: 400;
   position: absolute;
@@ -42,10 +46,12 @@
   text-transform: capitalize;
 }
 .plantCard-icon {
-  width: 20px;
+  width: 25px;
   position: absolute;
-  fill: #f2fffe;
-  bottom: 25px;
+  padding: 5px;
+  border-radius: 15px;
+  background: #19aa53;
+  top: 10px;
   right: 10px;
   transition: .3s;
   &:hover {
@@ -56,9 +62,11 @@
   background: #19aa53;
   text-align: center;
   padding: 10px 0;
+  width: 100vw;
+  margin-bottom: 20px;
 }
 .plant-loader {
-  margin: 0 auto;
+  margin: 20px auto;
   border: 8px solid #f3f3f3; /* Light grey */
   border-top: 8px solid #19aa53; /* Blue */
   border-radius: 50%;
@@ -77,17 +85,18 @@
     flex-flow: row wrap;
   }
   .plantCard {
-    transition: 0.3s;
+    transition: 0.3s; 
+    &:hover {
+      cursor: pointer;
+      -webkit-box-shadow: 5px 5px 6px 0px #7d7d7d;
+      -moz-box-shadow: 5px 5px 6px 0px #7d7d7d;
+      box-shadow: 5px 5px 6px 0px #7d7d7d;
+    }
   }
   .plantCard-img {
     min-width: 300px;
   }
-  .plantCard:hover {
-    cursor: pointer;
-    -webkit-box-shadow: 5px 5px 6px 0px #7d7d7d;
-    -moz-box-shadow: 5px 5px 6px 0px #7d7d7d;
-    box-shadow: 5px 5px 6px 0px #7d7d7d;
-  }
+  
   .plantCard figcaption {
     display: none;
   }
@@ -103,6 +112,7 @@
   .plantCard:hover figcaption {
     display: block;
     animation: 0.8s slidein;
+    text-align: center;
   }
 }
 /* Extra large devices (large desktops, 1200px and up) */
@@ -112,13 +122,10 @@
   }
 }
 @media only screen and (min-width: 1910px) {
-  .plantCard--container :nth-child(3n) {
+  .plantCard--container :nth-child(3n), .plantCard--container :nth-child(5) {
     margin-left: 0;
   }
   .plantCard--container :nth-child(4) {
     margin-left: 10px;
-  }
-  .plantCard--container :nth-child(5) {
-    margin-left: 0;
   }
 }

@@ -19,86 +19,75 @@ const plants = [
   { id: 139838 },
   { id: 158107 },
   { id: 174523 },
-  { id: 175722 },
-  { id: 192303 }
+  { id: 175722 }
 ]
 
-const seasonalPlants = []
-const popPlants = []
+let plantsData = []
 
 class PlantList extends React.Component {
   state = {
-    id: undefined,
-    common_name: undefined,
-    scientific_name: undefined,
-    image: undefined,
     isLoaded: false
   }
 
   getPlant = async () => {
-    for (let i=0; i < plants.length; i++) {
+    for (let i = 0; i < plants.length; i++) {
       const api_call = await fetch(`https://trefle.io/api/plants/${plants[i].id}?token=${API_KEY}`)
-      const data = await api_call.json()      
+      const data = await api_call.json()
       const imgLen = data.images ? data.images.length - 1 : 'none'
-      const species = data.main_species ? data.main_species.common_name:'undefined' 
-      // if(imgLen) {...}  <= si imgLen = 0  alors imgLen = false donc on rentre pas dans les instructions
-      if (imgLen !== 'none'){          
-        this.setState({
-          id: data.id,
-          common_name: species,
-          scientific_name: data.scientific_name,
-          image: data.images[imgLen].url,
-          isLoaded: true
-        }, ()=> {
-          if (i < (plants.length / 2) - 1) {
-            popPlants.push(this.state)
-          } else {
-            seasonalPlants.push(this.state)
-          }
-        })
+      const species = data.main_species ? data.main_species.common_name : 'undefined'
+      if (imgLen !== 'none') {
+        plantsData.push({ id: data.id, common_name: species, scientific_name: data.scientific_name, image: data.images[imgLen].url })
       }
     }
+    this.setState({
+      isLoaded: true
+    })
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
+    plantsData = []
     this.getPlant()
   }
-  
-  render() { 
+
+  render() {
     return (
       <>
-      {!this.state.isLoaded ? (
-        <div className="plant-loader"></div>
-      ) : (
-        <div id="plantList">
-          <section className="plantList--section">
-            <h2>Popular plants</h2>
-            <div className="plantCard--container">
-              {popPlants.map(item => (
-                <PlantCard
-                  key={item.id}
-                  common_name={item.common_name}
-                  scientific_name={item.scientific_name}
-                  image={item.image}
-                />
-              ))}
+        {!this.state.isLoaded ? (
+          <div className="plant-loader"></div>
+        ) : (
+            <div id="plantList">
+              <section className="plantList--section">
+                <h2>Popular plants</h2>
+                <div className="plantCard--container">
+                  {plantsData.filter((elt, ind) => ind < 6).map((item) => (
+                    <PlantCard
+                      key={item.id}
+                      id={item.id}
+                      common_name={item.common_name}
+                      scientific_name={item.scientific_name}
+                      image={item.image}
+                      counter={this.props.counter}
+                    />
+                  ))}
+                </div>
+              </section>
+              <section className="plantList--section">
+                <h2>Seasonal plants</h2>
+                <div className="plantCard--container">
+                  {plantsData.filter((elt, ind) => ind >= 6).map(item => (
+                    <PlantCard
+                      key={item.id}
+                      id={item.id}
+                      common_name={item.common_name}
+                      scientific_name={item.scientific_name}
+                      image={item.image}
+                      counter={this.props.counter}
+                    />
+                  ))}
+                </div>
+              </section>
             </div>
-          </section>
-          <section className="plantList--section">
-            <h2>Seasonal plants</h2>
-            <div className="plantCard--container">
-            {seasonalPlants.map(item => (
-              <PlantCard
-                key={item.id}
-                common_name={item.common_name}
-                scientific_name={item.scientific_name}
-                image={item.image}
-              />
-            ))}
-            </div>
-          </section>
-        </div>
-      )}
+          )}
       </>
     );
   }

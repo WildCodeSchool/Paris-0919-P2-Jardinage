@@ -33,11 +33,13 @@ body {
   min-width: 300px;
   overflow-x: hidden;
   line-height: 1.5rem;
+  background-color: #1d1a26;
 }
-
 .app {
+  background-color: white;
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
 }
 
 //////////////////////* Style global des éléments *///////////////////////
@@ -51,7 +53,13 @@ h4 {
 ////////////////////*  module de connexion sign in/up *///////////////////
 .header--title {
   display: flex;
+  height: 20px;
 }
+
+.header--title ul {
+  display: flex;
+}
+
 .header--title img {
   width: 30px;
 }
@@ -72,7 +80,6 @@ h4 {
   width: 100%;
   height: 80px;
   display: flex;
-  background-color: white;
   display: flex;
   justify-content: flex-start;
   text-align: center;
@@ -81,13 +88,11 @@ h4 {
   box-shadow: 0 3px 35px 0 #00000022;
   padding: 15px 80px;
 }
-#connect a:hover {
-  text-decoration: underline;
-}
+
 #connect h1 {
   padding-left: 20px;
   font-family: "Pacifico", cursive;
-  color: #19aa53
+  color: #19aa53;
 }
 
 .sign {
@@ -102,7 +107,6 @@ h4 {
 ///////////////////* Composant météo *////////////////////
 #weather {
   width: 100%;
-  height: 350px;  
 }
 
 /////////////////////////* footer infos/réseaux sociaux *////////////////////
@@ -170,26 +174,99 @@ h4 {
   text-decoration: underline;
 }
 
-//////////////////////* menu de l'appli une fois connecté garden/board/alerts *///////////////////////////
+.NavBar-logout {
+  font-size: 1rem;
+  color: #19aa53;
+  border: 2px solid #19aa53;
+  padding: 10px;
+  border-radius: 15px 0 15px 0;
+  transition: border-radius 1s;
+  font-weight: bold;
+  &:hover {
+    border-radius: 0 15px 0 15px;
+    cursor: pointer;
+  }
+}
 
 #navBar {
-  display: none;
-}
-
-/* #navBar {
   width: 100%;
-  height: 60px;
-  display: flex;
-  background-color: #2C3E50;
-}
-
-#navBar ul {
-  width: 100%;
+  height: 80px;
   display: flex;
   justify-content: space-around;
   text-align: center;
   align-items: center;
-} */
+  box-sizing: border-box;
+  box-shadow: 0 3px 35px 0 #00000022;
+  padding: 0 1% 0 1%;
+  background-color: white;
+}
+
+#navBar h1 {
+  padding-left: 20px;
+  font-family: "Pacifico", cursive;
+  color: #19aa53;
+}
+
+#navBar .menu {
+  margin: 0 0 0 0;
+  display: flex;
+  width: 50%;
+  justify-content: center;
+}
+
+#navBar .menu li {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+#navBar .menu li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  width: 15vw;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #19aa53;
+  &.active{
+    background-color: #19aa53;
+    color: white;
+  }
+}
+
+#navBar .menu li a:hover {
+  background-color: #19aa53;
+  color: white;
+}
+
+
+.logout {
+  color: #19aa53;
+  display: flex;
+  align-items: center;
+}
+
+.logout li {
+  text-align: center;
+}
+
+.logout img {
+  width: 40px;
+  padding-top: 6px;
+}
+
+.log {
+  margin-left: 20px;
+}
+
+.nav-mobile {
+  display: none;
+}
+
+// .NavBar-logout {
+//   margin-left: ;
+// }
 
 /////////////////////////////////////////////////////////////////////////////
 ////////////////////////////* Media Queries *////////////////////////////////
@@ -197,8 +274,75 @@ h4 {
 
 /* Extra small devices (portrait phones, less than 576px) */
 @media only screen and (max-width: 575.98px) {
-  #footer #social {
-    min-height: 100px;
+  #footer {
+    display: none;
+  }
+
+  #navBar {
+    justify-content: center;
+    .header--title:nth-child(1) {
+      order: 2;
+      padding: 0px 5% 0px 5%;
+    }
+    .menu:nth-child(2) {
+      display: none;
+    }
+    .logout:nth-child(3) {
+      order: 4;
+      padding: 0px 5% 0px 5%;
+    }
+    .ul-log:nth-child(4) {
+      order: 1;
+      padding: 0px 5% 0px 5%;
+    }
+  }
+
+  .logout img {
+    width: 40px;
+    margin-right: 0px;
+  }
+
+  .nav-mobile {
+    position: sticky;
+    bottom: 0px;
+    width: 100%;
+    height: 70px;
+    display: flex;
+    background-color: #19aa53e1;
+    -webkit-box-shadow: -1px 0px 13px 0px rgba(0, 0, 0, 0.72);
+    -moz-box-shadow: -1px 0px 13px 0px rgba(0, 0, 0, 0.72);
+    box-shadow: -1px 0px 13px 0px rgba(0, 0, 0, 0.72);
+  }
+
+  .nav-mobile .menu li a {
+    color: #f2fffe;
+    height: 50px;
+    font-size: 1.2em;
+  }
+
+  .menu {
+    width: 100%;
+    margin: 0px;
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    align-items: center;
+  }
+
+  .menu li {
+    display: flex;
+    align-items: center;
+  }
+
+  .menu li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    width: 15vw;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #19aa53;
   }
 }
 
