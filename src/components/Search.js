@@ -24,8 +24,6 @@ class Search extends React.Component {
     return Math.floor(Math.random() * Math.floor(max));
   };
 
-  displayResultOnClick = () => {};
-
   getPlant = async e => {
     finalResult = [];
     e.preventDefault();
