@@ -28,7 +28,9 @@ class NavBar extends React.Component {
         </NavLink>
         <ul className="menu">
           <li><NavLink to="/garden" activeClassName="active">
-            <div id="idnotif" className="">{this.props.counter}</div>
+            {(this.props.counter > 0)
+              ? <div id="idnotif" className="">{this.props.counter}</div>
+              : null}
             Garden</NavLink></li>
           <li><NavLink to="/board" activeClassName="active">Board</NavLink></li>
           <li><NavLink to="/alerts" activeClassName="active">Alerts</NavLink></li>

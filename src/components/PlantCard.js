@@ -25,12 +25,12 @@ class PlantCard extends React.Component {
   classAdd = () => {
     let element = document.getElementById("idnotif");
     let element2 = document.getElementById("idnotifMobile");
-    console.log('BEFORE anim notif navBar', element)
-    console.log('BEFORE anim notif navBarMobile', element2)
-    if (this.props.counter === 0) {
-      element = null
-      element2 = null
-    }
+    // console.log('BEFORE anim notif navBar', element)
+    // console.log('BEFORE anim notif navBarMobile', element2)
+    // if (this.props.counter === 0) {
+    //   element = null
+    //   element2 = null
+    // }
     if (element) {
       element.classList.add('bounce-top')
       setTimeout(() => {
