@@ -46,7 +46,7 @@ class Home extends React.Component {
     // console.log(this.state.toggle)
     return (
       <div className="app">
-        {console.log('counter', this.state.notifsCounter)}
+        {/*{console.log('counter', this.state.notifsCounter)}*/}
         {/* module de connexion sign in/up */}
         {this.state.isOnline ?
           <NavBar counter={this.state.notifsCounter} /> :

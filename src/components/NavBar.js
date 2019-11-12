@@ -8,8 +8,9 @@ import '../App.scss';
 import './style/notifs.scss'
 
 class NavBar extends React.Component {
-  logOut = event => {
+  logOut = () => {
     localStorage.removeItem('email');
+    console.log("clicked");
   };
 
   render() {
@@ -39,7 +40,7 @@ class NavBar extends React.Component {
           <li className="log">
             <form>
               <button>
-                <NavLink to='/' className="NavBar-logout" onClick={this.logOut}>
+                <NavLink to='/logout' className="NavBar-logout" onClick={this.logOut}>
                   Sign out
                 </NavLink>
               </button>
