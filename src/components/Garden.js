@@ -64,9 +64,9 @@ class Garden extends React.Component {
     )
   }
 
-  handleCounter=()=>{
-    this.props.counter()
-  }
+    // handleCounter=()=>{
+    //   this.props.counter()
+    // }
 
   render() {
     const {plantsAdded, isOnline} = this.state
@@ -81,12 +81,17 @@ class Garden extends React.Component {
 
         {/* bare de recherche lié à une API plante */}
         <Search />
-
+        
         {(plantsAdded.length !==0) ? 
+          <>
+          <div className="plantCard-error">
+            <p>Congratulations, your garden contains {plantsAdded.length} plants !</p>
+          </div>
           <GardenList 
             handleDeletePlant={this.handleDeletePlant}
             plantsAdded={plantsAdded}
           /> 
+          </>
           : 
           this.gardenInfo()}
 
