@@ -19,8 +19,7 @@ class NavBar extends React.Component {
   }
   componentDidUpdate(previousProps) {
     if (
-      previousProps.counter !== this.props.counter &&
-      this.props.counter === 1
+      previousProps.counter !== this.props.counter
     ) {
       this.setState({ invisible: "" });
     }

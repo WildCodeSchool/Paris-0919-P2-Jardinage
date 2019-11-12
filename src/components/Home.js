@@ -55,10 +55,8 @@ class Home extends React.Component {
 
   render() {
     // console.log(this.state.toggle)
-    console.log("home state", this.state)
     return (
       <div className="app">
-        {console.log('counter', this.state.notifsCounter)}
         {/* module de connexion sign in/up */}
         {this.state.isOnline ?
           <NavBar animationClass={this.state.animationClass} counter={this.state.notifsCounter} /> :
