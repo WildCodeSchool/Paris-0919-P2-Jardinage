@@ -23,6 +23,7 @@ class Garden extends React.Component {
     plantsAdded: [],
     notifsCounter: 0
   }
+
   componentDidMount() {
     const email = localStorage.getItem('email');
     if (email) {
@@ -43,6 +44,7 @@ class Garden extends React.Component {
     }
   }
 
+  // Appel API et stocke le résultat dans le state
   getPlant = async () => {
     if (localStorage.ids !== undefined) {
       const localStorageData = JSON.parse(localStorage.ids)
@@ -56,20 +58,32 @@ class Garden extends React.Component {
     }
   }
 
+  // Gère la suppression d'une card plante sur le clic sur la poubelle
   handleDeletePlant = (plantId) => {
     const localStorageData = JSON.parse(localStorage.ids)
-<<<<<<< HEAD
-    localStorageData.splice(plantId,1)
-    localStorage.setItem('ids', JSON.stringify(localStorageData))  
-=======
     localStorageData.splice(plantId, 1)
     localStorage.setItem('ids', JSON.stringify(localStorageData))
->>>>>>> cbbb0741eb80b5d39193a1dda0e314cf000c95a9
     this.getPlant()
+    this.handleCount()
     this.gardenDelete()
   }
-
   
+  // Message d'information pour la supression d'une plante
+  gardenDelete = () => {
+    const msg = document.getElementById("delete--message")
+    msg.classList.add('msg-in')
+    setTimeout(() => {
+      msg.classList.remove('msg-in')
+    }, 3000)
+  }
+
+  // Gère le compteur du garden
+  handleCount = () => {
+    const localStorageData = JSON.parse(localStorage.ids)
+    this.setState({ notifsCounter: localStorageData.length })
+  }
+
+  // Msg d'information si le garden est vide
   gardenInfo = () => {
     return (
       <div className="plantCard-error">
@@ -77,31 +91,16 @@ class Garden extends React.Component {
       </div>
     )
   }
-
-  gardenDelete = () => {
-    setTimeout(() => {
-      return (
-        <div className="delete--message">
-            You successfully deleted your plant
-        </div>
-      )
-    }, 5000)
-  }  
-  handleCount = () => {
-    const localStorageData = JSON.parse(localStorage.ids)
-    this.setState({ notifsCounter: localStorageData.length })
-  }
-    // handleCounter=()=>{
-    //   this.props.counter()
-    // }
-
+  
+  // RENDU DU COMPOSANT
   render() {
     const { plantsAdded, isOnline } = this.state
     return (
       <div className="app">
-        {/* <>
-          {this.gardenDelete()}
-        </> */}
+        
+        <div id="delete--message" className="msg-off">
+          You successfully deleted your plant
+        </div>
 
         {/* module de connexion sign in/up */}
         {isOnline ?

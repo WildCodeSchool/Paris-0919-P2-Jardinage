@@ -47,12 +47,16 @@
   border-radius: 10px;
 }
 
-.delete--message {
+.msg-off {
+  display: none;
+}
+.msg-in {
+  display: block;
   text-align: center;
   color: #19aa53;
   position: fixed;
   width: 25vw;
-  border: 1px solid #19aa53;
+  border: 1px solid red;
   background: #FFF;
   right: 50px;
   top: 50px;
