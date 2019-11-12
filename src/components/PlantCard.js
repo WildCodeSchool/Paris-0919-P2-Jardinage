@@ -14,29 +14,33 @@ class PlantCard extends React.Component {
   }
 
   addIdToLocalStorge = e => {
+    this.classAdd()
+    console.log('anim')
     const ids = JSON.parse(localStorage.getItem('ids'));
     ids.push(this.props.id);
     localStorage.setItem('ids', JSON.stringify(ids));
     this.props.counter()
-    this.classAdd()
   };
 
   classAdd = () => {
     const element = document.getElementById("idnotif");
     const element2 = document.getElementById("idnotifMobile");
-    if (element === null || element2 === null) {
-      return null
-    }
-    else if (element === 0 || element2 === 0) {
-      return null
-    }
-    else {
+    console.log('BEFORE anim notif navBar', element)
+    console.log('BEFORE anim notif navBarMobile', element2)
+    if (element) {
       element.classList.add('bounce-top')
-      element2.classList.add('bounce-top')
       setTimeout(() => {
         element.classList.remove('bounce-top')
+      }, 600)
+    }
+    if (element2) {
+      element2.classList.add('bounce-top')
+      setTimeout(() => {
         element2.classList.remove('bounce-top')
       }, 600)
+    }
+    else {
+      return null
     }
   }
 
