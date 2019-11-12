@@ -29,7 +29,6 @@ class Alerts extends React.Component {
   }
 
   render() {
-    console.log(this.state.isOnline)
     if (this.state.isOnline) {
       return (
         <div className="app">
