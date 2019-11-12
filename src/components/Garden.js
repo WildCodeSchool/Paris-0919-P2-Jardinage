@@ -65,11 +65,11 @@ class Garden extends React.Component {
     localStorage.setItem('ids', JSON.stringify(localStorageData))
     this.getPlant()
     this.handleCount()
-    this.gardenDelete()
+    this.deleteInfo()
   }
   
   // Message d'information pour la supression d'une plante
-  gardenDelete = () => {
+  deleteInfo = () => {
     const msg = document.getElementById("delete--message")
     msg.classList.add('msg-in')
     setTimeout(() => {
@@ -95,6 +95,8 @@ class Garden extends React.Component {
   // RENDU DU COMPOSANT
   render() {
     const { plantsAdded, isOnline } = this.state
+    console.log(plantsAdded);
+    
     return (
       <div className="app">
         
