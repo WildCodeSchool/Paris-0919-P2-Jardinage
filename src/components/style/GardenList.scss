@@ -20,6 +20,7 @@
   font-size: calc(1vw + 0.7rem);
   position: relative;
   border-radius: 10px;
+  background-size: cover;
 }
 .fa-trash-alt {
   position: absolute;
@@ -30,13 +31,13 @@
 
 .grid .card h3 {
   text-align: center;
-  font-size: calc(1vw + 0.8rem);
+  font-size: calc(1vw + 0.5rem);
   border-radius: 10px;
+  text-transform: capitalize;
 }
 
 .grid .card h3 em {
-  text-align: center;
-  font-size: calc(1vw + 0.5rem);
+  font-size: calc(1vw + 0.3rem);
 }
 
 .grid .names-wrapper {
@@ -44,6 +45,25 @@
   background-color: rgba(25, 170, 83, .6);
   animation: 0.8s slidein;
   border-radius: 10px;
+}
+
+.msg-off {
+  display: none;
+}
+.msg-in {
+  display: block;
+  text-align: center;
+  color: #19aa53;
+  position: fixed;
+  width: 50vw;
+  border: 1px solid red;
+  background: #FFF;
+  right: 50px;
+  top: 100px;
+  border-radius: 5px;
+  font-size: calc(1vw + 0.5rem);
+  padding: 20px 20px;
+  z-index: 3000;
 }
 
 @media screen and (min-width : 679px) {
@@ -74,6 +94,9 @@
 
 .list .card {
   padding: 1em;
+}
+.list .card h3 {
+  text-transform: capitalize;
 }
 
 .list figure:nth-child(even) {

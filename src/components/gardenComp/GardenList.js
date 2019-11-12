@@ -26,7 +26,8 @@ class GardenList extends React.Component {
               onClick={()=>this.props.handleDeletePlant(index)}
             />
           </figure>
-        )))
+        ))
+      )
     }
     else if (this.state.displayGarden === 'list') {
       return (
@@ -35,7 +36,7 @@ class GardenList extends React.Component {
             <div className='names-wrapper'>
               <h3>{obj.common_name}</h3>
               <h3><em>{obj.scientific_name}</em></h3>
-              <FontAwesomeIcon className="fa-trash-list" icon={faTrashAlt}
+              <FontAwesomeIcon className="fa-trash-alt" icon={faTrashAlt}
                 onClick={()=>this.props.handleDeletePlant(index)}
               />
             </div>
