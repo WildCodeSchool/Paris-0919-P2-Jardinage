@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { Link } from 'react-router-dom' 
+import { Link } from 'react-router-dom'
 
 import iconAdd from '../icon-plus.svg';
 import './style/PlantCard.scss';
 
 class PlantCard extends React.Component {
- componentDidMount() {
+  componentDidMount() {
     if (localStorage.getItem('ids') === null) {
       //...
       localStorage.setItem('ids', JSON.stringify([]));
@@ -23,10 +23,14 @@ class PlantCard extends React.Component {
   };
 
   classAdd = () => {
-    const element = document.getElementById("idnotif");
-    const element2 = document.getElementById("idnotifMobile");
+    let element = document.getElementById("idnotif");
+    let element2 = document.getElementById("idnotifMobile");
     console.log('BEFORE anim notif navBar', element)
     console.log('BEFORE anim notif navBarMobile', element2)
+    if (this.props.counter === 0) {
+      element = null
+      element2 = null
+    }
     if (element) {
       element.classList.add('bounce-top')
       setTimeout(() => {
