@@ -47,6 +47,21 @@
   border-radius: 10px;
 }
 
+.delete--message {
+  text-align: center;
+  color: #19aa53;
+  position: fixed;
+  width: 25vw;
+  border: 1px solid #19aa53;
+  background: #FFF;
+  right: 50px;
+  top: 50px;
+  border-radius: 5px;
+  font-size: calc(1vw + 0.3rem);
+  padding: 10px 10px;
+  z-index: 3000;
+}
+
 @media screen and (min-width : 679px) {
 
   .grid .card:hover {

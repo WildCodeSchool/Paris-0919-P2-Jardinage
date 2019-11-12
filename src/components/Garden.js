@@ -52,10 +52,12 @@ class Garden extends React.Component {
   handleDeletePlant = (plantId) => {
     const localStorageData = JSON.parse(localStorage.ids)
     localStorageData.splice(plantId,1)
-    localStorage.setItem('ids', JSON.stringify(localStorageData))
+    localStorage.setItem('ids', JSON.stringify(localStorageData))  
     this.getPlant()
+    this.gardenDelete()
   }
 
+  
   gardenInfo = () => {
     return (
       <div className="plantCard-error">
@@ -64,6 +66,15 @@ class Garden extends React.Component {
     )
   }
 
+  gardenDelete = () => {
+    setTimeout(() => {
+      return (
+        <div className="delete--message">
+            You successfully deleted your plant
+        </div>
+      )
+    }, 5000)
+  }
     // handleCounter=()=>{
     //   this.props.counter()
     // }
@@ -72,6 +83,9 @@ class Garden extends React.Component {
     const {plantsAdded, isOnline} = this.state
     return (
       <div className="app">
+        {/* <>
+          {this.gardenDelete()}
+        </> */}
 
         {/* module de connexion sign in/up */}
         {isOnline ?
