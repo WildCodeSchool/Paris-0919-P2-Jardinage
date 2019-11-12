@@ -24,7 +24,7 @@
 .fa-trash-alt {
   position: absolute;
   bottom: 15px;
-  left: 15px;
+  right: 15px;
   cursor: pointer;
 }
 
@@ -83,6 +83,14 @@
 
 .list figure:nth-child(odd) {
   background-color: #19aa53;
+}
+
+.list .names-wrapper {
+  position: relative;
+}
+
+.list .fa-trash-alt {
+  position: absolute;
 }
 
 // @media screen and (min-width : 679px) {

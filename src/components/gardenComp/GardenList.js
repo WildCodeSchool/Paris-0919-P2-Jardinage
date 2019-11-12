@@ -35,10 +35,10 @@ class GardenList extends React.Component {
             <div className='names-wrapper'>
               <h3>{obj.common_name}</h3>
               <h3><em>{obj.scientific_name}</em></h3>
+              <FontAwesomeIcon className="fa-trash-list" icon={faTrashAlt}
+                onClick={()=>this.props.handleDeletePlant(index)}
+              />
             </div>
-            <FontAwesomeIcon className="fa-trash-alt" icon={faTrashAlt}
-              onClick={()=>this.props.handleDeletePlant(index)}
-            />
           </figure>
         )))
     }
