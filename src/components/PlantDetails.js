@@ -16,6 +16,10 @@ class PlantDetails extends React.Component {
     plant_image: null
   }
 
+  componentDidMount(){
+    window.scrollTo(0, 0);
+  };
+
   componentWillMount() {
     const handle = this.props.match.params.handle
     fetch(`https://trefle.io/api/plants/${handle}?token=${API_KEY}`)

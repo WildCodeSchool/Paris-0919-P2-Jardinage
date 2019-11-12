@@ -217,6 +217,7 @@ h4 {
 #navBar .menu li {
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 #navBar .menu li a {
@@ -228,12 +229,17 @@ h4 {
   font-size: 1.5em;
   font-weight: bold;
   color: #19aa53;
+  &.active{
+    background-color: #19aa53;
+    color: white;
+  }
 }
 
 #navBar .menu li a:hover {
   background-color: #19aa53;
   color: white;
 }
+
 
 .logout {
   color: #19aa53;
@@ -300,7 +306,7 @@ h4 {
     position: sticky;
     bottom: 0px;
     width: 100%;
-    height: 50px;
+    height: 70px;
     display: flex;
     background-color: #19aa53e1;
     -webkit-box-shadow: -1px 0px 13px 0px rgba(0, 0, 0, 0.72);
