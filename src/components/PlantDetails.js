@@ -13,11 +13,18 @@ const API_KEY = "YjlIUlp5QktVcXRIZTEzVGNMSmlOZz09"
 class PlantDetails extends React.Component {
   state = {
     plant: null,
-    plant_image: null
+    plant_image: null,
+    notifsCounter: 0
   }
 
   componentDidMount(){
     window.scrollTo(0, 0);
+    if (localStorage.getItem('ids') === null) {
+      localStorage.setItem('ids', JSON.stringify([]));
+    }
+    else {
+      this.handleCount()
+    }
   };
 
   componentWillMount() {
@@ -32,13 +39,18 @@ class PlantDetails extends React.Component {
       })
   }
 
+  handleCount = () => {
+    const localStorageData = JSON.parse(localStorage.ids)
+    this.setState({ notifsCounter: localStorageData.length })
+  }
+
   render() {
 
     const plant = this.state.plant // declare a var to save "this.state.plant" in order to repeat less
 
     return (
       <>
-        <NavBar />
+        <NavBar counter={this.state.notifsCounter}/>
         <div class="PlantDetails">
           {/*  HEADER */}
 
@@ -153,7 +165,7 @@ class PlantDetails extends React.Component {
             }
           </div>
         </div>
-        <NavMobile />
+        <NavMobile  counter={this.state.notifsCounter}/>
       </>
     )
   }
