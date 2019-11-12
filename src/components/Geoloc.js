@@ -12,7 +12,7 @@ class Geoloc extends React.Component {
     return !this.props.isGeolocationAvailable ? (
       <div id="weather" className="default"><div id="weather__container"><div className="weather__info">Your browser does not support Geolocation</div></div></div>
     ) : !this.props.isGeolocationEnabled ? (
-      <GeolocFalse>{console.log('Geolocation is not enabled')}</GeolocFalse>
+      <GeolocFalse>{/*{console.log('Geolocation is not enabled')}*/}</GeolocFalse>
     ) : this.props.coords ? (
       <GeolocTrue lat={this.props.coords.latitude} lon={this.props.coords.longitude} />
     ) : (

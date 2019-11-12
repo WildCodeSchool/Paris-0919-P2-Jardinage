@@ -51,7 +51,7 @@ class GeolocFalse extends React.Component {
     const country = e.target.elements.country.value;
     const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_KEY}&units=metric`);
     const data = await api_call.json();
-    console.log(data)
+    // console.log(data)
     if (data.cod === "404") {
       this.setState({
         temperature: undefined,
@@ -78,7 +78,7 @@ class GeolocFalse extends React.Component {
     }
   }
   render() {
-    console.log("state", this.state)
+    // console.log("state", this.state)
     return (
       <div id="weather" className={this.state.background}>
         {/* <Titles /> */}
