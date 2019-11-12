@@ -3,7 +3,6 @@ import React from 'react'
 import NavBar from './NavBar'
 import NavMobile from './NavMobile'
 
-import { useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLeaf, faClock, faTree, faRuler, faSpa, faChartLine, faHourglass, faSkullCrossbones } from '@fortawesome/free-solid-svg-icons'
 
