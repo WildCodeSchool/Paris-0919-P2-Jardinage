@@ -15,13 +15,20 @@ class Search extends React.Component {
     error: undefined,
     visible_caption: false,
     oneItemResult: false,
-    scrollMsg: false
+    scrollMsg: false,
+    isDisplayed: false,
+    location:""
   }
 
   // Fonction random qui sera utilisée pour afficher aléatoirement les images disponibles
   getRandomInt = max => {
     return Math.floor(Math.random() * Math.floor(max));
   }
+
+  displayResultOnClick=()=> {
+
+  }
+  
 
   getPlant = async e => {
     finalResult = []
@@ -70,22 +77,26 @@ class Search extends React.Component {
         error: "Sorry, nothing was found. Please make another research."
       })
     }
+    this.setState((previousState)=> ({isDisplayed:true}), console.log(this.state))
+
   }
 
   render() {
+    console.log("search State", this.state)
     const { error, visible_caption, oneItemResult } = this.state
     const scrollClass = (finalResult.length > 2) ? "scroll" : "no-scroll"
     const displayS = (finalResult.length > 1) ? "s" : "no-s"
+
     return (
       <div className="search">
         <SearchForm getPlant={this.getPlant} />
-        <p className={visible_caption ? "plantCard-error" : "plantCard-error invisible"}>
+        {/* <p className={visible_caption ? "plantCard-error" : "plantCard-error invisible"}>
           {`${finalResult.length} plant`}
           <span className={displayS}>s </span>{` found. `}
           <span className={scrollClass}>Please scroll to watch all the results !</span>
-        </p>
+        </p> */}
         <div className="search-result">
-          {!error ? (
+          {!error && this.state.isDisplayed ? (
             <>
               {finalResult.map(item =>
                 (
