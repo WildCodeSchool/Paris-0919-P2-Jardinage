@@ -8,9 +8,23 @@ import '../App.scss';
 import './style/notifs.scss'
 
 class NavBar extends React.Component {
+  state = {
+    invisible:"invisible"
+  }
   logOut = event => {
     localStorage.removeItem('email');
   };
+  componentDidMount() {
+    this.props.counter > 0 ? this.setState({invisible:""}): this.setState({invisible:"invisible"})
+  }
+  componentDidUpdate(previousProps) {
+    // console.log(previousProps)
+    if(previousProps.counter !== this.props.counter && this.props.counter ===1) {
+      this.setState({invisible:""})
+      console.log('youpiiiiiiiiiiiiiii')
+    }
+    // console.log(this.props.counter)
+  }
 
   render() {
     return (
@@ -27,7 +41,7 @@ class NavBar extends React.Component {
         </NavLink>
         <ul className="menu">
           <li><NavLink to="/garden" activeClassName="active">
-            <div id="idnotif" className="">{this.props.counter}</div>
+            <div id="idnotif" className={this.state.invisible}>{this.props.counter}</div>
             Garden</NavLink></li>
           <li><NavLink to="/board" activeClassName="active">Board</NavLink></li>
           <li><NavLink to="/alerts" activeClassName="active">Alerts</NavLink></li>
