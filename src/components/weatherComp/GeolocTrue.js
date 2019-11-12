@@ -54,11 +54,11 @@ class GeolocTrue extends React.Component {
 
     // const lat = Math.round(this.props.lat * 1000) / 1000
     // const lon = Math.round(this.props.lon * 100) / 100
-    console.log("lat", lat)
-    console.log("lon", lon)
+    // console.log("lat", lat)
+    // console.log("lon", lon)
     const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`);
     const data = await api_call.json();
-    console.log(data)
+    // console.log(data)
     if (data.cod === "404") {
       this.setState({
         temperature: undefined,
@@ -83,7 +83,7 @@ class GeolocTrue extends React.Component {
     }
   }
   render() {
-    console.log("state", this.state)
+    // console.log("state", this.state)
     return (
       <div id="weather" className={this.state.background}>
         {this.state.city && this.state.country ?

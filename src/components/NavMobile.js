@@ -13,13 +13,9 @@ class NavMobile extends React.Component {
       <div className="nav-mobile">
         <ul className="menu">
           <li><NavLink to="/garden" id="gardenLink" activeClassName="active" className="NavbarMobile__item">
-            {this.props.counter ?
-              <div id="idnotif" className="">{this.props.counter}</div>
-            : 
-              null
-            }
-              <FontAwesomeIcon icon={faLeaf} />
-            </NavLink>
+            <div id="idnotifMobile" className="">{this.props.counter}</div>
+            <FontAwesomeIcon icon={faLeaf} />
+          </NavLink>
           </li>
           <li><NavLink to="/board" id="homeLink" activeClassName="active" className="NavbarMobile__item"><FontAwesomeIcon icon={faHome} /></NavLink></li>
           <li ><NavLink to="/alerts" id="alertsLink" activeClassName="active" className="NavbarMobile__item"><FontAwesomeIcon icon={faBell} /></NavLink></li>
