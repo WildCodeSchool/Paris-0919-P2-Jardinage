@@ -217,6 +217,7 @@ h4 {
 #navBar .menu li {
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 #navBar .menu li a {
@@ -228,12 +229,53 @@ h4 {
   font-size: 1.5em;
   font-weight: bold;
   color: #19aa53;
+  &.active{
+    &::before{
+      content: "";
+      display: block;
+      position: absolute;
+      width: 30%;
+      height: 2px;
+      border-radius: 30px;
+      background: #19aa5377;
+      top: 15px;
+    }
+    &::after{
+      content: "";
+      display: block;
+      position: absolute;
+      width: 30%;
+      height: 2px;
+      border-radius: 30px;
+      background: #19aa5377;
+      bottom: 15px;
+    }
+  }
 }
 
 #navBar .menu li a:hover {
-  background-color: #19aa53;
-  color: white;
+  &::before{
+    content: "";
+    display: block;
+    position: absolute;
+    width: 30%;
+    height: 2px;
+    border-radius: 30px;
+    background: #19aa5377;
+    top: 15px;
+  }
+  &::after{
+    content: "";
+    display: block;
+    position: absolute;
+    width: 30%;
+    height: 2px;
+    border-radius: 30px;
+    background: #19aa5377;
+    bottom: 15px;
+  }
 }
+
 
 .logout {
   color: #19aa53;
