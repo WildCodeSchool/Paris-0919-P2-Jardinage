@@ -15,7 +15,7 @@ class NavBar extends React.Component {
   render() {
     return (
       <div id="navBar">
-        <NavLink to="/" activeClassName="active" className="header--title">
+        <NavLink to="/" className="header--title">
           <ul>
             <li>
               <img src={iconTree} alt="icon tree" />
