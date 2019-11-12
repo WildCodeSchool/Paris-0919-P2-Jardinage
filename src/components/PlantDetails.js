@@ -3,6 +3,7 @@ import React from 'react'
 import NavBar from './NavBar'
 import NavMobile from './NavMobile'
 
+import { useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faLeaf, faClock, faTree, faRuler, faSpa, faChartLine, faHourglass, faSkullCrossbones } from '@fortawesome/free-solid-svg-icons'
 
@@ -15,6 +16,10 @@ class PlantDetails extends React.Component {
     plant: null,
     plant_image: null
   }
+
+  componentDidMount(){
+    window.scrollTo(0, 0);
+  };
 
   componentWillMount() {
     const handle = this.props.match.params.handle
