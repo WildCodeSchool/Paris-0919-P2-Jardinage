@@ -15,7 +15,18 @@ class Home extends React.Component {
   state = {
     isOnline: false,
     email: '',
-    notifsCounter: 0
+    notifsCounter: 0,
+    animationClass:""
+  }
+
+  addClass = () => {
+    console.log("youpi youpi")
+     this.setState({ animationClass: "bounce-top" })
+     setTimeout(() => {
+      this.setState({animationClass: ""});
+    }, 1000)
+    // setTimeout( this.setState({ animationClass: "" }), 100)
+   
   }
 
   componentDidMount() {
@@ -46,10 +57,9 @@ class Home extends React.Component {
     // console.log(this.state.toggle)
     return (
       <div className="app">
-        {/*{console.log('counter', this.state.notifsCounter)}*/}
         {/* module de connexion sign in/up */}
         {this.state.isOnline ?
-          <NavBar counter={this.state.notifsCounter} /> :
+          <NavBar animationClass={this.state.animationClass} counter={this.state.notifsCounter} /> :
           <Connect />
         }
 
@@ -60,11 +70,11 @@ class Home extends React.Component {
         <Search counter={this.handleCount} />
 
         {/* grille suggestion plantes */}
-        <PlantList counter={this.handleCount} />/>
+        <PlantList addClass={this.addClass} counter={this.handleCount} />/>
 
         {/* navbar mobile */}
         {this.state.isOnline ?
-          <NavMobile counter={this.state.notifsCounter} /> 
+          <NavMobile animationClass={this.state.animationClass} counter={this.state.notifsCounter} /> 
         :
           null
         }

@@ -45,7 +45,6 @@ class PlantDetails extends React.Component {
   }
 
   render() {
-
     const plant = this.state.plant // declare a var to save "this.state.plant" in order to repeat less
 
     return (

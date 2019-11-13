@@ -6,6 +6,9 @@ import iconAdd from '../icon-plus.svg';
 import './style/PlantCard.scss';
 
 class PlantCard extends React.Component {
+  state = {
+    myClass :""
+  }
   componentDidMount() {
     if (localStorage.getItem('ids') === null) {
       //...
@@ -15,6 +18,7 @@ class PlantCard extends React.Component {
 
   addIdToLocalStorge = e => {
     this.classAdd()
+    this.props.addClass()
     console.log('anim')
     const ids = JSON.parse(localStorage.getItem('ids'));
     ids.push(this.props.id);
@@ -23,29 +27,30 @@ class PlantCard extends React.Component {
   };
 
   classAdd = () => {
-    let element = document.getElementById("idnotif");
-    let element2 = document.getElementById("idnotifMobile");
+    // this.setState({ myClass: bounce-top }, () => {
+    //   setTimeout(() => this.setState({ myClass }), 0)
+    // })
+  
+    // let element = document.getElementById("idnotif");
+    // let element2 = document.getElementById("idnotifMobile");
     // console.log('BEFORE anim notif navBar', element)
     // console.log('BEFORE anim notif navBarMobile', element2)
-    // if (this.props.counter === 0) {
-    //   element = null
-    //   element2 = null
+    
+    // if (element) {
+    //   element.classList.add('bounce-top')
+    //   setTimeout(() => {
+    //     element.classList.remove('bounce-top')
+    //   }, 600)
     // }
-    if (element) {
-      element.classList.add('bounce-top')
-      setTimeout(() => {
-        element.classList.remove('bounce-top')
-      }, 600)
-    }
-    if (element2) {
-      element2.classList.add('bounce-top')
-      setTimeout(() => {
-        element2.classList.remove('bounce-top')
-      }, 600)
-    }
-    else {
-      return null
-    }
+    // if (element2) {
+    //   element2.classList.add('bounce-top')
+    //   setTimeout(() => {
+    //     element2.classList.remove('bounce-top')
+    //   }, 600)
+    // }
+    // else {
+    //   return null
+    // }
   }
 
   render() {
