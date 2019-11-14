@@ -18,7 +18,6 @@ class PlantCard extends React.Component {
 
   addIdToLocalStorge = e => {
     this.props.addClass()
-    console.log('anim')
     const ids = JSON.parse(localStorage.getItem('ids'));
     ids.push(this.props.id);
     localStorage.setItem('ids', JSON.stringify(ids));
@@ -31,7 +30,7 @@ class PlantCard extends React.Component {
     msg.classList.add('msg-in')
     setTimeout(() => {
       msg.classList.remove('msg-in')
-    }, 3000)
+    }, 2000)
   }
 
   render() {

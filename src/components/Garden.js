@@ -13,7 +13,6 @@ import { faLeaf } from '@fortawesome/free-solid-svg-icons'
 
 import '../App.scss';
 import './style/searchBar.scss'
-import './style/notifs.scss'
 
 const API_KEY = "YjlIUlp5QktVcXRIZTEzVGNMSmlOZz09"
 
@@ -75,7 +74,7 @@ class Garden extends React.Component {
     msg.classList.add('msg-in')
     setTimeout(() => {
       msg.classList.remove('msg-in')
-    }, 3000)
+    }, 2000)
   }
 
   // Gère le compteur du garden
@@ -93,6 +92,13 @@ class Garden extends React.Component {
     )
   }
   
+  addClass = () => {
+    this.setState({ animationClass: "bounce-top" })
+    setTimeout(() => {
+     this.setState({animationClass: ""});
+   }, 1000)
+ }
+
   // RENDU DU COMPOSANT
   render() {
     const { plantsAdded, isOnline } = this.state
@@ -111,7 +117,10 @@ class Garden extends React.Component {
         }
 
         {/* bare de recherche lié à une API plante */}
-        <Search counter={this.handleCount} addClass={this.props.addClass}/>
+        <Search 
+          counter={this.handleCount}
+          addClass={this.addClass}  
+        />
         
         {(plantsAdded.length !==0) ? 
           <>

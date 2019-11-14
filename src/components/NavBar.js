@@ -1,7 +1,6 @@
 import React from "react";
 
 import iconTree from "../icon-tree.svg";
-import iconUser from "../icon-user.svg";
 import { NavLink } from "react-router-dom";
 
 import "../App.scss";
