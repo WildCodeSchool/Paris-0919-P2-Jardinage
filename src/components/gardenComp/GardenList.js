@@ -41,7 +41,8 @@ class GardenList extends React.Component {
               />
             </div>
           </figure>
-        )))
+        ))
+      )
     }
   }
 

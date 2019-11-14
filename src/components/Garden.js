@@ -74,7 +74,7 @@ class Garden extends React.Component {
     msg.classList.add('msg-in')
     setTimeout(() => {
       msg.classList.remove('msg-in')
-    }, 3000)
+    }, 2000)
   }
 
   // Gère le compteur du garden
@@ -92,10 +92,16 @@ class Garden extends React.Component {
     )
   }
   
+  addClass = () => {
+    this.setState({ animationClass: "bounce-top" })
+    setTimeout(() => {
+     this.setState({animationClass: ""});
+   }, 1000)
+ }
+
   // RENDU DU COMPOSANT
   render() {
     const { plantsAdded, isOnline } = this.state
-    console.log(plantsAdded);
     
     return (
       <div className="app">
@@ -111,7 +117,11 @@ class Garden extends React.Component {
         }
 
         {/* bare de recherche lié à une API plante */}
-        <Search counter={this.handleCount}/>
+        <Search 
+          counter={this.handleCount}
+          addClass={this.addClass}  
+          logged={this.state.isOnline}
+        />
         
         {(plantsAdded.length !==0) ? 
           <>

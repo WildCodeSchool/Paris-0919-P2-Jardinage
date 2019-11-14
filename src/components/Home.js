@@ -20,13 +20,10 @@ class Home extends React.Component {
   }
 
   addClass = () => {
-    console.log("youpi youpi")
      this.setState({ animationClass: "bounce-top" })
      setTimeout(() => {
       this.setState({animationClass: ""});
     }, 1000)
-    // setTimeout( this.setState({ animationClass: "" }), 100)
-   
   }
 
   logOut = () => {
