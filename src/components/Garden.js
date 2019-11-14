@@ -24,6 +24,12 @@ class Garden extends React.Component {
     notifsCounter: 0
   }
 
+  logOut = () => {
+    localStorage.removeItem("email");
+    this.setState({isOnline: false})
+    alert("Vous êtes déconnecté")
+  };
+
   componentDidMount() {
     const email = localStorage.getItem('email');
     if (email) {
@@ -112,7 +118,7 @@ class Garden extends React.Component {
 
         {/* module de connexion sign in/up */}
         {isOnline ?
-          <NavBar counter={this.state.notifsCounter} /> :
+          <NavBar counter={this.state.notifsCounter} logOut={this.logOut}/> :
           <Connect />
         }
 
