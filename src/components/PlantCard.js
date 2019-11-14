@@ -22,11 +22,11 @@ class PlantCard extends React.Component {
     ids.push(this.props.id);
     localStorage.setItem('ids', JSON.stringify(ids));
     this.props.counter()
-    this.deleteInfo()
+    this.addInfo()
   };
 
-  deleteInfo = () => {
-    const msg = document.getElementById("delete--message")
+  addInfo = () => {
+    const msg = document.getElementById("add--message")
     msg.classList.add('msg-in')
     setTimeout(() => {
       msg.classList.remove('msg-in')
@@ -36,7 +36,7 @@ class PlantCard extends React.Component {
   render() {
     return (
       <>
-      <div id="delete--message" className="msg-off">
+      <div id="add--message" className="msg-off">
         You successfully added your plant
       </div>
 

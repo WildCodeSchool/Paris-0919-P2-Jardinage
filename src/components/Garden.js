@@ -120,6 +120,7 @@ class Garden extends React.Component {
         <Search 
           counter={this.handleCount}
           addClass={this.addClass}  
+          logged={this.state.isOnline}
         />
         
         {(plantsAdded.length !==0) ? 
