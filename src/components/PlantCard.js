@@ -4,11 +4,14 @@ import { Link } from 'react-router-dom'
 
 import iconAdd from '../icon-plus.svg';
 import './style/PlantCard.scss';
+import AuthContext from '../context/garden-context';
 
 class PlantCard extends React.Component {
   state = {
     myClass :""
   }
+
+  static contextType = AuthContext;
   componentDidMount() {
     if (localStorage.getItem('ids') === null) {
       //...
@@ -23,6 +26,7 @@ class PlantCard extends React.Component {
     localStorage.setItem('ids', JSON.stringify(ids));
     this.props.counter()
     this.addInfo()
+    this.context.fetchPlants()
   };
 
   addInfo = () => {
@@ -39,7 +43,6 @@ class PlantCard extends React.Component {
       <div id="add--message" className="msg-off">
         You successfully added your plant
       </div>
-
       <figure
         className={this.props.oneItemResult ? 'plantCard lonely' : 'plantCard'}
       >

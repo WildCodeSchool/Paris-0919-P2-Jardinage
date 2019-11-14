@@ -14,7 +14,6 @@ class GardenList extends React.Component {
 
   componentDidUpdate(prevprops) {
     if (this.props.plantsAdded.length !== prevprops) {
-      console.log('componentDidUpdate called ok!!!')
       this.theRender()
     }
   }
@@ -60,10 +59,8 @@ class GardenList extends React.Component {
   }
 
   render() {
-    console.log(localStorage)
     return (
       <div className='bigWrapper'>
-
         <button onClick={this.ChangeDisplayGarden} className='garden_button'>{this.state.displayGarden === 'grid' ? 'List' : 'Grid'}</button>
 
         <div className={this.state.displayGarden}>

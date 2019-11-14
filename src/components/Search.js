@@ -89,7 +89,6 @@ class Search extends React.Component {
     }
     this.setState(
       previousState => ({ isDisplayed: true }),
-      console.log(this.state)
     );
   };
 
