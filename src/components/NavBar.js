@@ -60,9 +60,6 @@ class NavBar extends React.Component {
           </li>
         </ul>
         <ul className="logout">
-          <li className="alert-icon">
-            <img src={iconUser} alt="icon user" />
-          </li>
           <li className="log">
             <form>
               <button>

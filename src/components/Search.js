@@ -119,6 +119,7 @@ class Search extends React.Component {
               {finalResult.map(item => (
                 <PlantCard
                   key={item.id}
+                  addClass={this.props.addClass}
                   id={item.id}
                   common_name={item.common_name}
                   scientific_name={item.scientific_name}
