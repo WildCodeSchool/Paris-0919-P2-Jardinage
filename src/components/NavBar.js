@@ -7,16 +7,17 @@ import { NavLink } from "react-router-dom";
 import "../App.scss";
 import "./style/notifs.scss";
 
+
 class NavBar extends React.Component {
   state = {
-    invisible: ""
+    invisible: "",
   };
-  logOut = event => {
-    localStorage.removeItem("email");
-  };
+
+
   componentDidMount() {
     this.props.counter > 0 ? this.setState({invisible:""}): this.setState({invisible:"invisible"})
   }
+
   componentDidUpdate(previousProps) {
     if (
       previousProps.counter !== this.props.counter
@@ -62,7 +63,7 @@ class NavBar extends React.Component {
           <li className="log">
             <form>
               <button>
-                <NavLink to='/logout' className="NavBar-logout" onClick={this.logOut}>
+                <NavLink to='/' className="NavBar-logout" onClick={this.props.logOut}>
                   Sign out
                 </NavLink>
               </button>
