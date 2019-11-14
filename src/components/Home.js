@@ -67,7 +67,7 @@ class Home extends React.Component {
         <Geoloc />
 
         {/* bare de recherche lié à une API plante */}
-        <Search counter={this.handleCount} />
+        <Search addClass={this.addClass} counter={this.handleCount} />
 
         {/* grille suggestion plantes */}
         <PlantList addClass={this.addClass} counter={this.handleCount} />/>
