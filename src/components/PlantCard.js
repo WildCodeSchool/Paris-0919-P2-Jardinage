@@ -17,44 +17,30 @@ class PlantCard extends React.Component {
   }
 
   addIdToLocalStorge = e => {
-    this.classAdd()
     this.props.addClass()
     console.log('anim')
     const ids = JSON.parse(localStorage.getItem('ids'));
     ids.push(this.props.id);
     localStorage.setItem('ids', JSON.stringify(ids));
     this.props.counter()
+    this.deleteInfo()
   };
 
-  classAdd = () => {
-    // this.setState({ myClass: bounce-top }, () => {
-    //   setTimeout(() => this.setState({ myClass }), 0)
-    // })
-  
-    // let element = document.getElementById("idnotif");
-    // let element2 = document.getElementById("idnotifMobile");
-    // console.log('BEFORE anim notif navBar', element)
-    // console.log('BEFORE anim notif navBarMobile', element2)
-    
-    // if (element) {
-    //   element.classList.add('bounce-top')
-    //   setTimeout(() => {
-    //     element.classList.remove('bounce-top')
-    //   }, 600)
-    // }
-    // if (element2) {
-    //   element2.classList.add('bounce-top')
-    //   setTimeout(() => {
-    //     element2.classList.remove('bounce-top')
-    //   }, 600)
-    // }
-    // else {
-    //   return null
-    // }
+  deleteInfo = () => {
+    const msg = document.getElementById("delete--message")
+    msg.classList.add('msg-in')
+    setTimeout(() => {
+      msg.classList.remove('msg-in')
+    }, 3000)
   }
 
   render() {
     return (
+      <>
+      <div id="delete--message" className="msg-off">
+        You successfully added your plant
+      </div>
+
       <figure
         className={this.props.oneItemResult ? 'plantCard lonely' : 'plantCard'}
       >
@@ -80,6 +66,7 @@ class PlantCard extends React.Component {
           {this.props.scientific_name && <em>{this.props.scientific_name}</em>}
         </figcaption>
       </figure>
+      </>
     );
   }
 }

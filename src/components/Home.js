@@ -20,13 +20,10 @@ class Home extends React.Component {
   }
 
   addClass = () => {
-    console.log("youpi youpi")
      this.setState({ animationClass: "bounce-top" })
      setTimeout(() => {
       this.setState({animationClass: ""});
     }, 1000)
-    // setTimeout( this.setState({ animationClass: "" }), 100)
-   
   }
 
   componentDidMount() {
@@ -67,7 +64,7 @@ class Home extends React.Component {
         <Geoloc />
 
         {/* bare de recherche lié à une API plante */}
-        <Search counter={this.handleCount} />
+        <Search addClass={this.addClass} counter={this.handleCount} />
 
         {/* grille suggestion plantes */}
         <PlantList addClass={this.addClass} counter={this.handleCount} />/>

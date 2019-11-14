@@ -13,6 +13,7 @@ import { faLeaf } from '@fortawesome/free-solid-svg-icons'
 
 import '../App.scss';
 import './style/searchBar.scss'
+import './style/notifs.scss'
 
 const API_KEY = "YjlIUlp5QktVcXRIZTEzVGNMSmlOZz09"
 
@@ -95,7 +96,6 @@ class Garden extends React.Component {
   // RENDU DU COMPOSANT
   render() {
     const { plantsAdded, isOnline } = this.state
-    console.log(plantsAdded);
     
     return (
       <div className="app">
@@ -111,7 +111,7 @@ class Garden extends React.Component {
         }
 
         {/* bare de recherche lié à une API plante */}
-        <Search counter={this.handleCount}/>
+        <Search counter={this.handleCount} addClass={this.props.addClass}/>
         
         {(plantsAdded.length !==0) ? 
           <>
