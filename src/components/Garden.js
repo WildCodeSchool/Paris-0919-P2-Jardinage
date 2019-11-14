@@ -92,9 +92,11 @@ class Garden extends React.Component {
   // Msg d'information si le garden est vide
   gardenInfo = () => {
     return (
-      <div className="plantCard-error">
+      <>
+      <div className="plantCard-error empty-bloc">
         <p>Your garden is empty! You can add plants to take care of... <FontAwesomeIcon icon={faLeaf} /></p>
       </div>
+      </>
     )
   }
   
