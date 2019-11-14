@@ -4,7 +4,7 @@
 }
 
 .garden_button {
-  border: 1px solid black;
+  border: 1px solid rgba(25, 170, 83, .6);
   border-radius: 5px;
   margin-bottom: 1em;
   padding: .5em 2em;
@@ -17,6 +17,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 1em;
+  justify-content: center;
 }
 
 .grid .card {
@@ -90,7 +91,13 @@
     width: 60%;
   }
 
+  .grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 300px));
+  }
+
 }
+
+
 
 /////////////////////////////////////////// display different ///////////////////////////////////////////////
 
