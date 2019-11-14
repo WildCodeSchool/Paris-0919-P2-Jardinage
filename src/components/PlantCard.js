@@ -52,12 +52,14 @@ class PlantCard extends React.Component {
             />
           </Link>
         )}
-        <img
-          className="plantCard-icon"
-          src={iconAdd}
-          alt="icon add"
-          onClick={this.addIdToLocalStorge}
-        />
+        {this.props.logged &&
+          <img
+            className="plantCard-icon"
+            src={iconAdd}
+            alt="icon add"
+            onClick={this.addIdToLocalStorge}
+          />
+        }
         <figcaption
           className={this.props.visible_caption ? 'subtitle' : 'invisible'}
         >

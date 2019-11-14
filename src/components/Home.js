@@ -26,6 +26,12 @@ class Home extends React.Component {
     }, 1000)
   }
 
+  logOut = () => {
+    localStorage.removeItem("email");
+    this.setState({isOnline: false})
+    alert("Vous êtes déconnecté")
+  };
+
   componentDidMount() {
     const email = localStorage.getItem('email');
     if (email) {
@@ -56,7 +62,7 @@ class Home extends React.Component {
       <div className="app">
         {/* module de connexion sign in/up */}
         {this.state.isOnline ?
-          <NavBar animationClass={this.state.animationClass} counter={this.state.notifsCounter} /> :
+          <NavBar animationClass={this.state.animationClass} counter={this.state.notifsCounter} logOut={this.logOut} /> :
           <Connect />
         }
 
@@ -64,10 +70,10 @@ class Home extends React.Component {
         <Geoloc />
 
         {/* bare de recherche lié à une API plante */}
-        <Search addClass={this.addClass} counter={this.handleCount} />
+        <Search addClass={this.addClass} counter={this.handleCount} logged={this.state.isOnline}/>
 
         {/* grille suggestion plantes */}
-        <PlantList addClass={this.addClass} counter={this.handleCount} />/>
+        <PlantList addClass={this.addClass} counter={this.handleCount} logged={this.state.isOnline}/>
 
         {/* navbar mobile */}
         {this.state.isOnline ?
