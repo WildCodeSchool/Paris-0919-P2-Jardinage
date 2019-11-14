@@ -79,6 +79,7 @@ class PlantList extends React.Component {
                       scientific_name={item.scientific_name}
                       image={item.image}
                       counter={this.props.counter}
+                      logged={this.props.logged}
                     />
                   ))}
               </div>
@@ -97,6 +98,7 @@ class PlantList extends React.Component {
                       scientific_name={item.scientific_name}
                       image={item.image}
                       counter={this.props.counter}
+                      logged={this.props.logged}
                     />
                   ))}
               </div>
