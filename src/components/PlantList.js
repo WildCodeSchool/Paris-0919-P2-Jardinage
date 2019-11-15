@@ -26,7 +26,8 @@ let plantsData = [];
 
 class PlantList extends React.Component {
   state = {
-    isLoaded: false
+    isLoaded: false, 
+    visible_caption: false
   };
 
   getPlant = async () => {
@@ -49,7 +50,8 @@ class PlantList extends React.Component {
       }
     }
     this.setState({
-      isLoaded: true
+      isLoaded: true,
+      visible_caption: true
     });
   };
 
@@ -59,9 +61,10 @@ class PlantList extends React.Component {
   };
 
   render() {
+    const { isLoaded, visible_caption } = this.state
     return (
       <>
-        {!this.state.isLoaded ? (
+        {!isLoaded ? (
           <div className="plant-loader"></div>
         ) : (
           <div id="plantList">
@@ -80,6 +83,7 @@ class PlantList extends React.Component {
                       image={item.image}
                       counter={this.props.counter}
                       logged={this.props.logged}
+                      visible_caption={visible_caption}
                     />
                   ))}
               </div>
@@ -99,6 +103,7 @@ class PlantList extends React.Component {
                       image={item.image}
                       counter={this.props.counter}
                       logged={this.props.logged}
+                      visible_caption={visible_caption}
                     />
                   ))}
               </div>
