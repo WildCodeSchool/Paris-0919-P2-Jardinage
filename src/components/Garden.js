@@ -13,6 +13,7 @@ import { faLeaf } from '@fortawesome/free-solid-svg-icons'
 
 import '../App.scss';
 import './style/searchBar.scss'
+import AuthContext from '../context/garden-context.js';
 
 const API_KEY = "YjlIUlp5QktVcXRIZTEzVGNMSmlOZz09"
 
@@ -117,6 +118,12 @@ class Garden extends React.Component {
         <div id="delete--message" className="msg-off">
           You successfully deleted your plant
         </div>
+        <AuthContext.Provider
+        value={{
+          plantsAdded: this.state.plantsAdded,
+            fetchPlants: this.getPlant
+          }}
+        >
 
         {/* module de connexion sign in/up */}
         {isOnline ?
@@ -125,6 +132,7 @@ class Garden extends React.Component {
         }
 
         {/* bare de recherche lié à une API plante */}
+        
         <Search 
           counter={this.handleCount}
           addClass={this.addClass}  
@@ -143,6 +151,7 @@ class Garden extends React.Component {
           </>
         :
         this.gardenInfo()}
+        
 
         {/* grille suggestion plantes
         <GardenList /> */}
@@ -154,7 +163,7 @@ class Garden extends React.Component {
         <Footer />
 
         {/* menu de l'appli une fois connecté garden/board/alerts */}
-
+        </AuthContext.Provider>
       </div>
     )
   }
