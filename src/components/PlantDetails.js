@@ -108,7 +108,7 @@ class PlantDetails extends React.Component {
             <div className="Plant__cards">
               <div class="Plant__card">
                 <div class="Plant__card_title">
-                  Foliage color
+                Flower color
               </div>
                 <div class="Plant__card_icon">
                   <span><FontAwesomeIcon icon={faSpa} /></span>
@@ -119,7 +119,7 @@ class PlantDetails extends React.Component {
               </div>
               <div class="Plant__card">
                 <div class="Plant__card_title">
-                  Flower color
+                  Foliage color
               </div>
                 <div class="Plant__card_icon">
                   <span><FontAwesomeIcon icon={faLeaf} /></span>

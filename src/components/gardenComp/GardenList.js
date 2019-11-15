@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import { Link } from 'react-router-dom'
 
 import '../style/GardenList.scss'
 
@@ -24,13 +25,15 @@ class GardenList extends React.Component {
       return (
         this.props.plantsAdded.map((obj, index) => (
           <figure key={index} className='card' style={{ backgroundImage: `url(${obj.images.length > 0 ? obj.images[0].url : 'https://res.cloudinary.com/dsbgj0oop/image/upload/v1572516426/default_img.png'})`, backgroundSize: 'cover', backgroundRepeat: 'noRepeat' }}>
+            <Link to={`/plants/${obj.id}`}>
             <div className='names-wrapper'>
               <h3>{obj.common_name}</h3>
               <h3><em>{obj.scientific_name}</em></h3>
             </div>
+            </Link>
             <FontAwesomeIcon className="fa-trash-alt" icon={faTrashAlt}
               onClick={() => this.props.handleDeletePlant(index)}
-            />
+              />
           </figure>
         ))
       )
@@ -39,14 +42,16 @@ class GardenList extends React.Component {
       return (
         this.props.plantsAdded.map((obj, index) => (
           <figure key={index} className='card'>
-            <div className='names-wrapper'>
-              <h3>{obj.common_name}</h3>
-              <h3><em>{obj.scientific_name}</em></h3>
-              <FontAwesomeIcon className="fa-trash-alt" icon={faTrashAlt}
-                onClick={() => this.props.handleDeletePlant(index)}
-              />
-            </div>
-          </figure>
+              <div className='names-wrapper'>
+              <Link to={`/plants/${obj.id}`}>
+                <h3>{obj.common_name}</h3>
+                <h3><em>{obj.scientific_name}</em></h3>
+                </Link>
+                <FontAwesomeIcon className="fa-trash-alt" icon={faTrashAlt}
+                  onClick={() => this.props.handleDeletePlant(index)}
+                  />
+              </div>
+            </figure>
         ))
       )
     }
