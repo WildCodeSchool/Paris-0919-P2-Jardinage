@@ -4,8 +4,14 @@ import { Link } from 'react-router-dom'
 
 import iconAdd from '../icon-plus.svg';
 import './style/PlantCard.scss';
+import AuthContext from '../context/garden-context';
 
 class PlantCard extends React.Component {
+  state = {
+    myClass :""
+  }
+
+  static contextType = AuthContext;
   componentDidMount() {
     if (localStorage.getItem('ids') === null) {
       //...
@@ -14,42 +20,29 @@ class PlantCard extends React.Component {
   }
 
   addIdToLocalStorge = e => {
-    this.classAdd()
-    console.log('anim')
+    this.props.addClass()
     const ids = JSON.parse(localStorage.getItem('ids'));
     ids.push(this.props.id);
     localStorage.setItem('ids', JSON.stringify(ids));
     this.props.counter()
+    this.addInfo()
+    this.context.fetchPlants()
   };
 
-  classAdd = () => {
-    let element = document.getElementById("idnotif");
-    let element2 = document.getElementById("idnotifMobile");
-    console.log('BEFORE anim notif navBar', element)
-    console.log('BEFORE anim notif navBarMobile', element2)
-    if (this.props.counter === 0) {
-      element = null
-      element2 = null
-    }
-    if (element) {
-      element.classList.add('bounce-top')
-      setTimeout(() => {
-        element.classList.remove('bounce-top')
-      }, 600)
-    }
-    if (element2) {
-      element2.classList.add('bounce-top')
-      setTimeout(() => {
-        element2.classList.remove('bounce-top')
-      }, 600)
-    }
-    else {
-      return null
-    }
+  addInfo = () => {
+    const msg = document.getElementById("add--message")
+    msg.classList.add('msg-in')
+    setTimeout(() => {
+      msg.classList.remove('msg-in')
+    }, 2000)
   }
 
   render() {
     return (
+      <>
+      <div id="add--message" className="msg-off">
+        You successfully added your plant
+      </div>
       <figure
         className={this.props.oneItemResult ? 'plantCard lonely' : 'plantCard'}
       >
@@ -62,12 +55,14 @@ class PlantCard extends React.Component {
             />
           </Link>
         )}
-        <img
-          className="plantCard-icon"
-          src={iconAdd}
-          alt="icon add"
-          onClick={this.addIdToLocalStorge}
-        />
+        {this.props.logged &&
+          <img
+            className="plantCard-icon"
+            src={iconAdd}
+            alt="icon add"
+            onClick={this.addIdToLocalStorge}
+          />
+        }
         <figcaption
           className={this.props.visible_caption ? 'subtitle' : 'invisible'}
         >
@@ -75,6 +70,7 @@ class PlantCard extends React.Component {
           {this.props.scientific_name && <em>{this.props.scientific_name}</em>}
         </figcaption>
       </figure>
+      </>
     );
   }
 }

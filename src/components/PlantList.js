@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 
-import PlantCard from './PlantCard';
+import PlantCard from "./PlantCard";
 
-import '../App.scss';
-import './style/PlantList.scss'
-import './style/PlantCard.scss'
+import "../App.scss";
+import "./style/PlantList.scss";
+import "./style/PlantCard.scss";
 
-const API_KEY = "YjlIUlp5QktVcXRIZTEzVGNMSmlOZz09"
+const API_KEY = "YjlIUlp5QktVcXRIZTEzVGNMSmlOZz09";
 const plants = [
   { id: 141569 },
   { id: 131368 },
@@ -20,74 +20,96 @@ const plants = [
   { id: 158107 },
   { id: 174523 },
   { id: 175722 }
-]
+];
 
-let plantsData = []
+let plantsData = [];
 
 class PlantList extends React.Component {
   state = {
-    isLoaded: false
-  }
+    isLoaded: false, 
+    visible_caption: false
+  };
 
   getPlant = async () => {
     for (let i = 0; i < plants.length; i++) {
-      const api_call = await fetch(`https://trefle.io/api/plants/${plants[i].id}?token=${API_KEY}`)
-      const data = await api_call.json()
-      const imgLen = data.images ? data.images.length - 1 : 'none'
-      const species = data.main_species ? data.main_species.common_name : 'undefined'
-      if (imgLen !== 'none') {
-        plantsData.push({ id: data.id, common_name: species, scientific_name: data.scientific_name, image: data.images[imgLen].url })
+      const api_call = await fetch(
+        `https://trefle.io/api/plants/${plants[i].id}?token=${API_KEY}`
+      );
+      const data = await api_call.json();
+      const imgLen = data.images ? data.images.length - 1 : "none";
+      const species = data.main_species
+        ? data.main_species.common_name
+        : "undefined";
+      if (imgLen !== "none") {
+        plantsData.push({
+          id: data.id,
+          common_name: species,
+          scientific_name: data.scientific_name,
+          image: data.images[imgLen].url
+        });
       }
     }
     this.setState({
-      isLoaded: true
-    })
-  }
+      isLoaded: true,
+      visible_caption: true
+    });
+  };
 
   componentDidMount = () => {
-    plantsData = []
-    this.getPlant()
-  }
+    plantsData = [];
+    this.getPlant();
+  };
 
   render() {
+    const { isLoaded, visible_caption } = this.state
     return (
       <>
-        {!this.state.isLoaded ? (
+        {!isLoaded ? (
           <div className="plant-loader"></div>
         ) : (
-            <div id="plantList">
-              <section className="plantList--section">
-                <h2>Popular plants</h2>
-                <div className="plantCard--container">
-                  {plantsData.filter((elt, ind) => ind < 6).map((item) => (
+          <div id="plantList">
+            <section className="plantList--section">
+              <h2>Popular plants</h2>
+              <div className="plantCard--container">
+                {plantsData
+                  .filter((elt, ind) => ind < 6)
+                  .map(item => (
                     <PlantCard
+                      addClass={this.props.addClass}
                       key={item.id}
                       id={item.id}
                       common_name={item.common_name}
                       scientific_name={item.scientific_name}
                       image={item.image}
                       counter={this.props.counter}
+                      logged={this.props.logged}
+                      visible_caption={visible_caption}
                     />
                   ))}
-                </div>
-              </section>
-              <section className="plantList--section">
-                <h2>Seasonal plants</h2>
-                <div className="plantCard--container">
-                  {plantsData.filter((elt, ind) => ind >= 6).map(item => (
+              </div>
+            </section>
+            <section className="plantList--section">
+              <h2>Seasonal plants</h2>
+              <div className="plantCard--container">
+                {plantsData
+                  .filter((elt, ind) => ind >= 6)
+                  .map(item => (
                     <PlantCard
+                      addClass={this.props.addClass}
                       key={item.id}
                       id={item.id}
                       common_name={item.common_name}
                       scientific_name={item.scientific_name}
                       image={item.image}
                       counter={this.props.counter}
+                      logged={this.props.logged}
+                      visible_caption={visible_caption}
                     />
                   ))}
-                </div>
-              </section>
-            </div>
-          )}
+              </div>
+            </section>
+          </div>
+        )}
       </>
     );
   }

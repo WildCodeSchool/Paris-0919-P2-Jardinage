@@ -15,8 +15,22 @@ class Home extends React.Component {
   state = {
     isOnline: false,
     email: '',
-    notifsCounter: 0
+    notifsCounter: 0,
+    animationClass:""
   }
+
+  addClass = () => {
+     this.setState({ animationClass: "bounce-top" })
+     setTimeout(() => {
+      this.setState({animationClass: ""});
+    }, 1000)
+  }
+
+  logOut = () => {
+    localStorage.removeItem("email");
+    this.setState({isOnline: false})
+    alert("Vous êtes déconnecté")
+  };
 
   componentDidMount() {
     const email = localStorage.getItem('email');
@@ -46,10 +60,9 @@ class Home extends React.Component {
     // console.log(this.state.toggle)
     return (
       <div className="app">
-        {console.log('counter', this.state.notifsCounter)}
         {/* module de connexion sign in/up */}
         {this.state.isOnline ?
-          <NavBar counter={this.state.notifsCounter} /> :
+          <NavBar animationClass={this.state.animationClass} counter={this.state.notifsCounter} logOut={this.logOut} /> :
           <Connect />
         }
 
@@ -57,14 +70,14 @@ class Home extends React.Component {
         <Geoloc />
 
         {/* bare de recherche lié à une API plante */}
-        <Search counter={this.handleCount} />
+        <Search addClass={this.addClass} counter={this.handleCount} logged={this.state.isOnline}/>
 
         {/* grille suggestion plantes */}
-        <PlantList counter={this.handleCount} />/>
+        <PlantList addClass={this.addClass} counter={this.handleCount} logged={this.state.isOnline}/>
 
         {/* navbar mobile */}
         {this.state.isOnline ?
-          <NavMobile counter={this.state.notifsCounter} /> 
+          <NavMobile animationClass={this.state.animationClass} counter={this.state.notifsCounter} /> 
         :
           null
         }
