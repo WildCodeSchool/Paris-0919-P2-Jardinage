@@ -33,13 +33,13 @@ body {
   min-width: 300px;
   overflow-x: hidden;
   line-height: 1.5rem;
-  background-color: #1d1a26;
 }
 .app {
   background-color: white;
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+  min-height: 100vh;
 }
 
 //////////////////////* Style global des éléments *///////////////////////
